@@ -1,0 +1,149 @@
+@import "../../commonStyle/variable";
+
+.wrap {}
+
+.logo {
+  align-items: flex-start;
+  height: 100%;
+  padding-top: 20px;
+
+}
+
+
+.top {
+  background: var(--BG, #F8F8F8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+
+  &_wrp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1260px;
+    margin: auto;
+
+    &>div {
+      display: flex;
+      align-items: center;
+    }
+
+  }
+
+  &_auth {
+    margin-left: 8px;
+  }
+
+  &_profile {
+    font-size: 16px;
+    align-items: center;
+    font-weight: 400;
+    display: flex;
+    margin-right: 8px;
+
+    &:before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      margin-right: 4px;
+      background: center/cover no-repeat url("../../assets/svg/profile.svg");
+    }
+  }
+
+  &_lang {
+    &_wrp {
+      display: flex;
+      align-items: center;
+    }
+
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+
+    &:before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      margin-right: 4px;
+      background: center/cover no-repeat url("../../assets/svg/lang.svg");
+    }
+  }
+}
+
+
+.container {
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin: auto;
+  max-width: 1260px;
+  padding-bottom: 21px;
+
+  &_left {
+    display: flex;
+    justify-content: space-between;
+    width: 469px;
+  }
+
+  &_right {
+    display: flex;
+    justify-content: space-between;
+    width: 469px;
+
+    &>div {
+      display: flex;
+    }
+  }
+}
+
+.search {
+  opacity: 0.5;
+  font-size: 16px;
+  align-items: center;
+  font-weight: 400;
+  display: flex;
+
+  &:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    background: center/cover no-repeat url("../../assets/svg/search.svg");
+  }
+}
+
+.heart {
+  font-size: 16px;
+  align-items: center;
+  font-weight: 400;
+  display: flex;
+  margin-right: 20px;
+
+  &:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    background: center/cover no-repeat url("../../assets/svg/heart.svg");
+  }
+}
+
+.cart {
+  font-size: 16px;
+  align-items: center;
+  font-weight: 400;
+  display: flex;
+
+  &:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    background: center/cover no-repeat url("../../assets/svg/cart.svg");
+  }
+}

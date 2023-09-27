@@ -1,0 +1,27 @@
+.product {
+    &_description {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 8px;
+    }
+    &_title {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin: 0;
+        margin-top: 20px;
+    }
+    &_price {
+        margin: 0;
+        color: #000;
+        font-variant-numeric: lining-nums proportional-nums;
+        font-family: Raleway;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        
+    }
+}
