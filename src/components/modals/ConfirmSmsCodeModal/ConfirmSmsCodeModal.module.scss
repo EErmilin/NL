@@ -1,0 +1,32 @@
+.modal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &_title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    margin: 10px 0 10px 0;
+  }
+  &_text {
+    margin: 0 0 20px 0;
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+  }
+  &_timer{
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    margin-bottom: 32px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+}
+
+.code{
+}

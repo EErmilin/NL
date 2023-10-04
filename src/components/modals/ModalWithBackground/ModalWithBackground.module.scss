@@ -1,0 +1,32 @@
+.Modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 32px;
+  border: 1px solid var(--border-grey, #EFEFF0);
+  background: var(--white, #FFF);
+  z-index: 1;
+}
+
+.closeBtn {
+  background: transparent;
+  position: absolute;
+  border: none;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  display: flex;
+
+  &:before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: center/cover no-repeat url("../../../assets/svg/close.svg");
+  }
+}

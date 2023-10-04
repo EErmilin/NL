@@ -1,6 +1,103 @@
-.footer_main{
+.footer {
     margin-top: 50px;
-    height: 386px;
-flex-shrink: 0;
-background: #000;
+    min-height: 386px;
+    background: #000;
+    color: white;
+    padding: 50px 0 0 0;
+    width: 100%;
+    position: relative;
+
+    &_content {
+        display: flex;
+        margin: auto;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1340px;
+
+        &_links {
+            max-width: 320px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        &_contacts {
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            line-height: 20px;
+            border-bottom: solid 1px white;
+
+            /* 125% */
+            &_link {
+                color: white;
+            }
+
+            &_phone {
+                font-variant-numeric: lining-nums proportional-nums;
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 20px;
+                margin-bottom: 21px;
+            }
+
+            &_gray {
+                opacity: 0.5;
+            }
+
+            &_ps {
+                margin-top: 28px;
+                padding-bottom: 13px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                &_text {
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 27px;
+                    opacity: 0.5;
+                }
+
+                &_arrow {
+                    display: flex;
+                    &::before {
+                        content: '';
+                        width: 23.5px;
+                        height: 8px;
+                        margin-right: 4px;
+                        background: center/cover no-repeat url("../../assets/svg/arrowNext.svg");
+                    }
+                }
+
+
+            }
+        }
+
+        &_link {
+            color: white;
+        }
+    }
+
+    &_bottom {
+        margin: auto;
+        margin-top: 50px;
+        max-width: 1340px;
+        border-top: 1px solid white;
+        padding: 12px 0;
+
+
+
+        &_text {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            /* 125% */
+            opacity: 0.5;
+
+        }
+    }
 }

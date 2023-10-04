@@ -5,7 +5,7 @@
  */
 
 import { useState } from 'react';
-import classes from "../components/UI/modals/DarkBackground/DarkBackground.module.scss";
+import classes from "../components/modals/DarkBackground/DarkBackground.module.scss"
 
 /**
  * Управление видимостью элемента и скрытие элемента при клике по какому либо родительскому элементу

@@ -15,7 +15,7 @@ function Header() {
                     <div>
                         <NavLink to="" className={classes.top_profile}>Log in</NavLink>
                         {` | `}
-                        <NavLink to="" className={classes.top_auth}>Sign up</NavLink>
+                        <NavLink to="/registration" className={classes.top_auth}>Sign up</NavLink>
                     </div>
 
                 </div>
@@ -23,13 +23,13 @@ function Header() {
             <div className={classes.container}>
                 <div className={classes.container_left}>
                     <NavLink to="">Products</NavLink>
-                    <NavLink to="">Our story</NavLink>
-                    <NavLink to="">Business</NavLink>
+                    <NavLink to="/OurStory">Our story</NavLink>
+                    <NavLink to="/Business">Business</NavLink>
                     <NavLink to="">News</NavLink>
-                    <NavLink to="">Contacts</NavLink>
+                    <NavLink to="/Contacts">Contacts</NavLink>
                 </div>
                 <div className={classes.logo}>
-                    <Logo />
+                <NavLink to="/"><Logo /></NavLink>
                 </div>
                 <div className={classes.container_right}>
                     <NavLink className={classes.search} to="">Search</NavLink>

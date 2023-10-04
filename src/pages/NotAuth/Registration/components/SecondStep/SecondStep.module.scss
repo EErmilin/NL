@@ -1,0 +1,38 @@
+.step {
+  &_phone{
+    display: flex;
+    align-items: flex-end;
+    &_input {
+      margin: 0;
+    }
+    &_country{
+      margin-right: 16px;
+      width: 74px;
+    }
+  }
+
+  &_content {
+    &_title {
+      text-align: center;
+      width: 100%;
+    }
+
+    &_text {
+      &_gray {
+        color: var(--gray-80, #707070);
+        font-variant-numeric: lining-nums proportional-nums;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        margin-top: 16px;
+        /* 150% */
+      }
+    }
+
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 40px 0 60px 0;
+  }
+}

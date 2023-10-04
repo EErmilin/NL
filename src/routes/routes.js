@@ -1,4 +1,8 @@
+import Business from "../pages/NotAuth/Business/Business";
+import Contacts from "../pages/NotAuth/Contacts/Contacts";
 import Main from "../pages/NotAuth/Main/Main";
+import OurStory from "../pages/NotAuth/OurStory/OurStory";
+import Registration from "../pages/NotAuth/Registration/Registration";
 
 export const routes = [
     {
@@ -7,7 +11,34 @@ export const routes = [
         component: <Main />,
         path: '/',
         exact: true,
-        headerType: 1,
-        footerType: 1,
+
+    },
+    {
+        name: 'OurStory',
+        privateUrl: false,
+        component: <OurStory />,
+        path: '/OurStory',
+        exact: true,
+    },
+    {
+        name: 'Business',
+        privateUrl: false,
+        component: <Business />,
+        path: '/Business',
+        exact: true,
+    },
+    {
+        name: 'Contacts',
+        privateUrl: false,
+        component: <Contacts />,
+        path: '/Contacts',
+        exact: true,
+    },
+    {
+        name: 'registration',
+        privateUrl: false,
+        component: <Registration />,
+        path: '/registration',
+        exact: true,
     },
 ]
