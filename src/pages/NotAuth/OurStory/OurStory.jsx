@@ -2,6 +2,7 @@ import React from "react"
 import classes from "./OurStory.module.scss";
 import InfoPageUnit from "../../../components/InfoPageUnit/InfoPageUnit";
 import axios from "axios";
+import axiosCustom from "../../../axios/axiosCustom";
 
 export const OurStory = () => {
 
@@ -11,7 +12,7 @@ export const OurStory = () => {
   React.useEffect(() => {
     
     try {
-      axios.get("http://148.251.20.4:5555/api/v1/pages/our-story").then((resp) => {
+      axiosCustom.get("http://148.251.20.4:5555/api/v1/pages/our-story").then((resp) => {
 
           setData(resp.data.data)
         });

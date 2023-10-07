@@ -36,7 +36,10 @@ function Main() {
     return (
         <div>
             <div className={classes.hero}>
-                <MainHero><MainSlider /></MainHero>
+                <MainHero>
+                   {// <MainSlider />
+                   }
+                </MainHero>
             </div>
             <div className={classes.wrap}>
 

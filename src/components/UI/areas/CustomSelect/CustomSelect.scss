@@ -43,8 +43,8 @@
 .CustomSelect {
 
   .custom-select {
-
     &__menu {
+      min-width: 200px !important;
       z-index: 999;
       position: absolute;
     }

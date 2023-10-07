@@ -1,0 +1,29 @@
+.CustomDatePicker {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 40px;
+}
+
+
+.invalid {
+  input {
+    color: red;
+  }
+
+  border-bottom: red 1px solid;
+}
+
+.valid {
+  input {
+    color: black;
+  }
+
+  border-bottom: #707070 1px solid;
+}
+
+.error{
+  display: block;
+  margin-top: 15px;
+  color: red;
+  font-size: 14px;
+}

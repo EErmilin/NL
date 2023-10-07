@@ -9,20 +9,28 @@ import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { getSmsCode, sendCode } from '../../../store/actions/authActions';
 
-const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, next, timerCount, setTimerCount, clearErrorAndChange, values }) => {
+const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, next, timerCount, setTimerCount, clearErrorAndChange, values, setErrors, errors }) => {
 
     const dispatcher = useDispatch()
     const [isSend, setSend] = useState(true)
     const timer = useRef();
 
     const confirm = async () => {
-       
-        const response = await dispatcher(sendCode(values.code))
+        const response = await dispatcher(sendCode(values.code, values.country_code + values.phone.replace(/[^+\d]/g, '')))
 
+        console.log('###########')
+        console.log(response)
+        if (response.data?.success) {
+            btnCancelClick()
+            next()
+        }
+        if (!response.success && response.data.code) {
+            console.log(response.data.code.length)
+            setErrors({ ...errors, code: response.data.code[response.data.code.length - 1] })
+          } else {
+            setErrors({ ...errors, code: response.message })
+          }
 
-
-        // btnCancelClick()
-        // next()
     }
 
 
@@ -48,7 +56,7 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, next, timerCount, set
     }, [isSend]);
 
     const reSend = async () => {
-        const response = await dispatcher(getSmsCode(values.phone))
+        const response = await dispatcher(getSmsCode(values.phone.replace(/[^+\d]/g, '')))
         if (response.success || response.data) {
             if (response.data.seconds) {
                 setTimerCount(response.data.seconds)
@@ -102,9 +110,11 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, next, timerCount, set
                         return clearErrorAndChange("code", e)
                     }}
                     {...props} />
+                      {errors.code &&  <span className={classes.error}>{errors.code}</span>}
                 {timerCount === 0 ? <span className={classes.modal_timer} onClick={reSend}>Resend the code</span> :
                     <span className={classes.modal_timer}>Resend the code in {(timerCount < 0 ? -timerCount : timerCount) + " "} seconds!</span>}
                 <ButtonDefault title={"Continue"} onClick={confirm} />
+             
             </div>
 
 

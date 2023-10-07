@@ -1,6 +1,14 @@
 
 import axios from "axios";
 import axiosCustom from "../../axios/axiosCustom";
+import { SET_IS_AUTH } from "./actionsType";
+
+
+export function setIsAuth() {
+    return {
+        type: SET_IS_AUTH,
+    }
+}
 
 export function getChannel() {
     return async (dispatch) => {

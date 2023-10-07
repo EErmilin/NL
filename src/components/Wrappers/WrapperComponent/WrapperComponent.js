@@ -5,12 +5,7 @@ import Header from '../../Header/Header';
 
 function WrapperComponent({ children }) {
 
-    const url = useLocation()
-
     const cls = []
-    if (url.pathname === "/horoscope") {
-        cls.push("horoscope")
-    }
     return (
         <>
             <Header />

@@ -5,7 +5,6 @@ import axios from 'axios';
 
 const axiosCustom = axios.create({
     baseURL: "http://148.251.20.4:5555",
-    withCredentials: true,
 })
 /**
  * Заголовок разрешающий устанавливать куки от сервера
@@ -15,8 +14,11 @@ axios.defaults.withCredentials = true;
 axiosCustom.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 
-// console.log('@@@@@@@@@@@@@@')
-// console.log(axiosCustom.defaults.headers)
+axiosCustom.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token")
+    config.headers.Authorization = token && token !== 'undefined' ? `Bearer ${token}` : null;
+    return config;
+});
 
 
 // const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -33,14 +35,15 @@ axiosCustom.interceptors.request.use((config) => {
  * Перехват ответов для проверки авторизации
  * если токен устарел, то рефрешим его
  */
-//axiosCustom.interceptors.response.use(  (response) => { 
-//    console.log("")
-//    console.log(response)
-//    return response},
-//
-//    async (error) => {
-//
-//    return Promise.reject(error);
-//});
-export default axiosCustom;
+axiosCustom.interceptors.response.use((response) => {
+    if (response.data.token) {
+        localStorage.setItem('token', response.data.token)
+    }
+    return response
+},
 
+    async (error) => {
+
+        return Promise.reject(error);
+    });
+export default axiosCustom;

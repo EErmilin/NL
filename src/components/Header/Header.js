@@ -2,7 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Header.module.scss"
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
+import { useDispatch } from "react-redux";
+import { setIsAuth } from "../../store/actions/routerActions";
+
 function Header() {
+
+    const dispatcher = useDispatch()
 
     return (
         <header className={classes.wrap}>
@@ -10,10 +15,10 @@ function Header() {
                 <div className={classes.top_wrp}>
                     <div className={classes.top_lang_wrp}>
                         <NavLink to="" className={classes.top_lang}>Latvia | EN</NavLink>
-                        <NavLink to="">Personal office</NavLink>
+                        <NavLink to="/personal-area">Personal office</NavLink>
                     </div>
                     <div>
-                        <NavLink to="" className={classes.top_profile}>Log in</NavLink>
+                        <div className={classes.top_profile}  onClick={()=>dispatcher(setIsAuth())}>Log in</div>
                         {` | `}
                         <NavLink to="/registration" className={classes.top_auth}>Sign up</NavLink>
                     </div>
@@ -35,7 +40,7 @@ function Header() {
                     <NavLink className={classes.search} to="">Search</NavLink>
                     <div>
                         <NavLink to="" className={classes.heart}>Wishlist</NavLink>
-                        <NavLink to="" className={classes.cart}>My cart</NavLink>
+                        <div className={classes.cart}>My cart</div>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@ import React from "react"
 import classes from "./Business.module.scss";
 import InfoPageUnit from "../../../components/InfoPageUnit/InfoPageUnit";
 import axios from "axios";
+import axiosCustom from "../../../axios/axiosCustom";
 
 export const Business = () => {
 
@@ -11,7 +12,7 @@ export const Business = () => {
   React.useEffect(() => {
     
     try {
-      axios.get("http://148.251.20.4:5555/api/v1/pages/business").then((resp) => {
+      axiosCustom.get("http://148.251.20.4:5555/api/v1/pages/business").then((resp) => {
 
           setData(resp.data.data)
         });

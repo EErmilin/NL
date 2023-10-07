@@ -2,6 +2,7 @@ import React from "react"
 import classes from "./Contacts.module.scss";
 import InfoPageUnit from "../../../components/InfoPageUnit/InfoPageUnit";
 import axios from "axios";
+import axiosCustom from "../../../axios/axiosCustom";
 
 export const Contacts = () => {
 
@@ -11,7 +12,7 @@ export const Contacts = () => {
   React.useEffect(() => {
     
     try {
-      axios.get("http://148.251.20.4:5555/api/v1/pages/contacts").then((resp) => {
+      axiosCustom.get("http://148.251.20.4:5555/api/v1/pages/contacts").then((resp) => {
 
           setData(resp.data.data)
         });

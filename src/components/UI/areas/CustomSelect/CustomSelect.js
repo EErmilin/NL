@@ -11,8 +11,8 @@ const customStyles = {
 }
 
 
-function isInvalid(valid, touched, shouldValidate) {
-    return !valid && shouldValidate && touched;
+function isInvalid(errorMessage) {
+    return errorMessage
 }
 
 const CustomSelect = ({
@@ -34,13 +34,12 @@ const CustomSelect = ({
         cls.push(classes.required);
     }
     /** Видимость сообщения об ошибке */
-    const errMsg = isInvalid(valid, touched, shouldValidate) ? (
+    const errMsg = isInvalid(errorMessage) ? (
         <span className={classes.err_msg}>{errorMessage}</span>
     ) : null;
-    const errClasses = isInvalid(valid, touched, shouldValidate) && customStyles
 
     return(
-        <div className={`custom-select-wrap ${className} ${errClasses}`}>
+        <div className={`custom-select-wrap ${className} `}>
             {label && (
                 <label className="custom-select-label">
                     {label}
@@ -50,13 +49,12 @@ const CustomSelect = ({
             <Select
                 className="CustomSelect"
                 classNamePrefix={"custom-select"}
-                styles={errClasses}
                 isSearchable={ isSearchable }
                 placeholder={placeholder}
                 isDisabled={disabled}
                 {...rest}
             />
-            {!noMessage?errMsg:''}
+            {errMsg}
         </div>
     );
 }
