@@ -2,13 +2,16 @@ import moment from "moment";
 import React from "react"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import NavBar from "../../../../components/NavBar/NavBar";
+import ButtonDefault from "../../../../components/UI/btns/Button/Button";
 import { getProfile } from "../../../../store/actions/authActions";
 import classes from "./Profile.module.scss";
 
 export const Profile = () => {
 
   const user = useSelector(state => state.auth.user);
+  const navigate = useNavigate()
 
   const dispatcher = useDispatch()
 
@@ -19,6 +22,12 @@ export const Profile = () => {
   if (!user) return
 
   const regDate = moment(user.created_at).format("DD/MM/YYYY")
+
+  const exit =()=>{
+    localStorage.setItem('token', 'undefined')
+
+    navigate("/")
+  }
 
   return (
     <div className={classes.wrapper}>
@@ -67,6 +76,8 @@ export const Profile = () => {
             <div className={classes.profile_value}>{user.phone}</div>
           </div>
         </div>
+
+        <div className={classes.exit} onClick={exit}> exit</div>
 
       </div>
 

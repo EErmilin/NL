@@ -1,9 +1,6 @@
-
-import Cookies from 'js-cookie';
-import axios from "axios";
 import axiosCustom from '../../axios/axiosCustom';
-import { SET_USER_PROFILE } from './actionsType';
-const backUrl = "http://148.251.20.4:5555"
+import { SET_USER_PROFILE, SET_REGISTER_DATA } from './actionsType';
+const backUrl = "https://testapi.eu-nl.com"
 
 
 export function checkPartnerId(id) {
@@ -121,6 +118,15 @@ export function setUserProfile(data) {
         payload: data
     }
 }
+
+export function setRegisterData(data) {
+    return {
+        type: SET_REGISTER_DATA,
+        payload: data
+    }
+}
+
+
 
 
 

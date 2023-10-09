@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const axiosCustom = axios.create({
-    baseURL: "http://148.251.20.4:5555",
+    baseURL: "https://testapi.eu-nl.com",
 })
 /**
  * Заголовок разрешающий устанавливать куки от сервера

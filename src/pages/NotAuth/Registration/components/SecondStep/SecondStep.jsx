@@ -20,6 +20,7 @@ export const SecondStep = ({ clearErrorAndChange, values, errors, countries }) =
             placeholder={"+7"}
             options={phoneOptions}
             value={phoneOptions.find(elem => elem.value == values.country_code)}
+            errorMessage={errors.phone? " " : false}
             onChange={(e) => {
               return clearErrorAndChange("country_code", e.value)
             }} />
@@ -33,7 +34,7 @@ export const SecondStep = ({ clearErrorAndChange, values, errors, countries }) =
             id="phone"
             errorMessage={errors.phone}
             onChange={(e) => {
-              return clearErrorAndChange("phone", e.target.value)
+              return clearErrorAndChange("phone", e.target.value.replace(/[^+\d]/g, ''))
             }} />
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { setIsAuth } from "../../store/actions/routerActions";
 
 /**
@@ -23,13 +23,15 @@ function PrivateRoute ({
 }){
     const navigate  = useNavigate()
     const dispatcher = useDispatch()
+    const url = useLocation()
+    
 
     useEffect(()=>{
-        if (!localStorage.getItem('token') || localStorage.getItem('token')=='undefined') {
+        if (!localStorage.getItem('token') || localStorage.getItem('token')==='undefined') {
             dispatcher(setIsAuth())
             return navigate('/')
         }
-    },[localStorage.getItem('token')])
+    },[localStorage.getItem('token'), url])
 
 
 

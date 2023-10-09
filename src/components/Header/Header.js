@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import classes from "./Header.module.scss"
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import { useDispatch } from "react-redux";
@@ -8,6 +8,17 @@ import { setIsAuth } from "../../store/actions/routerActions";
 function Header() {
 
     const dispatcher = useDispatch()
+    const navigate = useNavigate()
+
+    const toProfile = () =>{
+        if(!localStorage.getItem('token') || localStorage.getItem('token')==='undefined'){
+            dispatcher(setIsAuth(true))
+        }
+        else{
+            navigate("/personal-area")
+        }
+      
+    }
 
     return (
         <header className={classes.wrap}>
@@ -15,7 +26,7 @@ function Header() {
                 <div className={classes.top_wrp}>
                     <div className={classes.top_lang_wrp}>
                         <NavLink to="" className={classes.top_lang}>Latvia | EN</NavLink>
-                        <NavLink to="/personal-area">Personal office</NavLink>
+                        <div className={classes.btn}onClick={toProfile}>Personal office</div>
                     </div>
                     <div>
                         <div className={classes.top_profile}  onClick={()=>dispatcher(setIsAuth())}>Log in</div>

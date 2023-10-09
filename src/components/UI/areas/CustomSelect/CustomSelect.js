@@ -29,7 +29,7 @@ const CustomSelect = ({
     disabled,
     isSearchable=false ,
     ...rest }) => {
-    const cls = [classes.Input];
+    const cls = ["CustomSelect"];
     if (required) {
         cls.push(classes.required);
     }
@@ -37,6 +37,13 @@ const CustomSelect = ({
     const errMsg = isInvalid(errorMessage) ? (
         <span className={classes.err_msg}>{errorMessage}</span>
     ) : null;
+
+    if (isInvalid(errorMessage)) {
+        cls.push(classes.invalid);
+      } else {
+        cls.push(classes.valid);
+      }
+    
 
     return(
         <div className={`custom-select-wrap ${className} `}>
@@ -47,7 +54,7 @@ const CustomSelect = ({
                 </label>
             )}
             <Select
-                className="CustomSelect"
+                className={cls.join(" ")}
                 classNamePrefix={"custom-select"}
                 isSearchable={ isSearchable }
                 placeholder={placeholder}

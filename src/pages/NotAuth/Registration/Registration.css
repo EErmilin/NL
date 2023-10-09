@@ -14,44 +14,44 @@ svg{
   fill: black !important;
 }
 
-:where(.css-dev-only-do-not-override-1ck3jst).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title::after {
+.ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title::after {
   inset-inline-start: none !important;
   background-color: black !important;
   margin-top: 4px;
 }
 
-:where(.css-dev-only-do-not-override-1ck3jst).ant-steps .ant-steps-item-icon {
+.ant-steps .ant-steps-item-icon {
   margin-inline-end: 0;
 }
 
-:where(.css-dev-only-do-not-override-1ck3jst).ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title::after {
+.ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title::after {
   margin-top: 4px;
 
 }
 
-:where(.css-dev-only-do-not-override-1ck3jst).ant-steps.ant-steps-horizontal:not(.ant-steps-label-vertical) .ant-steps-item {
+.ant-steps.ant-steps-horizontal:not(.ant-steps-label-vertical) .ant-steps-item {
   padding-inline-start:0 !important
 }
 
-:where(.css-dev-only-do-not-override-1ck3jst).ant-steps .ant-steps-item-title::after {
+.ant-steps .ant-steps-item-title::after {
   margin-left: -17px;
 }
 
-:where(.css-dev-only-do-not-override-1ck3jst).ant-steps .ant-steps-item-finish .ant-steps-item-icon{
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon{
   background-color: white !important;
 }
 
 
 
-:where(.css-dev-only-do-not-override-1ck3jst).ant-steps .ant-steps-item-wait .ant-steps-item-icon {
+.ant-steps .ant-steps-item-wait .ant-steps-item-icon {
   background-color: transparent !important;
   border-color: var(--gray, #ECECEE) !important;
 }
 
-:where(.css-dev-only-do-not-override-1ck3jst).ant-steps .ant-steps-item-process .ant-steps-item-icon {
+.ant-steps .ant-steps-item-process .ant-steps-item-icon {
   background-color: black !important;
 }
 
-:where(.css-dev-only-do-not-override-1ck3jst).ant-steps .ant-steps-item-process .ant-steps-item-icon >.ant-steps-icon {
+.ant-steps .ant-steps-item-process .ant-steps-item-icon >.ant-steps-icon {
   color: white !important;
 }

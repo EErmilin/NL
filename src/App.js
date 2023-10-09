@@ -17,13 +17,18 @@ function App() {
     const dispatcher = useDispatch()
     
     useEffect(() => {
-        if(!isAuth &&( !localStorage.getItem('token') || localStorage.getItem('token')==='undefined')){
+        if(isAuth &&( !localStorage.getItem('token') || localStorage.getItem('token')==='undefined')){
             setIsAuthModal(true)
         } else{
             setIsAuthModal(false)
         }
     
     }, [isAuth, localStorage.getItem('token')])
+
+
+    console.log('@@@@@@@@@@@@')
+    console.log(localStorage.getItem('token'))
+    console.log(isAuth)
 
     const templateAuthModal = isAuthModal && (
         <AuthModal

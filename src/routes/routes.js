@@ -5,6 +5,7 @@ import Main from "../pages/NotAuth/Main/Main";
 import OurStory from "../pages/NotAuth/OurStory/OurStory";
 import Registration from "../pages/NotAuth/Registration/Registration";
 import PersonalArea from "../pages/Auth/Profile/PersonalArea";
+import RegisterSucces from "../pages/NotAuth/Registration/components/RegisterSucces/RegisterSucces";
 
 export const routes = [
     {
@@ -34,8 +35,13 @@ export const routes = [
         path: 'personal-area/*',
         privateUrl: true,
         exact: false,
-        headerType: 2,
-        footerType: 2,
+    },
+    {
+        name: 'RegisterSucces',
+        privateUrl: true,
+        component: <RegisterSucces />,
+        path: '/RegisterSucces',
+        exact: false,
     },
     {
         name: 'OurStory',

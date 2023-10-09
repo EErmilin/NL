@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import useToggleVisibility from "../../../hooks/useToggleVisibility";
 import ConfirmSmsCodeModal from "../../../components/modals/ConfirmSmsCodeModal/ConfirmSmsCodeModal";
 import { useDispatch } from "react-redux";
-import { checkPartnerId, getCountres, getSmsCode, login, register } from "../../../store/actions/authActions";
+import { checkPartnerId, getCountres, getSmsCode, login, register, setRegisterData } from "../../../store/actions/authActions";
 import { useMemo } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -40,13 +40,15 @@ export const Registration = () => {
       gender: "MALE",
       phone: "",
       code: "",
-      country_code: "",
+      country_code: "7",
       country_id: "",
       date_of_birth: "",
       contact_value: "",
       last_name: "",
       contact_type: "",
-      first_name: ""
+      first_name: "",
+      password: "123456",
+      device_name: "web"
     }
   }, [])
 
@@ -111,17 +113,24 @@ export const Registration = () => {
   const submit = async () => {
     const data = {
       ...values,
-      phone: "7" + values.phone.replace(/[^+\d]/g, ''),
+      phone: values.country_code + values.phone.replace(/[^+\d]/g, ''),
       country_id: values.country_id.value
     }
     const response = await dispatcher(register(data))
-    if (!response.data.success) {
+    if (!response.data?.success) {
       const confirmErrors = response.data
       setErrors({ ...errors, confirmErrors })
     } else {
-      const response = await dispatcher(login(values))
+      const data = 
+      {
+        phone: "+" + values.country_code + values.phone.replace(/[^+\d]/g, ''),
+        password: "123456",
+        device_name: "web"
+    }
+      const response = await dispatcher(login(data))
       if (response.status === 200) {
-        navigate("/")
+        dispatcher(setRegisterData({partner: values.referral_code}))
+        navigate(`/RegisterSucces?partner=${values.referral_code}`)
       }
     }
   }

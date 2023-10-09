@@ -22,7 +22,7 @@ const contactOptions = [
   },
   {
     label: "Whatsapp",
-    value: "Whatsapp"
+    value: "WHATSAPP"
   },
 ]
 
@@ -98,6 +98,7 @@ export const ThirdStep = ({ clearErrorAndChange, values, errors, countries }) =>
         <CustomSelect
           placeholder={"Select the best way to contact*"}
           label={"Contact preferences*"} 
+          errorMessage={errors.confirmErrors["contact_value"] ? errors.confirmErrors["contact_value"][0] : ""}
           options={contactOptions}
           value={contactOptions.find(elem => elem.value == values.contact_type)}
           onChange={(value) => clearErrorAndChange("contact_type", value.value)} />

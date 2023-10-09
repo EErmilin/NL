@@ -53,3 +53,18 @@ margin-bottom: 35px;
     /* 120% */
   }
 }
+
+.exit{
+  border: 1px red solid;
+  width: 100px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 8px;
+  margin-top: 50px;
+  color: red;
+  cursor: pointer;
+  &:hover{
+    background-color: red;
+    color: white
+  }
+}

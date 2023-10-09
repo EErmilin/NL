@@ -55,7 +55,7 @@
 
     &__control {
       border: none !important;
-      border-bottom: #707070 1px solid !important;
+
       border-radius: 0 !important;
       padding-bottom: 15px;
       padding-top: 10px;
@@ -164,4 +164,16 @@
 
   color: $red;
   font-size: 14px;
+}
+
+.invalid {
+  border-bottom: red 1px solid;
+}
+
+.valid {
+  input {
+    color: black;
+  }
+  border-bottom: #707070 1px solid !important;
+
 }

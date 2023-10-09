@@ -5,7 +5,6 @@
 
     &_wrp{
       display: flex;
-      align-items: flex-end;
     }
 
     &_input {
@@ -17,6 +16,7 @@
       }
     }
     &_country{
+      margin-top: 28px !important;
       margin-right: 16px;
       width: 74px;
     }

@@ -18,7 +18,7 @@ const AuthModal = ({ closeModal, btnCancelClick }) => {
 
     const [errors, setErrors] = useState({
         phone: "",
-        code: "",
+        password: "",
     })
 
 
@@ -65,11 +65,12 @@ const AuthModal = ({ closeModal, btnCancelClick }) => {
         if (response.data?.success) {
             navigate("/personal-area")
         }
+         if(!response.data?.success) {
+  
+                setErrors({ ...errors, password: response.data.password && response.data.password[response.data.password.length - 1], 
+                    phone: response.data.phone &&  response.data.phone[response.data.phone.length - 1] })
+          } 
     }
-
-
-
-
 
     return (
         <ModalWithBackground

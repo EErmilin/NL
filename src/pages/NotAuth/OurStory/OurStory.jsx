@@ -12,7 +12,7 @@ export const OurStory = () => {
   React.useEffect(() => {
     
     try {
-      axiosCustom.get("http://148.251.20.4:5555/api/v1/pages/our-story").then((resp) => {
+      axiosCustom.get("https://testapi.eu-nl.com/api/v1/pages/our-story").then((resp) => {
 
           setData(resp.data.data)
         });

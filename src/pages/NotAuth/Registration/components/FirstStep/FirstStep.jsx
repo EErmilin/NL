@@ -4,6 +4,8 @@ import "../../Registration.css"
 import Input from "../../../../../components/UI/areas/Input/Input";
 import { useDispatch } from "react-redux";
 import { checkPartnerId } from "../../../../../store/actions/authActions";
+import { useEffect } from "react";
+import { useMemo } from "react";
 
 
 export const FirstStep = ({ clearErrorAndChange, values, errors }) => {
