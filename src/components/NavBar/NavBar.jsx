@@ -10,9 +10,9 @@ function NavBar() {
     /** Масив ссылок */
     const templateLinks = useMemo(() => {
         let arrLinks = [
+            { link: "", title: "Personal office" },
             { link: "profile", title: "My information" },
             { link: "", title: "My orders" },
-            { link: "", title: "Personal office" },
             { link: "", title: "Money" },
             { link: "", title: "Messages" },
 

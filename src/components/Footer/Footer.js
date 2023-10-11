@@ -1,37 +1,39 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { NavLink } from "react-router-dom"
 import classes from "./Footer.module.scss"
 
 
 function Footer() {
+    const {t} = useTranslation()
     return (
         <div className={classes.footer}>
             <div className={classes.footer_content}>
                 <div>
-                    <div>NEW BRAND NAME</div>
+                    <div>{t("NEW BRAND NAME")}</div>
                     <div className={classes.footer_content_links}>
-                        <NavLink className={classes.footer_content_link} to="/OurStory">Our story</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">Product</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">My cart</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">Personal Office</NavLink>
+                        <NavLink className={classes.footer_content_link} to="/OurStory">{t("Our story")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("Product")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("My cart")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("Personal Office")}</NavLink>
                     </div>
                 </div>
                 <div>
-                    <div>CUSTOMER SERVICE</div>
+                    <div>{t("CUSTOMER SERVICE")}</div>
                     <div className={classes.footer_content_links}>
-                        <NavLink className={classes.footer_content_link} to="">Order status</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">Delivery and payment</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">Return and Exchanges</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">FAQs</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">Loyalty program</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">Public offer</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">Privacy policy</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("Order status")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("Delivery and payment")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("Return and Exchanges")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("FAQs")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("Loyalty program")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("Public offer")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("Privacy policy")}</NavLink>
                     </div>
                 </div>
                 <div>
-                    <div>ACCOUNT</div>
+                    <div>{t("ACCOUNT")}</div>
                     <div className={classes.footer_content_links}>
-                        <NavLink className={classes.footer_content_link} to="">My account</NavLink>
+                        <NavLink className={classes.footer_content_link} to="">{t("My account")}</NavLink>
                     </div>
                 </div>
                 <div>

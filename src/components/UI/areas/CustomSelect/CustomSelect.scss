@@ -15,7 +15,9 @@
 }
 
 .custom-select-wrap {
+  width: 100%;
   margin-top: 20px;
+
 
   &__label {
     display: inline-block;
@@ -37,7 +39,9 @@
   color: var(--gray-80, #707070);
   font-size: 16px;
   font-weight: 400;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
+  /* 150% */
+  display: block;
 }
 
 .CustomSelect {
@@ -50,7 +54,12 @@
     }
 
     &__single-value {
-      color: $black !important;
+      margin: 0;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      color: $black  !important;
     }
 
     &__control {
@@ -58,7 +67,8 @@
 
       border-radius: 0 !important;
       padding-bottom: 15px;
-      padding-top: 10px;
+      padding-top: 4px;
+
       &--is-disabled {
         background: #DDE7ED !important;
 
@@ -122,11 +132,11 @@
     &__option {
       font-size: 14px;
       font-weight: 300;
-      color: $black !important;
+      color: $black  !important;
 
       &:hover {
         background-color: $blue-lighter;
-        color: $blue-200 !important;
+        color: $blue-200  !important;
       }
 
       &--is-focused {
@@ -143,7 +153,8 @@
         }
       }
     }
-    &__value-container{
+
+    &__value-container {
       padding: 0;
     }
 
@@ -152,7 +163,8 @@
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
-      line-height: 24px; /* 150% */
+      line-height: 24px;
+      /* 150% */
       margin: 0;
     }
   }
@@ -172,8 +184,10 @@
 
 .valid {
   input {
+
     color: black;
   }
+
   border-bottom: #707070 1px solid !important;
 
 }

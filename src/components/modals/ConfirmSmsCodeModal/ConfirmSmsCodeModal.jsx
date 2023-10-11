@@ -16,23 +16,19 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, next, timerCount, set
     const timer = useRef();
 
     const confirm = async () => {
-        const response = await dispatcher(sendCode(values.code, values.country_code + values.phone.replace(/[^+\d]/g, '')))
+        const response = await dispatcher(sendCode(values.code, values.phone.replace(/[^+\d]/g, '')))
 
-        console.log('###########')
-        console.log(response)
         if (response.data?.success) {
             btnCancelClick()
             next()
         }
         if (!response.success && response.data.code) {
-            console.log(response.data.code.length)
             setErrors({ ...errors, code: response.data.code[response.data.code.length - 1] })
           } else {
             setErrors({ ...errors, code: response.message })
           }
 
     }
-
 
     useEffect(() => {
         if (!isSend) return

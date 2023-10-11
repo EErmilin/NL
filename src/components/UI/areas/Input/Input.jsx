@@ -75,6 +75,7 @@ export const Input = ({
   return (
     <>
       <div className={cls.join(' ')}>
+      {label &&<div className={classes.label}> label</div>}
         {input}
       </div>
       {errMsg}

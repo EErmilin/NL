@@ -1,0 +1,35 @@
+.modal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &_title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: -10px;
+  }
+
+  &_btn {
+    background-color: black;
+    color: var(--White, #FFF);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-top: 37px;
+  }
+
+  &_label {
+    color: var(--Black, #000);
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+}
+
+
+.error {
+  color: red;
+  margin-top: 15px;
+}

@@ -55,8 +55,6 @@ export function login(values) {
         try {
             const response = await axiosCustom.post(`${backUrl}/api/v1/customer/login`, {phone:values.phone, password: values.password, device_name: values.device_name})
 
-            console.log("authAction")
-            console.log(response)
             return response
 
         } catch (e) {

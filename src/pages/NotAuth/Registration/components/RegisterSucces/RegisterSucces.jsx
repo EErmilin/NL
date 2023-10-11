@@ -2,13 +2,22 @@ import classes from "./RegisterSucces.module.scss";
 import React from 'react';
 import "../../Registration.css"
 import ButtonDefault from "../../../../../components/UI/btns/Button/Button";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getProfile } from "../../../../../store/actions/authActions";
 
 export const RegisterSucces = () => {
   const navigate = useNavigate()
-  const registerInfo = useSelector(state => state.auth.registerInfo)
-  const [searchParams, setSearchParams] = useSearchParams()
+
+  const user = useSelector(state => state.auth.user);
+
+  const dispatcher = useDispatch()
+
+  useEffect(() => {
+    dispatcher(getProfile())
+  }, [])
+
   return (
     <div className={classes.succes}>
       <div>
@@ -17,12 +26,12 @@ export const RegisterSucces = () => {
         <div>
 
           <div className={classes.succes_gray}>Mentor</div>
-          <div className={classes.succes_info}>{searchParams.get("partner")}</div>
+          <div className={classes.succes_info}><span>{user?.parent_customer?.first_name +" "+ user?.parent_customer?.last_name +" "}</span><span className={classes.succes_info_id}>(ID {user?.parent_customer?.referral_code})</span></div>
         </div>
         <div className={classes.succes_left}>
           <div>
             <div className={classes.succes_gray}>You card</div>
-            <div className={classes.succes_info}></div>
+            <div className={classes.succes_info}>{user?.referral_code}</div>
           </div>
           <div>
             <div className={classes.succes_gray}>Your password</div>

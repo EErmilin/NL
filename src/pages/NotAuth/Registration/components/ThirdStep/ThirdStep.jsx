@@ -87,7 +87,6 @@ export const ThirdStep = ({ clearErrorAndChange, values, errors, countries }) =>
           className={classes.radio}
           label={"What's your gender*"}
           onChange={(e) => {
-            console.log()
             return clearErrorAndChange("gender", e)
           }}
           listRadio={[{
@@ -97,8 +96,9 @@ export const ThirdStep = ({ clearErrorAndChange, values, errors, countries }) =>
 
         <CustomSelect
           placeholder={"Select the best way to contact*"}
-          label={"Contact preferences*"} 
-          errorMessage={errors.confirmErrors["contact_value"] ? errors.confirmErrors["contact_value"][0] : ""}
+          label={"Contact preferences*"}
+          classNameLabel={classes.select_label}
+          errorMessage={errors.confirmErrors["contact_value"] && !values.contact_type ? errors.confirmErrors["contact_value"][0] : ""}
           options={contactOptions}
           value={contactOptions.find(elem => elem.value == values.contact_type)}
           onChange={(value) => clearErrorAndChange("contact_type", value.value)} />

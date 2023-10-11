@@ -6,6 +6,7 @@ import OurStory from "../pages/NotAuth/OurStory/OurStory";
 import Registration from "../pages/NotAuth/Registration/Registration";
 import PersonalArea from "../pages/Auth/Profile/PersonalArea";
 import RegisterSucces from "../pages/NotAuth/Registration/components/RegisterSucces/RegisterSucces";
+import PartnerRegistration from "../pages/NotAuth/Registration/PartnerRegistration";
 
 export const routes = [
     {
@@ -69,6 +70,13 @@ export const routes = [
         privateUrl: false,
         component: <Registration />,
         path: '/registration',
+        exact: true,
+    },
+    {
+        name: 'registrationpartner',
+        privateUrl: false,
+        component: <PartnerRegistration />,
+        path: '/registrationpartner',
         exact: true,
     },
     {

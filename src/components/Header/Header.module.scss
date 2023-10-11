@@ -45,6 +45,14 @@
     margin-right: 8px;
     cursor: pointer;
 
+    &_user{
+      cursor:default;
+      &_ref{
+        margin-left: 4px;
+        color: var(--gray-80, #707070);
+      }
+    }
+
     &:before {
       content: '';
       width: 20px;
@@ -55,6 +63,7 @@
   }
 
   &_lang {
+    cursor: pointer;
     &_wrp {
       display: flex;
       align-items: center;

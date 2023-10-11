@@ -18,6 +18,7 @@ function isInvalid(errorMessage) {
 const CustomSelect = ({
     label,
     className,
+    classNameLabel,
     required,
     valid,
     touched,
@@ -29,7 +30,12 @@ const CustomSelect = ({
     disabled,
     isSearchable=false ,
     ...rest }) => {
+
     const cls = ["CustomSelect"];
+    const clsLabel = ["custom-select-label"];
+    const clsWrp = ["custom-select-wrap"];
+
+    const clsSelect = ["custom-select"];
     if (required) {
         cls.push(classes.required);
     }
@@ -44,14 +50,26 @@ const CustomSelect = ({
         cls.push(classes.valid);
       }
     
+      if (className) {
+        clsWrp.push(className);
+    }
+
+    if (required) {
+        cls.push(classes.required);
+    }
+      if (classNameLabel) {
+        clsLabel.push(classNameLabel);
+      }
 
     return(
-        <div className={`custom-select-wrap ${className} `}>
+        <div className={clsWrp.join(" ")}>
             {label && (
-                <label className="custom-select-label">
+                <div>
+                <label className={clsLabel.join(" ")}>
                     {label}
                     {required ? '*' : ''}
                 </label>
+                </div>
             )}
             <Select
                 className={cls.join(" ")}

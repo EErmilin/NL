@@ -2,7 +2,6 @@ import classes from "./Registration.module.scss";
 import React, { useState } from 'react';
 import { Button, message, Steps } from 'antd';
 import "./Registration.css"
-import { FirstStep } from "./components/FirstStep/FirstStep";
 import SecondStep from "./components/SecondStep/SecondStep";
 import ThirdStep from "./components/ThirdStep/ThirdStep";
 import { useEffect } from "react";
@@ -13,10 +12,11 @@ import { checkPartnerId, getCountres, getSmsCode, login, register, setRegisterDa
 import { useMemo } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import FirstStep from "./components/FirstStep/FirstStep";
 
 
 
-export const Registration = () => {
+export const PartnerRegistration = () => {
 
   /** Модалка ввода кода */
   const [isCodeModal, setIsCodeModal, closeIsCodeModal] = useToggleVisibility()
@@ -83,15 +83,20 @@ export const Registration = () => {
 
   const next = async () => {
     if (current === 0) {
-      const response = await dispatcher(checkPartnerId(values.referral_code))
+      const errorsObj ={
+        referral_code: "",
+        phone: "",
+      }
+      
+      let response = await dispatcher(checkPartnerId(values.referral_code))
       if (response?.status == 200) {
         return setCurrent(current + 1);
       } else {
-        setErrors({ ...errors, referral_code: response.message })
+       
+        errorsObj.referral_code = response.message
+
       }
-    }
-    if (current === 1) {
-      const response = await dispatcher(getSmsCode(values.phone.replace(/[^+\d]/g, '')))
+      response = await dispatcher(getSmsCode(values.phone.replace(/[^+\d]/g, '')))
       if (response.data.success || response.data.seconds) {
         if (response.data.seconds) {
           setTimerCount(response.data.seconds)
@@ -100,13 +105,15 @@ export const Registration = () => {
         }
         return setIsCodeModal(true)
       } else {
-
         if (!response.success && response.data.phone) {
-          setErrors({ ...errors, phone: response.data.phone[response.data.phone.length - 1] })
+          errorsObj.phone = response.data.phone[response.data.phone.length - 1]
         } else {
-          setErrors({ ...errors, phone: response.message })
+          errorsObj.phone = response.message
         }
       }
+      setErrors(errorsObj)
+    }
+    if (current === 0) {
     }
   };
 
@@ -144,7 +151,7 @@ export const Registration = () => {
 
   const steps = [
     {
-      content: <FirstStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} />,
+      content: <FirstStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} isPartnerRegistration={true}/>,
     },
     {
       content: <SecondStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} countries={countries} />,
@@ -195,19 +202,17 @@ export const Registration = () => {
     }
   }, [current])
 
+  const templateStep = useMemo(()=>{
+return   <Steps current={current} items={items} />
+  },[errors])
+
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.content}>
-        <h1 className={classes.title}>Registration</h1>
-        <p className={classes.text}>Participation in the Client Club loyalty program with a personal consultant</p>
-        <ul className={classes.ul}>
-          <li>Cashback up to 10% on every purchase after connecting
-            to the program</li>
-          <li>Payment for purchases in units</li>
-          <li>Personal consultant on products and delivery/payment methods</li>
-        </ul>
-        <Steps current={current} items={items} />
+        <h1 className={classes.title}>Partner registration</h1>
+        <p className={classes.partner_text}>You enter into a partnership agreement with NL International</p>
+      {templateStep}
         <div >{steps[current].content}</div>
         <div
           style={{
@@ -216,7 +221,7 @@ export const Registration = () => {
         >
           {current < steps.length - 1 && (
             <Button type="primary" onClick={() => next()} className={classes.btn}>
-              Continue
+             Send code
             </Button>
           )}
           {current === steps.length - 1 && (
@@ -240,4 +245,4 @@ export const Registration = () => {
   )
 }
 
-export default Registration
+export default PartnerRegistration
