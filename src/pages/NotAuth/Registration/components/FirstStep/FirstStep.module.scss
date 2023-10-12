@@ -38,6 +38,13 @@
 }
 
 .purtner_step {
+  &_ref{
+    border-bottom: 1px solid #707070;
+padding-bottom: 15px;
+&_gray{
+  color: var(--gray-80, #707070);
+}
+  }
   &_phone{
     display: flex;
     align-items: flex-end;

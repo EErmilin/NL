@@ -24,7 +24,7 @@ export const PartnerRegistration = () => {
   const [countries, setCountries] = useState(null)
   const [errors, setErrors] = useState({
     confirmErrors: [],
-    referral_code: "",
+    partner_code: "",
     phone: "",
     code: "",
   })
@@ -36,7 +36,7 @@ export const PartnerRegistration = () => {
   /** Начальные значения */
   const initialValues = useMemo(() => {
     return {
-      referral_code: "",
+      partner_code: "",
       gender: "MALE",
       phone: "",
       code: "",
@@ -84,19 +84,17 @@ export const PartnerRegistration = () => {
   const next = async () => {
     if (current === 0) {
       const errorsObj ={
-        referral_code: "",
+        confirmErrors: [],
+        partner_code: "",
         phone: "",
+        code: "",
       }
-      
-      let response = await dispatcher(checkPartnerId(values.referral_code))
+      let response = await dispatcher(checkPartnerId(values.partner_code, true))
       if (response?.status == 200) {
-        return setCurrent(current + 1);
       } else {
-       
-        errorsObj.referral_code = response.message
-
+        errorsObj.partner_code = response.message
       }
-      response = await dispatcher(getSmsCode(values.phone.replace(/[^+\d]/g, '')))
+      response = await dispatcher(getSmsCode(values.phone.replace(/[^+\d]/g,"")))
       if (response.data.success || response.data.seconds) {
         if (response.data.seconds) {
           setTimerCount(response.data.seconds)
@@ -113,8 +111,6 @@ export const PartnerRegistration = () => {
       }
       setErrors(errorsObj)
     }
-    if (current === 0) {
-    }
   };
 
   const submit = async () => {
@@ -130,22 +126,19 @@ export const PartnerRegistration = () => {
     } else {
       const data = 
       {
-        phone: "+" + values.phone.replace(/[^+\d]/g, ''),
+        phone: values.phone.replace(/[^+\d]/g, ''),
         password: "123456",
         device_name: "web"
     }
       const response = await dispatcher(login(data))
       if (response.status === 200) {
-        dispatcher(setRegisterData({partner: values.referral_code}))
+        dispatcher(setRegisterData({partner: values.partner_code}))
         navigate(`/registerSucces`)
       }
     }
   }
 
   const prev = () => {
-    if (current === 1) {
-      clearErrorAndChange("referral_code", "")
-    }
     setCurrent(current - 1);
   };
 
@@ -154,10 +147,7 @@ export const PartnerRegistration = () => {
       content: <FirstStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} isPartnerRegistration={true}/>,
     },
     {
-      content: <SecondStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} countries={countries} />,
-    },
-    {
-      content: <ThirdStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} countries={countries} />,
+      content: <SecondStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} countries={countries} isPartnerRegistration={true}/>,
     },
   ];
 
@@ -197,7 +187,7 @@ export const PartnerRegistration = () => {
 
 
   useEffect(() => {
-     if(current===2){
+     if(current===1){
     getCountresData()
     }
   }, [current])

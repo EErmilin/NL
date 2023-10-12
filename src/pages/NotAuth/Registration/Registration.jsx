@@ -136,9 +136,6 @@ export const Registration = () => {
   }
 
   const prev = () => {
-    if (current === 1) {
-      clearErrorAndChange("referral_code", "")
-    }
     setCurrent(current - 1);
   };
 

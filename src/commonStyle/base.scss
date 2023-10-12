@@ -1,8 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 body {
   font-family: "Raleway";
-  font-weight: normal;
-  color: $black;
-  line-height: 1;
   cursor: default;
 }
 
@@ -10,8 +8,9 @@ body {
   font-variant-numeric: lining-nums proportional-nums;
   box-sizing: border-box;
   outline: none;
+  color: #000;
   font-family: "Raleway";
-  font-weight: normal;
+  font-weight: 400;
 }
 
 a {

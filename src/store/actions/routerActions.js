@@ -38,46 +38,6 @@ export function getLocales() {
     };
 }
 
-
-export function getTranslation() {
-    return async (dispatch) => {
-
-        try {
-
-           // const response = await fetch("http://148.251.20.4:8080/api/v1/projects", {
-           //     method: 'GET', 
-           //     mode: 'no-cors',
-           //     headers: new Headers({
-           //         'Authorization': Bearer 525e6eb0-3731-41a9-8f96-b9b0dfb35c6e, 
-           //         'Content-Type': 'application/x-www-form-urlencoded'
-           //     }), 
-           //   })
-            //const response = await axios({
-            //    mode: 'no-cors',
-            //    method: "get",
-            //    withCredentials: false,
-            //    url: "http://148.251.20.4/api/v1/projects",
-            //    headers: { "Content-x-api-key": "Bearer 525e6eb0-3731-41a9-8f96-b9b0dfb35c6e" },
-    //
-            //  })
-            //    .then(function (response) {
-            //      //handle success
-            //      console.log(response);
-            //    })
-            //    .catch(function (response) {
-            //      //handle error
-            //      console.log(response);
-            //    });
-            const response = await axiosCustomTranslations.get("http://148.251.20.4/api/v1/projects")
-            console.log('###########')
-            console.log(response)
-        } catch (e) {
-            if (e.response) {
-            }
-        }
-    };
-}
-
 export function setLocale(locale) {
     return {
         type: SET_LOCALE,

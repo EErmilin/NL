@@ -3,12 +3,32 @@ import { Routes, useLocation, useSearchParams } from "react-router-dom"
 import { routes } from "./routes/routes";
 import { getListRoute } from "./routes/getListRoute";
 import { useDispatch, useSelector } from 'react-redux';
-import { getChannel, getLocales, getTranslation, setLocale } from './store/actions/routerActions';
+import { getChannel, getLocales, setLocale } from './store/actions/routerActions';
 import AuthModal from './components/modals/AuthModal/AuthModal';
 import useToggleVisibility from './hooks/useToggleVisibility';
 
+
 /** Конфиг для интернационализации */
 import './i18n/i18n-config';
+import { getProfile } from './store/actions/authActions';
+
+
+export const localesFake = [
+    {
+        code: "fr",
+        created_at: null,
+        id: 2,
+        name: "French",
+        updated_at: null
+    },
+    {
+        code: "en",
+        created_at: null,
+        id: 1,
+        name: "English",
+        updated_at: null
+    },
+]
 
 function App() {
 
@@ -42,31 +62,31 @@ function App() {
     }, [url.pathname])
 
     useEffect(() => {
+        if(localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined'){
+            dispatcher(getProfile())
+        }
         dispatcher(getLocales())
         dispatcher(getChannel())
     }, [])
 
     useEffect(() => {
         if(localStorage.getItem('locale')){
-            dispatcher(setLocale(locales.find((locale=> locale.id == localStorage.getItem('locale')))))
-        }else if (locales.length) {
-            dispatcher(setLocale(locales.find((locale) => locale.id === 1)))
+            dispatcher(setLocale(localesFake.find((locale=> locale.id == localStorage.getItem('locale')))))
+        }else if (localesFake.length) {
+            dispatcher(setLocale(localesFake.find((locale) => locale.id === 1)))
         }
-        dispatcher(getTranslation())
-    }, [locales])
-
-
+    }, [])
 
     const listRoutes = getListRoute(routes)
 
     return (
         <React.Suspense fallback="loading...">
-        <div className="App">
-            <Routes>
-                {listRoutes}
-            </Routes>
-            {templateAuthModal}
-        </div>
+            <div className="App">
+                <Routes>
+                    {listRoutes}
+                </Routes>
+                {templateAuthModal}
+            </div>
         </React.Suspense>
     );
 }

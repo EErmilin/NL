@@ -7,6 +7,7 @@ import { setIsAuth } from "../../store/actions/routerActions";
 import useToggleVisibility from "../../hooks/useToggleVisibility";
 import LocalesModal from "../modals/LocalesModal/LocalesModal";
 import { useTranslation } from "react-i18next";
+import { clearUserData } from "../../store/actions/authActions";
 
 function Header() {
     const [localesModal, setLocalesModal, closeLocalesModal] = useToggleVisibility(false)
@@ -25,6 +26,13 @@ function Header() {
         }
     }
 
+    const exit = () => {
+        dispatcher(clearUserData())
+        localStorage.setItem('token', 'undefined')
+        navigate("/")
+      }
+    
+
     const templateLocalesModal = localesModal && (
         <LocalesModal
             closeModal={closeLocalesModal}
@@ -37,14 +45,15 @@ function Header() {
                 <div className={classes.top}>
                     <div className={classes.top_wrp}>
                         <div className={classes.top_lang_wrp}>
-                            {locale && <div onClick={()=>setLocalesModal(true)} className={classes.top_lang}>{locale.name} | {locale.code}</div>}
+                            {locale && <div onClick={()=>setLocalesModal(true)} className={classes.top_lang}>United Kingdom | {locale.code.toUpperCase()}</div>}
                             <div className={classes.btn} onClick={toProfile}>{t("Personal office")}</div>
                         </div>
                         <div>
                        {user? <div className={[classes.top_profile_user, classes.top_profile].join(" ")}>{user.name}<span className={classes.top_profile_user_ref}>{user.referral_code}</span></div>:
                             <div className={classes.top_profile} onClick={() => dispatcher(setIsAuth())}>{t("Log in")}</div>}
                             {` | `}
-                            <NavLink to="/registration" className={classes.top_auth}>{t("Sign up")}</NavLink>
+                            {user? <div className={classes.top_auth} onClick={exit}>{t("Log out")}</div> : 
+                            <NavLink to="/registration" className={classes.top_auth}>{t("Sign up")}</NavLink>}
                         </div>
 
                     </div>

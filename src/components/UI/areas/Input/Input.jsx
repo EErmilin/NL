@@ -21,6 +21,7 @@ export const Input = ({
   labelInput,
   errorMessage,
   touched,
+  disabled=false,
   required, }) => {
 
   /** Формируем css классы */
@@ -65,6 +66,7 @@ export const Input = ({
     onChange={onChange}
     required={required}
     multiple={multiple}
+    disabled={disabled}
   />
   const errMsg = isInvalid(errorMessage) ? (
     <span className={classes.error}>{errorMessage}</span>

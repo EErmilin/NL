@@ -13,6 +13,7 @@ import { setIsAuth, setLocale } from '../../../store/actions/routerActions';
 import { useNavigate } from 'react-router-dom';
 import CustomSelect from '../../UI/areas/CustomSelect/CustomSelect';
 import { useTranslation } from 'react-i18next';
+import { localesFake } from '../../../App';
 
 const LocalesModal = ({ closeModal, btnCancelClick }) => {
 
@@ -26,14 +27,14 @@ const LocalesModal = ({ closeModal, btnCancelClick }) => {
         language: "",
     })
 
-    const localesOptions = locales?.map((locale) => { return {...locale, label: locale.name, value: locale.id } })
+    const localesOptions = localesFake?.map((locale) => { return {...locale, label: locale.name, value: locale.id } })
 
 
     /** Начальные значения */
     const initialValues = useMemo(() => {
         return {
             order: "",
-            language: {...locale, label: locale.name, value: locale.id } ?? locale.find(locale=>{
+            language: {...locale, label: locale.name, value: locale.id } ?? localesOptions.find(locale=>{
                 if(locale.id===1){
                     return {...locale, label: locale.name, value: locale.id }
                 }

@@ -2,23 +2,29 @@ import classes from "./FirstStep.module.scss";
 import React from 'react';
 import "../../Registration.css"
 import Input from "../../../../../components/UI/areas/Input/Input";
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 
 
-export const FirstStep = ({ clearErrorAndChange, values, errors, isPartnerRegistration=false }) => {
+export const FirstStep = ({ clearErrorAndChange, values, errors, isPartnerRegistration = false }) => {
 
-  if(isPartnerRegistration){
+  const [searchParams, setSearchParams] = useSearchParams()
+  const partner = searchParams.get("partner")
+  const first = searchParams.get("first")
+  const last = searchParams.get("last")
+  useEffect(() => {
+    clearErrorAndChange("partner_code", partner)
+  }, [partner])
+
+  if (isPartnerRegistration) {
     return (
-      <div className={classes.purtner_step_content}><div className={classes.purtner_step_content_title}>Enter your partner ID.</div>
+      <div className={classes.purtner_step_content}>
         <div>
-          <Input
-            value={values.id}
-            name="referral_code"
-            id="referral_code"
-            placeholder={"ID"}
-            errorMessage={errors.referral_code}
-            onChange={(e) => {
-              return clearErrorAndChange("referral_code", e.target.value)
-            }} />
+
+          <div className={classes.purtner_step_ref}>
+          {first +" " + last} <span className={classes.purtner_step_ref_gray}>ID {" " +values.partner_code}</span>
+          </div>
+
         </div>
         <div className={classes.purtner_step_phone_input_wrp}>
           <Input
@@ -40,13 +46,13 @@ export const FirstStep = ({ clearErrorAndChange, values, errors, isPartnerRegist
     <div className={classes.step_content}><div className={classes.step_content_title}>Enter your partner ID.</div>
       <div>
         <Input
-          value={values.id}
-          name="referral_code"
-          id="referral_code"
+          value={values.referral_code}
+          name="partner_code"
+          id="partner_code"
           placeholder={"ID"}
           errorMessage={errors.referral_code}
           onChange={(e) => {
-            return clearErrorAndChange("referral_code", e.target.value)
+            return clearErrorAndChange("partner_code", e.target.value)
           }} />
       </div>
     </div>

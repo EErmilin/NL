@@ -1,11 +1,25 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { NavLink } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { NavLink, useNavigate } from "react-router-dom"
+import { setIsAuth } from "../../store/actions/routerActions"
 import classes from "./Footer.module.scss"
 
 
 function Footer() {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
+
+    const dispatcher = useDispatch()
+    const navigate = useNavigate()
+
+    const toProfile = () => {
+        if (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined') {
+            dispatcher(setIsAuth(true))
+        }
+        else {
+            navigate("/personal-area")
+        }
+    }
     return (
         <div className={classes.footer}>
             <div className={classes.footer_content}>
@@ -15,7 +29,7 @@ function Footer() {
                         <NavLink className={classes.footer_content_link} to="/OurStory">{t("Our story")}</NavLink>
                         <NavLink className={classes.footer_content_link} to="">{t("Product")}</NavLink>
                         <NavLink className={classes.footer_content_link} to="">{t("My cart")}</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">{t("Personal Office")}</NavLink>
+                        <div className={classes.footer_content_link} onClick={toProfile}>{t("Personal Office")}</div>
                     </div>
                 </div>
                 <div>
@@ -25,15 +39,15 @@ function Footer() {
                         <NavLink className={classes.footer_content_link} to="">{t("Delivery and payment")}</NavLink>
                         <NavLink className={classes.footer_content_link} to="">{t("Return and Exchanges")}</NavLink>
                         <NavLink className={classes.footer_content_link} to="">{t("FAQs")}</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">{t("Loyalty program")}</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">{t("Public offer")}</NavLink>
-                        <NavLink className={classes.footer_content_link} to="">{t("Privacy policy")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="/LoyaltyProgram">{t("Loyalty program")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="/publicoffer">{t("Public offer")}</NavLink>
+                        <NavLink className={classes.footer_content_link} to="/privacypolicy">{t("Privacy policy")}</NavLink>
                     </div>
                 </div>
                 <div>
                     <div>{t("ACCOUNT")}</div>
                     <div className={classes.footer_content_links}>
-                        <NavLink className={classes.footer_content_link} to="">{t("My account")}</NavLink>
+                        <div className={classes.footer_content_link} onClick={toProfile}>{t("My account")}</div>
                     </div>
                 </div>
                 <div>
@@ -43,7 +57,7 @@ function Footer() {
                         <div className={classes.footer_content_contacts_gray}>e-mail:</div>
                         <div>careline@eu-nl.com</div>
                         <div>ООО "NL Continent Baltic", рег.: 40103781398LV-1003, Riga, Maza Krasta street 83</div>
-                        <div className={classes.footer_content_contacts_ps}><span className={classes.footer_content_contacts_ps_text}>Give an email, get the newsletter.</span> <span className={classes.footer_content_contacts_ps_arrow}/></div>
+                        <div className={classes.footer_content_contacts_ps}><span className={classes.footer_content_contacts_ps_text}>Give an email, get the newsletter.</span> <span className={classes.footer_content_contacts_ps_arrow} /></div>
                     </div>
                 </div>
 

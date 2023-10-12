@@ -1,4 +1,4 @@
-import { SET_USER_PROFILE, SET_REGISTER_DATA } from "../actions/actionsType"
+import { SET_USER_PROFILE, SET_REGISTER_DATA, CLEAR_USER_DATA } from "../actions/actionsType"
 
 
 const initialState = {
@@ -21,6 +21,12 @@ export default function authReducer(state = initialState, action) {
                 ...state,
                 registerInfo: action.payload,
             }
+        case CLEAR_USER_DATA:
+            return {
+                ...state,
+                user: null
+            }
+
 
         default: {
             return state

@@ -1,12 +1,13 @@
 import axiosCustom from '../../axios/axiosCustom';
-import { SET_USER_PROFILE, SET_REGISTER_DATA } from './actionsType';
+import { SET_USER_PROFILE, SET_REGISTER_DATA, CLEAR_USER_DATA } from './actionsType';
 const backUrl = "https://testapi.eu-nl.com"
 
 
-export function checkPartnerId(id) {
+export function checkPartnerId(id, isPartner = false) {
+    const url = isPartner? `${backUrl}/api/v1/customer/validate-partner-code/${id}`:`${backUrl}/api/v1/customer/validate-referral-code/${id}`
     return async (dispatch) => {
         try {
-            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/validate-referral-code/${id}`)
+            const response = await axiosCustom.post(url)
             return response
 
         } catch (e) {
@@ -22,7 +23,7 @@ export function getSmsCode(phone) {
     return async (dispatch) => {
         try {
             
-            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/pre-register/`, {phone:  phone})
+            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/pre-register/`, {phone:  phone.replace("+", "")})
 
             return response
         } catch (e) {
@@ -38,7 +39,7 @@ export function register(params) {
     return async (dispatch) => {
         try {
             
-            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/register`, params)
+            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/register`, {...params, phone:  params.phone.replace("+", "")})
 
             return response
         } catch (e) {
@@ -53,7 +54,7 @@ export function register(params) {
 export function login(values) {
     return async (dispatch) => {
         try {
-            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/login`, {phone:values.phone, password: values.password, device_name: values.device_name})
+            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/login`, {phone:values.phone.replace("+", ""), password: values.password, device_name: values.device_name})
 
             return response
 
@@ -69,7 +70,7 @@ export function login(values) {
 export function sendCode(code, phone) {
     return async (dispatch) => {
         try {
-            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/pre-register/check`, {code: code, phone:phone})
+            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/pre-register/check`, {code: code, phone:phone.replace("+", "")})
             return response
 
         } catch (e) {
@@ -123,6 +124,15 @@ export function setRegisterData(data) {
         payload: data
     }
 }
+
+export function clearUserData() {
+    return {
+        type: CLEAR_USER_DATA,
+    }
+}
+
+
+
 
 
 
