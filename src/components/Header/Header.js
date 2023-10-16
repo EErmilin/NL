@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import classes from "./Header.module.scss"
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +16,7 @@ function Header() {
     const navigate = useNavigate()
     const locale = useSelector(state => state.router.locale);
     const { t } = useTranslation()
+    const url = useLocation()
 
     const toProfile = () => {
         if (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined') {
@@ -39,9 +40,13 @@ function Header() {
             btnCancelClick={() => setLocalesModal(false)} />
     )
 
+console.log('!!!!!!!!!!!!!!!!')
+    console.log(url)
+    
+
     return (
         <>
-            <header className={classes.wrap}>
+            <header className={url.pathname === "/"? classes.wrapMain : classes.wrap}>
                 <div className={classes.top}>
                     <div className={classes.top_wrp}>
                         <div className={classes.top_lang_wrp}>

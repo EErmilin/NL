@@ -22,7 +22,7 @@ export const FirstStep = ({ clearErrorAndChange, values, errors, isPartnerRegist
         <div>
 
           <div className={classes.purtner_step_ref}>
-          {first +" " + last} <span className={classes.purtner_step_ref_gray}>ID {" " +values.partner_code}</span>
+          {"Your partner " +first +" " + last}
           </div>
 
         </div>
@@ -47,12 +47,12 @@ export const FirstStep = ({ clearErrorAndChange, values, errors, isPartnerRegist
       <div>
         <Input
           value={values.referral_code}
-          name="partner_code"
-          id="partner_code"
+          name="referral_code"
+          id="referral_code"
           placeholder={"ID"}
           errorMessage={errors.referral_code}
           onChange={(e) => {
-            return clearErrorAndChange("partner_code", e.target.value)
+            return clearErrorAndChange("referral_code", e.target.value)
           }} />
       </div>
     </div>

@@ -61,15 +61,26 @@ const AuthModal = ({ closeModal, btnCancelClick }) => {
 
     const submit = async () => {
 
-        const response = await dispatcher(login(values))
+        const response = await dispatcher(login({ ...values, phone: values.phone.replace(/[^+\d]/g, '') }))
         if (response.data?.success) {
             navigate("/personal-area")
         }
-         if(!response.data?.success) {
-  
-                setErrors({ ...errors, password: response.data.password && response.data.password[response.data.password.length - 1], 
-                    phone: response.data.phone &&  response.data.phone[response.data.phone.length - 1] })
-          } 
+        if (!!(response.data && !response.data.success)) {
+            setErrors({
+                ...errors, password: response.data?.password && response.data.password[response.data.password.length - 1],
+                phone: response.data.phone && response.data.phone[response.data.phone.length - 1]
+            })
+        } else if (response.errors) {
+            setErrors({
+                ...errors, password: response.errors.password,
+                phone: response.errors.phone
+            })
+        }
+    }
+
+    const toRegister =()=>{
+        btnCancelClick()
+        navigate("/registration")
     }
 
     return (
@@ -102,7 +113,7 @@ const AuthModal = ({ closeModal, btnCancelClick }) => {
                 <div className={classes.modal_forgot}>Forgot your password?</div>
 
                 <ButtonDefault title={"Login"} onClick={submit} className={classes.modal_btn} />
-                <div className={classes.modal_sing}>Don't have an account? <span className={classes.modal_sing_link}>Sign up</span></div>
+                <div className={classes.modal_sing}>Don't have an account? <span className={classes.modal_sing_link} onClick={toRegister}>Sign up</span></div>
 
             </div>
 

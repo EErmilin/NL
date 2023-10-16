@@ -1,6 +1,11 @@
 @import "../../commonStyle/variable";
 
-.wrap {}
+.wrap {
+  border-bottom: 1px solid var(--gray-80, #707070);
+}
+.wrapMain {
+
+}
 
 .logo {
   align-items: flex-start;

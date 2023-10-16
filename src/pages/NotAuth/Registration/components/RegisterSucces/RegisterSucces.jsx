@@ -19,7 +19,7 @@ export const RegisterSucces = () => {
     dispatcher(getProfile())
   }, [])
 
-  if(!user)return
+  if (!user) return
 
   return (
     <div className={classes.succes}>
@@ -30,11 +30,10 @@ export const RegisterSucces = () => {
           <div className={classes.succes_gray}>Mentor</div>
           <div className={classes.succes_info}><span>{user?.parent_customer?.first_name + " " + user?.parent_customer?.last_name + " "}</span><span className={classes.succes_info_id}>(ID {user?.parent_customer?.referral_code})</span></div>
         </div>
-        <div>
-
+        {user.partner_code && <div>
           <div className={classes.succes_gray}>Starting period</div>
           <div className={classes.succes_info}><span>{moment(user.created_at).format("DD/MM/YYYY") + " - " + moment(user.created_at).add(1, 'years').format("DD/MM/YYYY")} </span></div>
-        </div>
+        </div>}
         <div className={classes.succes_left}>
           <div>
             <div className={classes.succes_gray}>You card</div>

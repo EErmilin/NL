@@ -22,10 +22,10 @@ export const Profile = () => {
   if (!user) return
 
   const regDate = moment(user.created_at).format("DD/MM/YYYY")
+
   const renderInfo = () => {
     if (user.partner_code) {
-      return (
-        <div >
+      return (<div >
           <h2 className={classes.profile_title}>My information</h2>
           <div className={classes.profile_flex}>
             <div>
@@ -75,7 +75,7 @@ export const Profile = () => {
           </div>
           <div className={classes.profile_flex}>
             <div >
-              <div className={classes.profile_gray}>Your city</div>
+              <div className={classes.profile_gray}>Your id</div>
               <div className={classes.profile_value}>{user.city}</div>
             </div>
           </div>
@@ -94,64 +94,64 @@ export const Profile = () => {
           </div>
         </div>
       )
-    }
-    return (
-      <div >
-        <h2 className={classes.profile_title}>My information</h2>
-        <div className={classes.profile_flex}>
+    } 
+      return (
+        <div >
+          <h2 className={classes.profile_title}>My information</h2>
+          <div className={classes.profile_flex}>
+            <div>
+              <div className={classes.profile_gray}>Your id</div>
+              <div className={classes.profile_value}>{user.referral_code}</div>
+            </div>
+          </div>
+          <div className={classes.profile_flex}>
+            <div>
+              <div className={classes.profile_gray}>Your name</div>
+              <div className={classes.profile_value}>{user.name}</div>
+            </div>
+          </div>
+  
+     {user.country&&     <div className={classes.profile_flex}>
+            <div>
+              <div className={classes.profile_gray}>Country</div>
+              <div className={classes.profile_value}>{user.country.name}</div>
+            </div>
+          </div>}
+  
+          <div className={classes.profile_flex}>
+            <div>
+              <div className={classes.profile_gray}>Your city</div>
+              <div className={classes.profile_value}>{user.city}</div>
+            </div>
+          </div>
+  
+          <div className={classes.profile_flex}>
+            <div>
+              <div className={classes.profile_gray}>Day of birth</div>
+              <div className={classes.profile_value}>{moment(user?.date_of_birth).format("DD/MM/YYYY")}</div>
+            </div>
+          </div>
+  
+          <div className={classes.profile_flex}>
+            <div>
+              <div className={classes.profile_gray}>Gender</div>
+              <div className={classes.profile_value}>{user?.gender}</div>
+            </div>
+          </div>
+  
+  
           <div>
-            <div className={classes.profile_gray}>Your cart</div>
-            <div className={classes.profile_value}>{user.referral_code}</div>
+            <div className={classes.profile_gray}>Contact preferences</div>
+            <div className={classes.profile_value}>{user?.preferred_contact}</div>
           </div>
         </div>
-        <div className={classes.profile_flex}>
-          <div>
-            <div className={classes.profile_gray}>Your  name</div>
-            <div className={classes.profile_value}>{user.name}</div>
-          </div>
-        </div>
-
-        <div className={classes.profile_flex}>
-          <div>
-            <div className={classes.profile_gray}>Country</div>
-            <div className={classes.profile_value}>{user.country}</div>
-          </div>
-        </div>
-
-        <div className={classes.profile_flex}>
-          <div>
-            <div className={classes.profile_gray}>Your city</div>
-            <div className={classes.profile_value}>{user.city}</div>
-          </div>
-        </div>
-
-        <div className={classes.profile_flex}>
-          <div>
-            <div className={classes.profile_gray}>Day of birth</div>
-            <div className={classes.profile_value}>{moment(user?.date_of_birth).format("DD/MM/YYYY")}</div>
-          </div>
-        </div>
-
-        <div className={classes.profile_flex}>
-          <div>
-            <div className={classes.profile_gray}>Gender</div>
-            <div className={classes.profile_value}>{user?.gender}</div>
-          </div>
-        </div>
-
-
-        <div>
-          <div className={classes.profile_gray}>Contact preferences</div>
-          <div className={classes.profile_value}>{user?.preferred_contact}</div>
-        </div>
-      </div>
-    )
+      )
   }
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.profile_wrp}>
-{renderInfo()}
+      {renderInfo()}
 
         {user?.parent_customer &&
           <div >

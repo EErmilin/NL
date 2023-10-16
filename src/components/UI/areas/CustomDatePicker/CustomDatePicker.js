@@ -52,6 +52,7 @@ const CustomDatePicker = ({
         selected={!isPlaceHolder ? new Date(value) : null}
         ref={pickerRef}
         onChange={(e) => setDate(e)}
+        disabledKeyboardNavigation={false}
     />
 
 

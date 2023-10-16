@@ -28,8 +28,8 @@ const contactOptions = [
 
 
 export const SecondStep = ({ clearErrorAndChange, values, errors, countries, isPartnerRegistration }) => {
-  console.log("@@@@@@@@@@@")
-  console.log(errors)
+  console.log('!!!!!!!!!')
+console.log(errors)
 
   const countresOptions = countries?.map((country) => { return { label: country.name, value: country.phone_code } })
 
@@ -40,7 +40,7 @@ export const SecondStep = ({ clearErrorAndChange, values, errors, countries, isP
           <div>
             <Input
               value={values.last_name}
-              errorMessage={errors.confirmErrors["last_name"] ? errors.confirmErrors.length && errors.confirmErrors["last_name"][0] : ""}
+              errorMessage={errors.confirmErrors["last_name"] ? errors.confirmErrors["last_name"][0] : ""}
               onChange={(e) => {
                 return clearErrorAndChange("last_name", e.target.value)
               }}
@@ -50,7 +50,7 @@ export const SecondStep = ({ clearErrorAndChange, values, errors, countries, isP
 
             <Input
               value={values.first_name}
-              errorMessage={errors.confirmErrors["first_name"] ? errors.confirmErrors.length && errors.confirmErrors["first_name"][0] : ""}
+              errorMessage={errors.confirmErrors["first_name"] ? errors.confirmErrors["first_name"][0] : ""}
               onChange={(e) => {
                 return clearErrorAndChange("first_name", e.target.value)
               }}
@@ -63,12 +63,12 @@ export const SecondStep = ({ clearErrorAndChange, values, errors, countries, isP
                 clearErrorAndChange("date_of_birth", (moment(value).format("yyyy-MM-DD")))
               }}
               mask={[/\d/, /\d/, ".", /\d/, /\d/, ".", /\d/, /\d/, /\d/, /\d/]}
-              errorMessage={errors.confirmErrors["date_of_birth"] ? errors.confirmErrors.length && errors.confirmErrors["date_of_birth"][0] : ""}
+              errorMessage={errors.confirmErrors["date_of_birth"] ? errors.confirmErrors["date_of_birth"][0] : ""}
               blurInputOnSelect
               label={""} />
 
             <CustomSelect
-              errorMessage={errors.confirmErrors["country_id"] ? errors.confirmErrors.length && errors.confirmErrors["country_id"][0] : ""}
+              errorMessage={errors.confirmErrors["country_id"] ?  errors.confirmErrors["country_id"][0] : ""}
               placeholder={"A country*"}
               options={countresOptions}
               onChange={(e) => {

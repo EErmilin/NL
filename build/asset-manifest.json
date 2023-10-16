@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.0b244a0c.css",
-    "main.js": "/static/js/main.2c1a8438.js",
+    "main.css": "/static/css/main.4fe46d11.css",
+    "main.js": "/static/js/main.bda94eda.js",
     "static/media/main.png": "/static/media/main.57ddea8c0ddd89d8a246.png",
+    "static/media/Raleway-bold.ttf": "/static/media/Raleway-bold.2d5ba4784af03c9906b7.ttf",
     "static/media/fakeProduct.png": "/static/media/fakeProduct.8e05ff82b2a4edc2977a.png",
     "static/media/logo.svg": "/static/media/logo.ad6d9d9130e475c0fe182d810f7a9a4b.svg",
     "static/media/heart.svg": "/static/media/heart.fec5b53a376ad1961435.svg",
@@ -14,11 +15,11 @@
     "static/media/search.svg": "/static/media/search.dc49ec55e329bde57c48.svg",
     "static/media/arrow.svg": "/static/media/arrow.d69f9d2fbf89cf1763f3.svg",
     "static/media/arrowNext.svg": "/static/media/arrowNext.18cadeb7f3a1549cb08a.svg",
-    "main.0b244a0c.css.map": "/static/css/main.0b244a0c.css.map",
-    "main.2c1a8438.js.map": "/static/js/main.2c1a8438.js.map"
+    "main.4fe46d11.css.map": "/static/css/main.4fe46d11.css.map",
+    "main.bda94eda.js.map": "/static/js/main.bda94eda.js.map"
   },
   "entrypoints": [
-    "static/css/main.0b244a0c.css",
-    "static/js/main.2c1a8438.js"
+    "static/css/main.4fe46d11.css",
+    "static/js/main.bda94eda.js"
   ]
 }

@@ -67,7 +67,7 @@ export const PartnerRegistration = () => {
 
   /** Очищаем ошибки и изменяем состояние */
   const clearErrorAndChange = (field, value) => {
-    if (current === 2) {
+    if (current === 1) {
       const errorObj = errors.confirmErrors
       errorObj[field] = ""
       setErrors({ ...errorObj, confirmErrors: errorObj })
@@ -120,7 +120,7 @@ export const PartnerRegistration = () => {
       country_id: values.country_id.value
     }
     const response = await dispatcher(register(data))
-    if (!response.data?.success) {
+    if (!response.data.success) {
       const confirmErrors = response.data
       setErrors({ ...errors, confirmErrors })
     } else {

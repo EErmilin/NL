@@ -101,7 +101,7 @@ export const Registration = () => {
         return setIsCodeModal(true)
       } else {
 
-        if (!response.success && response.data.phone) {
+        if (!response.success && response.data && response.data.phone) {
           setErrors({ ...errors, phone: response.data.phone[response.data.phone.length - 1] })
         } else {
           setErrors({ ...errors, phone: response.message })
@@ -117,13 +117,13 @@ export const Registration = () => {
       country_id: values.country_id.value
     }
     const response = await dispatcher(register(data))
-    if (!response.data?.success) {
+    if (!response.data.success) {
       const confirmErrors = response.data
       setErrors({ ...errors, confirmErrors })
     } else {
       const data = 
       {
-        phone: "+" + values.phone.replace(/[^+\d]/g, ''),
+        phone: values.phone.replace(/[^+\d]/g, ''),
         password: "123456",
         device_name: "web"
     }
