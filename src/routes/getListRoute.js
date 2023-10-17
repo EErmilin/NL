@@ -17,7 +17,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 
 export function getListRoute (routes, userRoles, url = '', ...rest){
-    return routes.map(({path='',component,privateUrl,exact,routes,headerType,footerType},key)=>{
+    return routes.map(({path='',component,privateUrl,exact,routes,bodyType,footerType},key)=>{
            return privateUrl
         ?
         (
@@ -29,16 +29,17 @@ export function getListRoute (routes, userRoles, url = '', ...rest){
                         exact={exact}
                         path={path}
                         key={key}
-                    ><WrapperComponent >{component}</WrapperComponent></PrivateRoute>
+                    ><WrapperComponent bodyType={bodyType}>{component}</WrapperComponent></PrivateRoute>
                 }
                 key={key}
             />
         )
         :
         <Route
+        
             path={path}
             exact={exact}
-            element={(<WrapperComponent >{component}</WrapperComponent>)}
+            element={(<WrapperComponent bodyType={bodyType}>{component}</WrapperComponent>)}
             key={key}
         />
     })

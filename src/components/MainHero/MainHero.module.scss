@@ -7,7 +7,7 @@
     height: 650px;
   }
   @media(min-width: 1400px) {
-    height: 820px;
+    height: 670px;
   }
 }
 
@@ -16,6 +16,7 @@
   width: 100%;
   height: 100%;
   top: 0;
+  z-index: 1;
 
   &>img{
     object-fit: cover;
@@ -23,5 +24,7 @@
     height: 100%;
   }
 }
-
+.filter{
+  z-index: 2;
+}
 

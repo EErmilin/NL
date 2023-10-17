@@ -1,0 +1,38 @@
+.new {
+  width: 434px;
+
+  &_date {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    opacity: 0.5;
+    margin-top: 18px;
+  }
+
+  &_title {
+    color: var(--light-colors-black-light, #000);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px; /* 130% */
+    margin: 8px 0 4px 0;
+  }
+
+  &_text {
+    color: var(--light-colors-dark-gray-light, #707070);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px; /* 168.75% */
+    margin: 0 0 20px 0 ;
+  }
+
+  &_link {
+    color: var(--Black, #000);
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: underline;
+  }
+}

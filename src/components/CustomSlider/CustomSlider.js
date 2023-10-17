@@ -23,7 +23,7 @@ SwiperCore.use([
   Pagination,
 ]);
 
-const Slider = ({ children }) => {
+const Slider = ({ children, slidesPerView="auto" }) => {
 
   /**Инстенс свипера*/
   const swiperRef = useRef();
@@ -35,8 +35,8 @@ const Slider = ({ children }) => {
       <Swiper
         pagination={true}
         className={cls.join(' ')}
-        slidesPerView={1}
-        spaceBetween={20}
+        slidesPerView={slidesPerView}
+        spaceBetween={10}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
         }}

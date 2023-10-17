@@ -13,6 +13,9 @@ axios.defaults.withCredentials = true;
 //axiosCustom.defaults.withCredentials = true;
 axiosCustom.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
+console.log(localStorage.getItem("localeCode"))
+console.log('!!!!!!!!!!')
+axiosCustom.defaults.headers.common['Accept-Language'] = localStorage.getItem("localeCode");
 
 axiosCustom.interceptors.request.use((config) => {
     const token = localStorage.getItem("token")

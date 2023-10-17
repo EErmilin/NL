@@ -29,7 +29,7 @@ export const Profile = () => {
           <h2 className={classes.profile_title}>My information</h2>
           <div className={classes.profile_flex}>
             <div>
-              <div className={classes.profile_gray}>ID</div>
+              <div className={classes.profile_gray}>Your ID</div>
               <div className={classes.profile_value}>{user.referral_code}</div>
             </div>
           </div>
@@ -62,7 +62,7 @@ export const Profile = () => {
             </div>
             <div>
               <div className={classes.profile_gray}>Gender</div>
-              <div className={classes.profile_value}>{user?.gender}</div>
+              <div className={classes.profile_value}>{user?.gender.toLowerCase()}</div>
             </div>
  
           </div>
@@ -75,14 +75,14 @@ export const Profile = () => {
           </div>
           <div className={classes.profile_flex}>
             <div >
-              <div className={classes.profile_gray}>Your id</div>
+              <div className={classes.profile_gray}>City</div>
               <div className={classes.profile_value}>{user.city}</div>
             </div>
           </div>
           <div className={classes.profile_flex}>
             <div>
               <div className={classes.profile_gray}>Phone</div>
-              <div className={classes.profile_value}>{user.phone}</div>
+              <div className={classes.profile_value}>+{user.phone}</div>
             </div>
           
           </div>
@@ -100,7 +100,7 @@ export const Profile = () => {
           <h2 className={classes.profile_title}>My information</h2>
           <div className={classes.profile_flex}>
             <div>
-              <div className={classes.profile_gray}>Your id</div>
+              <div className={classes.profile_gray}>Your ID</div>
               <div className={classes.profile_value}>{user.referral_code}</div>
             </div>
           </div>

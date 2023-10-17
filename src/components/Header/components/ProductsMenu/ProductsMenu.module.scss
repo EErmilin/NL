@@ -1,0 +1,67 @@
+.wrapper {
+  padding: 28px 10% 30px 10%;
+  width: 100%;
+  display: grid;
+gap:136px;
+justify-content: center;
+  grid-template-columns: 320px 320px 480px;
+  background: var(--BG, #F8F8F8);
+}
+
+.content {
+
+  margin-top: 15px;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 125% */
+  margin-bottom: 20px;
+
+}
+
+.categorie {
+  margin: 8px 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor:pointer;
+  /* 125% */
+  &:after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: center/cover no-repeat url("../../../../assets/svg/arrowRight.svg");
+  }
+}
+
+.brand {
+  margin: 8px 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor:pointer;
+  /* 125% */
+}
+
+.link {
+  margin: 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor:pointer;
+  /* 125% */
+}
+
+.img{
+
+  width: 480px;
+height: 282px;
+flex-shrink: 0;
+}

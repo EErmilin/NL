@@ -18,15 +18,16 @@ import './commonStyle/_index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-    <ConfigProvider>
-      <Router>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <App />
-        </ErrorBoundary>
-      </Router>
-    </ConfigProvider>
-  </Provider>
+
+    <Provider store={store}>
+      <ConfigProvider>
+        <Router>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <App />
+          </ErrorBoundary>
+        </Router>
+      </ConfigProvider>
+    </Provider>
 );
 
 ConfigProvider.config({

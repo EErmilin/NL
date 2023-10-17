@@ -1,1 +1,0 @@
-export const ymapsKey = 'd10555c8-7bf2-4fa3-bc3b-7638b0f6049a'

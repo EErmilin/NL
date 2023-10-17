@@ -9,6 +9,9 @@ import RegisterSucces from "../pages/NotAuth/Registration/components/RegisterSuc
 import PartnerRegistration from "../pages/NotAuth/Registration/PartnerRegistration";
 import LoyaltyProgram from "../pages/NotAuth/LoyaltyProgram/LoyaltyProgram";
 import PublicOffer from "../pages/NotAuth/PublicOffer/PublicOffer";
+import { Products } from "../pages/NotAuth/Products/Products";
+import Product from "../pages/NotAuth/Product/Product";
+import PrivacyPolicy from "../pages/NotAuth/PrivacyPolicy/PrivacyPolicy";
 
 export const routes = [
     {
@@ -107,6 +110,27 @@ export const routes = [
         privateUrl: false,
         component: <PublicOffer />,
         path: '/publicoffer',
+        exact: true,
+    },
+    {
+        name: 'products',
+        privateUrl: false,
+        component: <Products />,
+        path: '/products',
+        exact: true,
+    },
+    {
+        name: 'product',
+        privateUrl: false,
+        component: <Product />,
+        path: '/product',
+        exact: true,
+    },
+    {
+        name: 'privacypolicy',
+        privateUrl: false,
+        component: <PrivacyPolicy />,
+        path: '/privacypolicy',
         exact: true,
     },
 ]

@@ -11,6 +11,7 @@ export default function MainHero({children}) {
             <div className={classes.background}>
                 <img src={Main}/>
             </div>
+          
             <div className={classes.filter}>
                 {children}
             </div>

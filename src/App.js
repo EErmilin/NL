@@ -11,6 +11,8 @@ import useToggleVisibility from './hooks/useToggleVisibility';
 /** Конфиг для интернационализации */
 import './i18n/i18n-config';
 import { getProfile } from './store/actions/authActions';
+import queryClient from "./queryClient";
+import { QueryClientProvider } from '@tanstack/react-query';
 
 
 export const localesFake = [
@@ -34,7 +36,6 @@ function App() {
 
     const isAuth = useSelector(state => state.router.isAuth)
     const [isAuthModal, setIsAuthModal, closeIsAuthModal] = useToggleVisibility(false)
-    const locales = useSelector(state => state.router.locales);
     const url = useLocation()
     const dispatcher = useDispatch()
 
@@ -62,7 +63,7 @@ function App() {
     }, [url.pathname])
 
     useEffect(() => {
-        if(localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined'){
+        if (localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined') {
             dispatcher(getProfile())
         }
         dispatcher(getLocales())
@@ -70,9 +71,9 @@ function App() {
     }, [])
 
     useEffect(() => {
-        if(localStorage.getItem('locale')){
-            dispatcher(setLocale(localesFake.find((locale=> locale.id == localStorage.getItem('locale')))))
-        }else if (localesFake.length) {
+        if (localStorage.getItem('locale')) {
+            dispatcher(setLocale(localesFake.find((locale => locale.id == localStorage.getItem('locale')))))
+        } else if (localesFake.length) {
             dispatcher(setLocale(localesFake.find((locale) => locale.id === 1)))
         }
     }, [])
@@ -80,14 +81,16 @@ function App() {
     const listRoutes = getListRoute(routes)
 
     return (
-        <React.Suspense fallback="loading...">
-            <div className="App">
-                <Routes>
-                    {listRoutes}
-                </Routes>
-                {templateAuthModal}
-            </div>
-        </React.Suspense>
+        <QueryClientProvider client={queryClient}>
+            <React.Suspense fallback="loading...">
+                <div className="App">
+                    <Routes>
+                        {listRoutes}
+                    </Routes>
+                    {templateAuthModal}
+                </div>
+            </React.Suspense>
+        </QueryClientProvider>
     );
 }
 

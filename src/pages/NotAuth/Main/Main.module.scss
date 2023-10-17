@@ -23,3 +23,57 @@
         line-height: normal;
     }
 }
+
+.hero {
+    &_wrp {
+        margin-left: 50%;
+        width: 100%;
+
+        z-index: 1000;
+        color: white;
+    }
+
+    &_top {
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    &_title {
+        font-family: Raleway;
+        font-size: 100px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin: 36px 0;
+    }
+
+    &_text {
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    &_btn {
+        margin-top: 73px;
+        width: 168px;
+        background-color: black;
+        color: white;
+    }
+}
+
+.instagram {
+    margin-top: 109px;
+
+    &_title {
+        color: #000;
+        text-align: center;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+}

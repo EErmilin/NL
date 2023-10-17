@@ -8,3 +8,6 @@ export const SET_LOCALE = "SET_LOCALE"
 export const SET_USER_PROFILE = 'SET_USER_PROFILE';
 export const SET_REGISTER_DATA = 'SET_REGISTER_DATA';
 export const CLEAR_USER_DATA = "CLEAR_USER_DATA"
+
+//Каталог 
+export const GET_CATEGORIES = "GET_CATEGORIES"

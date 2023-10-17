@@ -21,7 +21,7 @@ i18n.use(initReactI18next).init(
         },
     },
     () => {
-        axiosCustom.defaults.headers.common['Accept-Language'] = i18n.language;
+       axiosCustom.defaults.headers.common['Accept-Language'] = i18n.language;
     }
 );
 

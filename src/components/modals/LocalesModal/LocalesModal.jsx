@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import CustomSelect from '../../UI/areas/CustomSelect/CustomSelect';
 import { useTranslation } from 'react-i18next';
 import { localesFake } from '../../../App';
+import axiosCustom from '../../../axios/axiosCustom';
 
 const LocalesModal = ({ closeModal, btnCancelClick }) => {
 
@@ -70,7 +71,7 @@ const LocalesModal = ({ closeModal, btnCancelClick }) => {
         localStorage.setItem('locale', values.language.id)
         localStorage.setItem('localeCode', values.language.code)
         dispatcher(setLocale(values.language))
-   
+        axiosCustom.defaults.headers.common['Accept-Language'] = values.language.code;
         btnCancelClick()
     }
 
