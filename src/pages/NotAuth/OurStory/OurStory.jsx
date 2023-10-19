@@ -4,10 +4,12 @@ import InfoPageUnit from "../../../components/InfoPageUnit/InfoPageUnit";
 import axios from "axios";
 import axiosCustom from "../../../axios/axiosCustom";
 import { useQuery } from "@tanstack/react-query";
-
+import { useSelector } from "react-redux";
 export const OurStory = () => {
 
-  const { data, isInitialLoading, isError } = useQuery(["OurStory"], () =>
+  const locale = useSelector(state => state.router.locale);
+
+  const { data, isInitialLoading, isError } = useQuery(["OurStory", { locale: locale }], () =>
     axiosCustom.get("https://testapi.eu-nl.com/api/v1/pages/our-story")
   );
 

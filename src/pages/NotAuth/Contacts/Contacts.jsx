@@ -1,7 +1,6 @@
 import React from "react"
 import classes from "./Contacts.module.scss";
 import InfoPageUnit from "../../../components/InfoPageUnit/InfoPageUnit";
-import axios from "axios";
 import axiosCustom from "../../../axios/axiosCustom";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";

@@ -7,6 +7,7 @@ function ExpandBlock({
     className,
     RoomsWrpRef
 }) {
+
     const cls = [classes.block_wrp]
     if (className) cls.push(className)
 

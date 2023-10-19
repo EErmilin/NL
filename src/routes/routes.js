@@ -116,14 +116,14 @@ export const routes = [
         name: 'products',
         privateUrl: false,
         component: <Products />,
-        path: '/products',
+        path: '/products/:id',
         exact: true,
     },
     {
         name: 'product',
         privateUrl: false,
         component: <Product />,
-        path: '/product',
+        path: '/product/:id',
         exact: true,
     },
     {

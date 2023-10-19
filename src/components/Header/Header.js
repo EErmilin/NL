@@ -90,13 +90,12 @@ function Header() {
                 <div className={classes.top}>
                     <div className={classes.top_wrp}>
                         <div className={classes.top_lang_wrp}>
-                            {locale && <div onClick={() => setLocalesModal(true)} className={classes.top_lang}>United Kingdom | {locale.code.toUpperCase()}</div>}
+                            {locale && <div onClick={() => setLocalesModal(true)} className={classes.top_lang}>United Kingdom  {locale.code.toUpperCase()}</div>}
                             <div className={classes.btn} onClick={toProfile}>{t("Personal office")}</div>
                         </div>
                         <div>
                             {user ? <div className={[classes.top_profile_user, classes.top_profile].join(" ")}>{user.name}<span className={classes.top_profile_user_ref}>{user.referral_code}</span></div> :
                                 <div className={classes.top_profile} onClick={() => dispatcher(setIsAuth())}>{t("Log in")}</div>}
-                            {` | `}
                             {user ? <div className={classes.top_auth} onClick={exit}>{t("Log out")}</div> :
                                 <NavLink to="/registration" className={classes.top_auth}>{t("Sign up")}</NavLink>}
                         </div>
@@ -105,7 +104,7 @@ function Header() {
                 </div>
                 <div className={classes.container}>
                     <div className={classes.container_left}>
-                        <div onClick={expandBlock} className={[(isProductsOpen ? classes.active : classes.link)].join(' ')}>{t("Products")}</div>
+                        <div onClick={expandBlock} className={[(isProductsOpen || url.pathname.includes("product") ? classes.active : classes.link)].join(' ')}>{t("Products")}</div>
                         {templateLinks}
                     </div>
                     <div className={classes.logo}>
@@ -114,8 +113,8 @@ function Header() {
                     <div className={classes.container_right}>
                         <NavLink className={classes.search} to="">{t("Search")}</NavLink>
                         <div>
-                            <NavLink to="" className={classes.heart}>{t("Wishlist")}</NavLink>
-                            <div className={classes.cart}>{t("My cart")}</div>
+                            <NavLink to="" className={classes.heart}>{t("Wishlist")}<div className={classes.count}>2</div></NavLink>
+                            <div className={classes.cart}>{t("My cart")}<div className={classes.count}>2</div></div>
                         </div>
                     </div>
                 </div>

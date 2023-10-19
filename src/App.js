@@ -13,6 +13,7 @@ import './i18n/i18n-config';
 import { getProfile } from './store/actions/authActions';
 import queryClient from "./queryClient";
 import { QueryClientProvider } from '@tanstack/react-query';
+import { getCategories } from './store/actions/catalogActions';
 
 
 export const localesFake = [
@@ -66,8 +67,9 @@ function App() {
         if (localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined') {
             dispatcher(getProfile())
         }
+        dispatcher(getCategories())
         dispatcher(getLocales())
-        dispatcher(getChannel())
+        //dispatcher(getChannel())
     }, [])
 
     useEffect(() => {

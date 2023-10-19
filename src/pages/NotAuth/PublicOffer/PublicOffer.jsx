@@ -3,10 +3,14 @@ import classes from "./PublicOffer.module.scss";
 import InfoPageUnit from "../../../components/InfoPageUnit/InfoPageUnit";
 import axiosCustom from "../../../axios/axiosCustom";
 import { useQuery } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
 
 export const PublicOffer = () => {
 
-  const { data, isInitialLoading, isError } = useQuery(["public-offer"], () =>
+
+  const locale = useSelector(state => state.router.locale);
+
+  const { data, isInitialLoading, isError } = useQuery(["public-offer", { locale: locale }], () =>
     axiosCustom.get("https://testapi.eu-nl.com/api/v1/pages/public-offer")
   );
 

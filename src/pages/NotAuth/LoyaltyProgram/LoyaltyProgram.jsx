@@ -3,10 +3,12 @@ import classes from "./LoyaltyProgram.module.scss";
 import InfoPageUnit from "../../../components/InfoPageUnit/InfoPageUnit";
 import axiosCustom from "../../../axios/axiosCustom";
 import { useQuery } from "@tanstack/react-query";
-
+import { useSelector } from "react-redux";
 export const LoyaltyProgram = () => {
 
-  const { data, isInitialLoading, isError } = useQuery(["loyalty-program"], () =>
+  const locale = useSelector(state => state.router.locale);
+
+  const { data, isInitialLoading, isError } = useQuery(["loyalty-program", { locale: locale }], () =>
     axiosCustom.get("https://testapi.eu-nl.com/api/v1/pages/loyalty-program")
   );
 
