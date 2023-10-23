@@ -14,6 +14,7 @@ export const ProductsMenu = () => {
   const dispatcher = useDispatch()
 
   const [categorie, setCategorie] = useState(null)
+  const locale = useSelector(state => state.router.locale);
 
 
   const categories = useSelector(state => state.catalog.categories);
@@ -27,36 +28,37 @@ export const ProductsMenu = () => {
   const templateLinks = useMemo(() => {
     return categories?.map((elem, id) => {
       let activePage = null//url.pathname
-      console.log(elem.slug === "new-arrivals")
-      console.log(elem)
       if (elem.slug === "root") {
         return
 
       }
 
       if (elem.slug === "new-arrivals") {
-        return <div className={classes.link}> <NavLink to={`/products/${elem.id}`} className={classes.link}>New Arrivals</NavLink></div>
+        return <div className={classes.link} > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
 
       }
       if (elem.slug === "special-offers") {
-        return <div className={classes.link}> <NavLink to={`/products/${elem.id}`} className={classes.link}>Special Offers</NavLink></div>
+        return <div className={classes.link}> <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
 
       }
       if (elem.slug === "bestsellers") {
-        return <div className={classes.link}> <NavLink to={`/products/${elem.id}`} className={classes.link}>BestSellers</NavLink></div>
+        return <div className={classes.link}> <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
 
       }
       return (
         <div
           className={classes.categorie}
           key={id}
-          onClick={() => getCategorie(elem.id)}
+          onMouseEnter={() => getCategorie(elem.id)}
+          onClick={() => navigate(`/products/${elem.id}`)}
         >
           {elem.name}
         </div>
       )
     })
-  }, [categories])
+  }, [categories, locale])
+
+
 
 
 
@@ -91,7 +93,7 @@ export const ProductsMenu = () => {
   }, [])
 
   const templateCategorie = categorie?.map((item, key) => {
-    return <div key={key} className={categorie ? classes.categorie_current :classes.categorie_current} onClick={()=>navigate(`/products/${item.id}`)}>{item.name}</div>
+    return <div key={key} className={categorie ? classes.categorie_current : classes.categorie_current} onClick={() => navigate(`/products/${item.id}`)}>{item.name}</div>
   })
 
 

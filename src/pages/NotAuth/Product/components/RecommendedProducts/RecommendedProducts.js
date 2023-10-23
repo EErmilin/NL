@@ -16,7 +16,7 @@ function RecommendedProducts({
     const products = useSelector(state => state.catalog.products);
 
     useEffect(() => {
-        dispatcer(getProducts())
+        dispatcer(getProducts(24))
     }, [dispatcer])
 
     const slides = products?.map((product, key) => {

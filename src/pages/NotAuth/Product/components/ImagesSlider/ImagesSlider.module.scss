@@ -1,0 +1,38 @@
+
+.swiper_button_top{
+  display: flex;
+  padding: 3px 55px;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--BG, #F8F8F8);
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: center/cover no-repeat url("../../../../../assets/svg/arrow-img-slider.svg");
+  }
+}
+
+
+.swiper_button_bottom{
+  display: flex;
+  padding: 3px 55px;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--BG, #F8F8F8);
+  cursor: pointer;
+  
+  &:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    transform: rotate(180deg);
+    background: center/cover no-repeat url("../../../../../assets/svg/arrow-img-slider.svg");
+  }
+}
+
+.swiper{
+ height: 690px;
+}

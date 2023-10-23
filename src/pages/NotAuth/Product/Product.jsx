@@ -8,6 +8,11 @@ import { getProduct } from "../../../store/actions/catalogActions";
 import { useEffect } from "react";
 import RecommendedProducts from "./components/RecommendedProducts/RecommendedProducts";
 import ButtonDefault from "../../../components/UI/btns/Button/Button";
+import ReactPlayer from 'react-player/lazy'
+import ExpandBlock from "../../../components/ExpandBlock/ExpandBlock";
+import 'react-fancybox/lib/fancybox.css'
+import Fancybox from "../../../components/Fancybox/Fancybox";
+import ImagesSlider from "./components/ImagesSlider/ImagesSlider";
 
 export const Product = () => {
   const dispatcer = useDispatch()
@@ -55,18 +60,39 @@ export const Product = () => {
     },
     {
       title: "Extra materials",
-      block: <div dangerouslySetInnerHTML={{ __html: product.add_info }}></div>
+      block: <div>
+        <ExpandBlock title={'Presentation'}> </ExpandBlock>
+        <ExpandBlock title={'Product guide'}> </ExpandBlock>
+        <ExpandBlock title={'Images & videos'}>{product?.videos?.length ? product.videos.map((video) => <ReactPlayer url={video.url} controls={true} />) : null}  </ExpandBlock>
+
+      </div>
     },
 
   ]
 
+  const photos = product.images.map((photo, key) => {
+    return <a data-fancybox="gallery" href={photo.url} key={key}>
+      <img alt="" className={classes.img} src={photo.url} />
+    </a>
+  })
+
+
   return (
     <div className={classes.wrapper}>
+
       <Breadcrumbs items={BREADCRUMBS}></Breadcrumbs>
 
       <div className={classes.product}>
         <div className={classes.photos}>
-          <img src={product.images[0].original_image_url} className={classes.photos_main}></img>
+
+          <Fancybox>
+            <ImagesSlider photos={photos}>
+            </ImagesSlider>
+            <a data-fancybox="gallery" href={product.images[0].url}>
+            <img src={product.images[0].url} className={classes.photos_main}></img>
+            </a>
+          </Fancybox>
+
         </div>
         <div className={classes.product_info}>
           <div className={classes.product_name}>{product.name}</div>

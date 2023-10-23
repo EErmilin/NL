@@ -5,9 +5,10 @@ import classes from "./ProductItem.module.scss";
 
 
 function ProductItem({ product }) {
+    
     if (product) {
         return <NavLink to={`/product/${product.id}`} className={classes.wrap}>
-            <img src={fakeProduct}></img>
+                   <img src={product.images[0].original_image_url} className={classes.product_img}></img>
             <p className={classes.product_title}>{product.type}</p>
             <p className={classes.product_description}>{product.name}</p>
             <p className={classes.product_price}>{Number(product.price).toFixed(0)} €</p>
@@ -20,7 +21,6 @@ function ProductItem({ product }) {
             <p className={classes.product_title}>Shampoo</p>
             <p className={classes.product_description}>For sun damaged hair</p>
             <p className={classes.product_price}>15 €</p>
-
         </NavLink>
     )
 }

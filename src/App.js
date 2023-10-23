@@ -39,6 +39,7 @@ function App() {
     const [isAuthModal, setIsAuthModal, closeIsAuthModal] = useToggleVisibility(false)
     const url = useLocation()
     const dispatcher = useDispatch()
+    const locale = useSelector(state => state.router.locale);
 
     useEffect(() => {
         if (isAuth && (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined')) {
@@ -67,10 +68,14 @@ function App() {
         if (localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined') {
             dispatcher(getProfile())
         }
-        dispatcher(getCategories())
         dispatcher(getLocales())
         //dispatcher(getChannel())
     }, [])
+    useEffect(() => {
+
+        dispatcher(getCategories())
+
+    }, [locale])
 
     useEffect(() => {
         if (localStorage.getItem('locale')) {

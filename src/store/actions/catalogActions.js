@@ -23,7 +23,7 @@ export function getProducts(id) {
     return async (dispatch) => {
 
         try {
-            const response = await axiosCustom(`${backUrl}/api/v1/products?sort=id&id=${id}`, {id:id})
+            const response = await axiosCustom(`${backUrl}/api/v1/products?sort=id&category_id=${id}`, {id:id})
             const { data } = response.data
             dispatch({ type: GET_PRODUCTS, payload: data })
         } catch (e) {
