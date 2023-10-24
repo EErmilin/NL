@@ -12,6 +12,10 @@ import PublicOffer from "../pages/NotAuth/PublicOffer/PublicOffer";
 import { Products } from "../pages/NotAuth/Products/Products";
 import Product from "../pages/NotAuth/Product/Product";
 import PrivacyPolicy from "../pages/NotAuth/PrivacyPolicy/PrivacyPolicy";
+import Cart from "../pages/NotAuth/Cart/Card";
+import CartPage from "../pages/NotAuth/Cart/components/CartPage/CartPage";
+import Order from "../pages/NotAuth/Cart/components/Order/Order";
+import Receiving from "../pages/NotAuth/Cart/components/Receiving/Receiving";
 
 export const routes = [
     {
@@ -133,4 +137,39 @@ export const routes = [
         path: '/privacypolicy',
         exact: true,
     },
+
+    {
+        name: 'cart',
+        component: <Cart
+            routes={
+                [
+                    {
+                        name: '',
+                        privateUrl: false,
+                        component: <CartPage />,
+                        path: '/',
+                        exact: true,
+                    },
+                    {
+                        name: 'order',
+                        privateUrl: false,
+                        component: <Order />,
+                        path: '/order',
+                        exact: true,
+                    },
+                    {
+                        name: 'receiving',
+                        privateUrl: false,
+                        component: <Receiving />,
+                        path: '/receiving',
+                        exact: true,
+                    },
+                ]
+            }
+        />,
+        path: '/cart/*',
+        privateUrl: false,
+        exact: false,
+    },
+
 ]

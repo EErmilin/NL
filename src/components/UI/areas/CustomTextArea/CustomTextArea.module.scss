@@ -1,0 +1,61 @@
+.input {
+  width: 100%;
+  border: none;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+
+  &_wrp {
+    width: 100%;
+    margin-top: 40px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    flex-direction: column;
+    display: flex;
+  }
+
+}
+
+textarea {
+  border: none !important;
+  padding: 0 !important;
+  height: 60px;
+  font-weight: 400 !important;
+  cursor: pointer;
+}
+
+.invalid {
+  input {
+    color: red;
+  }
+
+  border-bottom: red 1px solid;
+}
+
+.valid {
+  input {
+    color: black;
+    background-color: white !important;
+  }
+
+  border-bottom: #707070 1px solid;
+}
+
+.error {
+  display: block;
+  margin-top: 15px;
+  color: red;
+  font-size: 14px;
+}
+
+.label {
+  margin-bottom: 4px;
+  color: var(--gray-80, #707070);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}

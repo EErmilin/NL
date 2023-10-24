@@ -2,28 +2,33 @@
 
 .block{
   background: transparent;
-  height: 120px;
+  height: 0;
   margin-top: 8px;
   overflow: hidden;
   transition: .5s;
   max-width: 800px;
-  border-top: 1px solid black;
+  margin-top: 30px;
 
-  &:first-child{
-    border-top: none;
-  }
   &_header{
-    padding-top: 30px;
-    padding-bottom: 60px;
+    height: 100%;
     font-size: 30px;
     font-style: normal;
+    padding-bottom: 30px;
     font-weight: 400;
     line-height: normal;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:after {
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: center/cover no-repeat url("../../assets/svg/plus.svg");
+    }
   }
   &_header_open{
-    padding-top: 30px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
     font-size: 30px;
     font-style: normal;
     font-weight: 400;
@@ -53,5 +58,14 @@
   }
   &_content{
 
+  }
+}
+
+.wrp{
+  border-top: 1px solid black;
+  padding-top: 30px;
+
+  &:first-child{
+    border-top: none;
   }
 }

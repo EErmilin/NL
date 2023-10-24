@@ -9,6 +9,7 @@ import LocalesModal from "../modals/LocalesModal/LocalesModal";
 import { useTranslation } from "react-i18next";
 import { clearUserData } from "../../store/actions/authActions";
 import ExpandBlock from "./components/ExpandBlock/ExpandBlock";
+import CartDropDown from "./components/CartDropDown/CartDropDown";
 
 function Header() {
     const [localesModal, setLocalesModal, closeLocalesModal] = useToggleVisibility(false)
@@ -20,6 +21,7 @@ function Header() {
     const url = useLocation()
     const [isProductsOpen, setIsProductsOpen] = useState(false)
     const RoomsWrpRef = useRef()
+    const [isShowCart, setIsShowCart] = useState(false)
 
     const toProfile = () => {
         if (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined') {
@@ -66,9 +68,10 @@ function Header() {
         })
     }, [url, locale, isProductsOpen])
 
-    useEffect(()=>{
+    useEffect(() => {
         isProductsOpen && expandBlock()
-    },[url])
+        isShowCart && setIsShowCart(false)
+    }, [url])
 
 
     function expandBlock() {
@@ -114,7 +117,10 @@ function Header() {
                         <NavLink className={classes.search} to="">{t("Search")}</NavLink>
                         <div>
                             <NavLink to="" className={classes.heart}>{t("Wishlist")}<div className={classes.count}>2</div></NavLink>
-                            <div className={classes.cart}>{t("My cart")}<div className={classes.count}>2</div></div>
+                            <div className={classes.cart_wrp}>
+                                <div className={classes.cart} onClick={() => setIsShowCart(!isShowCart)}>{t("My cart")} <div className={classes.count}>2</div></div>
+                                {isShowCart && <CartDropDown />}
+                            </div>
                         </div>
                     </div>
                 </div>

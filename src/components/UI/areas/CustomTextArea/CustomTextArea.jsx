@@ -1,4 +1,4 @@
-import classes from "./Input.module.scss";
+import classes from "./CustomTextArea.module.scss";
 import React, { useState } from 'react';
 import ReactInputMask from "react-input-mask";
 
@@ -7,7 +7,7 @@ function isInvalid(errorMessage) {
 }
 
 
-export const Input = ({
+export const CustomTextArea = ({
   placeholder,
   name,
   mask,
@@ -21,7 +21,7 @@ export const Input = ({
   labelInput,
   errorMessage,
   touched,
-  disabled=false,
+  disabled = false,
   required, }) => {
 
   /** Формируем css классы */
@@ -52,22 +52,8 @@ export const Input = ({
   }
 
 
-  const eyeButton = inputType === "password" && <span className={classes.password} onClick={() => setPasswordShow(!passwordShow)}></span>
-  const typePassword = inputType === "password" ? (passwordShow ? 'password' : "text") : inputType
 
-  const input = <ReactInputMask
-    className={classes.input}
-    placeholder={placeholder}
-    name={name}
-    id={id}
-    mask={mask}
-    type={typePassword}
-    value={value}
-    onChange={onChange}
-    required={required}
-    multiple={multiple}
-    disabled={disabled}
-  />
+
   const errMsg = isInvalid(errorMessage) ? (
     <span className={classes.error}>{errorMessage}</span>
   ) : null;
@@ -77,12 +63,18 @@ export const Input = ({
   return (
     <>
       <div className={cls.join(' ')}>
-      {label &&<div className={classes.label}>{label}</div>}
-        {input}
+        {label && <div className={classes.label}> {label}</div>}
+        <textarea
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          disabled={disabled}
+        ></textarea>
       </div>
       {errMsg}
     </>
   )
 }
 
-export default Input
+export default CustomTextArea

@@ -20,17 +20,20 @@ function ExpandBlock({
             RoomsWrpRef.current.style.height = `${scrollHeight}px`
             setIsClick(!isClick)
         } else {
-            RoomsWrpRef.current.style.height = `120px`
+            RoomsWrpRef.current.style.height = `0px`
             setIsClick(!isClick)
         }
 
     }
     return (
-        <div className={cls.join(' ')} ref={RoomsWrpRef}>
-            <div className={isClick ? classes.block_header_open :classes.block_header} onClick={expandBlock}>
+        <div className={classes.wrp}>
+            <div className={isClick ? classes.block_header_open : classes.block_header} onClick={expandBlock}>
                 {title}
             </div>
-            {children}
+            <div className={cls.join(' ')} ref={RoomsWrpRef}>
+
+                {children}
+            </div>
         </div>
     )
 }
