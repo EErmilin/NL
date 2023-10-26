@@ -28,8 +28,6 @@ const contactOptions = [
 
 
 export const SecondStep = ({ clearErrorAndChange, values, errors, countries, isPartnerRegistration }) => {
-  console.log('!!!!!!!!!')
-console.log(errors)
 
   const countresOptions = countries?.map((country) => { return { label: country.name, value: country.id } })
 
@@ -89,6 +87,7 @@ console.log(errors)
               checked={true}
               className={classes.radio}
               label={"What's your gender*"}
+              errorMessage={errors.confirmErrors["gender"] ? errors.confirmErrors["gender"][0] : ""}
               onChange={(e) => {
                 return clearErrorAndChange("gender", e)
               }}

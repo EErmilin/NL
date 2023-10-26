@@ -37,7 +37,7 @@ export const Registration = () => {
   const initialValues = useMemo(() => {
     return {
       referral_code: "",
-      gender: "MALE",
+      gender: null,
       phone: "",
       code: "",
       //country_code: "7",

@@ -86,6 +86,7 @@ export const ThirdStep = ({ clearErrorAndChange, values, errors, countries }) =>
           checked={true}
           className={classes.radio}
           label={"What's your gender*"}
+          errorMessage={errors.confirmErrors["gender"] ? errors.confirmErrors["gender"][0] : ""}
           onChange={(e) => {
             return clearErrorAndChange("gender", e)
           }}

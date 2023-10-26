@@ -37,7 +37,7 @@ export const PartnerRegistration = () => {
   const initialValues = useMemo(() => {
     return {
       partner_code: "",
-      gender: "MALE",
+      gender: null,
       phone: "",
       code: "",
       //country_code: "7",

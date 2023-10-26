@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./CustomRadio.module.scss";
 
-function isInvalid(valid, touched, shouldValidate) {
-    return !valid && shouldValidate && touched;
+function isInvalid(errorMessage) {
+    return errorMessage;
 }
 
 export default function CustomRadio({
@@ -40,12 +40,15 @@ export default function CustomRadio({
      * то добавляем классы для инвалидного поля,
      * иначе, если поле было тронуто добавляем классы для валидного
      */
-    if (isInvalid(valid, touched, shouldValidate)) {
+    if (isInvalid(errorMessage)) {
         cls.push(classes.invalid);
     }
 
+    console.log('#########')
+    console.log(errorMessage)
+
     /** Видимость сообщения об ошибке */
-    const errMsg = isInvalid(valid, touched, shouldValidate) ? (
+    const errMsg = isInvalid(errorMessage) ? (
         <span>{errorMessage}</span>
     ) : null;
 

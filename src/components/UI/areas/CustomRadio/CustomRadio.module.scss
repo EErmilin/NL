@@ -10,8 +10,7 @@
 .label {
   display: inline-block;
   font-weight: 500;
-  color: $black;
-  color: var(--gray-80, #707070);
+  color: var(--gray-80, #707070) !important;
   font-variant-numeric: lining-nums proportional-nums;
   font-size: 16px;
   font-style: normal;
