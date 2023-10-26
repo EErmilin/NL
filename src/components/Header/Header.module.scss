@@ -171,11 +171,22 @@
   font-weight: 400;
   display: flex;
   white-space: nowrap;
-  user-select:none;
+  user-select: none;
   cursor: pointer;
+
   &_wrp{
+    cursor: pointer;
+  }
+
+  &_open {
+    pointer-events: none;
+  }
+
+  &_wrp {
     position: relative;
   }
+
+  &_open {}
 
   &:before {
     content: '';
@@ -193,13 +204,13 @@
 .active {
   border-bottom: 2px solid black;
   margin-bottom: -21px;
-  user-select:none;
+  user-select: none;
   cursor: pointer;
 }
 
 .link {
   cursor: pointer;
-  user-select:none;
+  user-select: none;
 }
 
 .count {

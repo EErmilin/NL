@@ -6,6 +6,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { getCurrentCategorie } from "../../../../store/actions/catalogActions";
+import { useQuery } from "@tanstack/react-query";
+import axiosCustom from "../../../../axios/axiosCustom";
 
 
 export const ProductsMenu = () => {
@@ -14,20 +16,21 @@ export const ProductsMenu = () => {
   const dispatcher = useDispatch()
 
   const [categorie, setCategorie] = useState(null)
+  const [categorieId, setCategorieId] = useState(null)
   const locale = useSelector(state => state.router.locale);
-
+  const backUrl = "https://testapi.eu-nl.com"
 
   const categories = useSelector(state => state.catalog.categories);
 
-  const getCategorie = async (id) => {
-    const response = await dispatcher(getCurrentCategorie(id))
-    setCategorie(response)
-  }
+  const { data, isInitialLoading, isError } = useQuery([`categorie${categorieId}`, { categorieId: categorieId }], () =>
+  axiosCustom(`${backUrl}/api/v1/descendant-categories?parent_id=${categorieId}`, {id:categorieId})
+);
+
+
 
   /** Масив ссылок */
   const templateLinks = useMemo(() => {
     return categories?.map((elem, id) => {
-      let activePage = null//url.pathname
       if (elem.slug === "root") {
         return
 
@@ -49,7 +52,7 @@ export const ProductsMenu = () => {
         <div
           className={classes.categorie}
           key={id}
-          onMouseEnter={() => getCategorie(elem.id)}
+          onMouseEnter={() => {setCategorieId(elem.id); setCategorie(true)}}
           onClick={() => navigate(`/products/${elem.id}`)}
         >
           {elem.name}
@@ -57,11 +60,6 @@ export const ProductsMenu = () => {
       )
     })
   }, [categories, locale])
-
-
-
-
-
 
 
   /** Масив ссылок */
@@ -92,11 +90,9 @@ export const ProductsMenu = () => {
     })
   }, [])
 
-  const templateCategorie = categorie?.map((item, key) => {
+  const templateCategorie = data?.data?.data?.map((item, key) => {
     return <div key={key} className={categorie ? classes.categorie_current : classes.categorie_current} onClick={() => navigate(`/products/${item.id}`)}>{item.name}</div>
   })
-
-
 
   return (
     <div className={classes.ProductsMenu}>

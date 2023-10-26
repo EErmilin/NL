@@ -3,13 +3,16 @@ import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import classes from "./Header.module.scss"
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import { useDispatch, useSelector } from "react-redux";
-import { setIsAuth } from "../../store/actions/routerActions";
+import { setIsAuth, setIsShowCart } from "../../store/actions/routerActions";
 import useToggleVisibility from "../../hooks/useToggleVisibility";
 import LocalesModal from "../modals/LocalesModal/LocalesModal";
 import { useTranslation } from "react-i18next";
 import { clearUserData } from "../../store/actions/authActions";
 import ExpandBlock from "./components/ExpandBlock/ExpandBlock";
 import CartDropDown from "./components/CartDropDown/CartDropDown";
+import { isUserAuth } from "../../functions/functions";
+import { SHOW_CARD } from "../../store/actions/actionsType";
+import { useClickAway } from "@uidotdev/usehooks";
 
 function Header() {
     const [localesModal, setLocalesModal, closeLocalesModal] = useToggleVisibility(false)
@@ -17,11 +20,12 @@ function Header() {
     const dispatcher = useDispatch()
     const navigate = useNavigate()
     const locale = useSelector(state => state.router.locale);
+    const isShowCart = useSelector(state => state.router.isShowCart);
     const { t } = useTranslation()
     const url = useLocation()
     const [isProductsOpen, setIsProductsOpen] = useState(false)
     const RoomsWrpRef = useRef()
-    const [isShowCart, setIsShowCart] = useState(false)
+    const cart = useSelector(state => state.order.cart)
 
     const toProfile = () => {
         if (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined') {
@@ -70,7 +74,7 @@ function Header() {
 
     useEffect(() => {
         isProductsOpen && expandBlock()
-        isShowCart && setIsShowCart(false)
+        isShowCart && dispatcher({ type: SHOW_CARD })
     }, [url])
 
 
@@ -86,6 +90,18 @@ function Header() {
             setIsProductsOpen(!isProductsOpen)
         }
     }
+
+    const toggleCart = () => {
+        if (!isUserAuth()) {
+            dispatcher(setIsAuth(true))
+        } else {
+            !isShowCart && dispatcher(setIsShowCart(true))
+        }
+    }
+
+    const ref = useClickAway(() => {
+        dispatcher(setIsShowCart(false))
+    });
 
     return (
         <>
@@ -116,15 +132,17 @@ function Header() {
                     <div className={classes.container_right}>
                         <NavLink className={classes.search} to="">{t("Search")}</NavLink>
                         <div>
-                            <NavLink to="" className={classes.heart}>{t("Wishlist")}<div className={classes.count}>2</div></NavLink>
+                            <NavLink to="" className={classes.heart}>{t("Wishlist")}<div className={classes.count}>0</div></NavLink>
                             <div className={classes.cart_wrp}>
-                                <div className={classes.cart} onClick={() => setIsShowCart(!isShowCart)}>{t("My cart")} <div className={classes.count}>2</div></div>
-                                {isShowCart && <CartDropDown />}
+                                <div className={classes.cart_wrp}>
+                                    <div className={[classes.cart, isShowCart ? classes.cart_open : ""].join(" ")} onClick={toggleCart}>{t("My cart")} <div className={classes.count}>{cart?.items_count * cart?.items_qty || 0}</div>
+                                    </div>
+                                </div>
+                                {isShowCart && <div ref={ref}><CartDropDown /></div>}
                             </div>
                         </div>
                     </div>
                 </div>
-
             </header >
 
             <ExpandBlock expandBlock={expandBlock} RoomsWrpRef={RoomsWrpRef} />

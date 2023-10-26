@@ -1,7 +1,6 @@
 import axios from 'axios';
-
-
-
+import { clearUserData } from '../store/actions/authActions';
+import store from "../store/store"
 
 const axiosCustom = axios.create({
     baseURL: "https://testapi.eu-nl.com",
@@ -13,8 +12,6 @@ axios.defaults.withCredentials = true;
 //axiosCustom.defaults.withCredentials = true;
 axiosCustom.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-console.log(localStorage.getItem("localeCode"))
-console.log('!!!!!!!!!!')
 axiosCustom.defaults.headers.common['Accept-Language'] = localStorage.getItem("localeCode");
 
 axiosCustom.interceptors.request.use((config) => {
@@ -39,6 +36,7 @@ axiosCustom.interceptors.request.use((config) => {
  * если токен устарел, то рефрешим его
  */
 axiosCustom.interceptors.response.use((response) => {
+
     if (response.data.token) {
         localStorage.setItem('token', response.data.token)
     }
@@ -46,7 +44,10 @@ axiosCustom.interceptors.response.use((response) => {
 },
 
     async (error) => {
-
+        console.log(error)
+        if (error.response.status === 401) {
+            store.dispatch(clearUserData())
+        }
         return Promise.reject(error);
     });
 export default axiosCustom;

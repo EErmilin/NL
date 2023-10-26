@@ -14,6 +14,8 @@ import { getProfile } from './store/actions/authActions';
 import queryClient from "./queryClient";
 import { QueryClientProvider } from '@tanstack/react-query';
 import { getCategories } from './store/actions/catalogActions';
+import { getCart } from './store/actions/orderActions';
+import { isUserAuth } from './functions/functions';
 
 
 export const localesFake = [
@@ -50,6 +52,12 @@ function App() {
 
     }, [isAuth, localStorage.getItem('token')])
 
+    useEffect(() => {
+        if (isUserAuth()) {
+            dispatcher(getCart())
+        }
+    }, [localStorage.getItem('token')])
+
 
     const templateAuthModal = isAuthModal && (
         <AuthModal
@@ -71,10 +79,12 @@ function App() {
         dispatcher(getLocales())
         //dispatcher(getChannel())
     }, [])
+
+
     useEffect(() => {
-
-        dispatcher(getCategories())
-
+        if (locale) {
+            dispatcher(getCategories())
+        }
     }, [locale])
 
     useEffect(() => {

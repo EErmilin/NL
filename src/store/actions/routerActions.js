@@ -2,7 +2,7 @@
 import axios from "axios";
 import axiosCustom from "../../axios/axiosCustom";
 import axiosCustomTranslations from "../../axios/axiosCustomTranslations";
-import { SET_IS_AUTH, SET_LOCALES,SET_LOCALE } from "./actionsType";
+import { SET_IS_AUTH, SET_LOCALES,SET_LOCALE, SHOW_CARD } from "./actionsType";
 
 
 export function setIsAuth() {
@@ -44,4 +44,14 @@ export function setLocale(locale) {
         payload: locale
     }
 }
+
+
+export function setIsShowCart(isShowCart) {
+    return {
+        type: SHOW_CARD,
+        payload: isShowCart
+    }
+}
+
+
 

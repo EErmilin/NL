@@ -1,17 +1,23 @@
 import { localesFake } from "../../App"
-import { SET_IS_AUTH, SET_LOCALES, SET_LOCALE } from "../actions/actionsType"
+import { SET_IS_AUTH, SET_LOCALES, SET_LOCALE, SHOW_CARD } from "../actions/actionsType"
 
 
 const initialState = {
     isAuth: false,
     locales: [],
-    locale: localesFake.find((locale => locale.id == localStorage.getItem('locale'))),
+    locale: null,
+    isShowCart: false,
 }
 
 
 
 export default function routerReducer(state = initialState, action) {
     switch (action.type) {
+        case SHOW_CARD:
+            return {
+                ...state,
+                isShowCart: action.payload
+            }
         case SET_IS_AUTH:
             return {
                 ...state,

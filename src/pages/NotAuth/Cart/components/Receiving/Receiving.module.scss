@@ -26,6 +26,27 @@
 
   &_checkboxs {
     margin-top: 40px;
+
+    &_accept {
+      border-top: 1px solid var(--gray, #ECECEE);
+      margin-top: 50px;
+
+      label {
+        margin-top: 30px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+      }
+
+      &_text {
+        margin-left: 20px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
   }
 
   &_payment {
@@ -47,13 +68,27 @@
         border: 1px solid var(--Black, #000);
         background: var(--Black, #000);
         color: white;
-        width: 204px;
+        max-width: 204px;
+
+        &:before {
+          content: '';
+          width: 24px;
+          height: 24px;
+          background: center/cover no-repeat url("../../../../../assets/svg/card-icon.svg");
+        }
       }
 
       &_paypal {
         width: 145px;
         background: var(--BG, #F8F8F8);
         border: none !important;
+
+        &:before {
+          content: '';
+          width: 24px;
+          height: 24px;
+          background: center/cover no-repeat url("../../../../../assets/svg/paypal.svg");
+        }
       }
     }
   }
@@ -103,6 +138,10 @@
     &_btns {
       &_nl {
         max-width: 141px;
+      }
+
+      &_courier {
+        max-width: 192px;
       }
 
       &_btn {

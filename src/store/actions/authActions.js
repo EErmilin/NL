@@ -126,6 +126,7 @@ export function setRegisterData(data) {
 }
 
 export function clearUserData() {
+    localStorage.setItem('token', 'undefined')
     return {
         type: CLEAR_USER_DATA,
     }

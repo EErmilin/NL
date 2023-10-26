@@ -13,17 +13,21 @@ import ExpandBlock from "../../../components/ExpandBlock/ExpandBlock";
 import 'react-fancybox/lib/fancybox.css'
 import Fancybox from "../../../components/Fancybox/Fancybox";
 import ImagesSlider from "./components/ImagesSlider/ImagesSlider";
+import { addProduct } from "../../../store/actions/orderActions";
+import { SHOW_CARD } from "../../../store/actions/actionsType";
+import { setIsShowCart } from "../../../store/actions/routerActions";
 
 export const Product = () => {
-  const dispatcer = useDispatch()
+  const dispatcher = useDispatch()
   const product = useSelector(state => state.catalog.product);
   const { id } = useParams()
+  const isShowCart = useSelector(state => state.router.isShowCart);
 
   useEffect(() => {
     if (id) {
-      dispatcer(getProduct(id))
+      dispatcher(getProduct(id))
     }
-  }, [dispatcer, id])
+  }, [dispatcher, id])
 
 
   const BREADCRUMBS = [
@@ -76,6 +80,11 @@ export const Product = () => {
     </a>
   })
 
+  const toggleAddProduct = () => {
+    dispatcher(addProduct(product.id))
+    !isShowCart &&  dispatcher(setIsShowCart(true))
+  }
+
 
   return (
     <div className={classes.wrapper}>
@@ -99,7 +108,7 @@ export const Product = () => {
           <div className={classes.product_price}>{Number(product.price).toFixed(0)} €</div>
           <div className={classes.product_made}>Made in {product.made_in}</div>
           <div dangerouslySetInnerHTML={{ __html: product.short_description }} className={classes.product_description}></div>
-          <div><ButtonDefault className={classes.product_info_btn} title={'Add to cart'} /></div>
+          <div><ButtonDefault className={classes.product_info_btn} onClick={toggleAddProduct} title={'Add to cart'} /></div>
           <div className={classes.product_notification}>This product is manufactured in a facility that processes other products, which may contain eggs, gluten, celery, fish and nuts.</div>
         </div>
       </div>

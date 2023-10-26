@@ -29,7 +29,7 @@ const contactOptions = [
 
 export const ThirdStep = ({ clearErrorAndChange, values, errors, countries }) => {
 
-  const countresOptions = countries?.map((country) => { return { label: country.name, value: country.phone_code } })
+  const countresOptions = countries?.map((country) => { return { label: country.name, value: country.id } })
 
   return (
     <div className={classes.step_content}>

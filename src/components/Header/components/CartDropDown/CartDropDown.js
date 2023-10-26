@@ -1,50 +1,70 @@
-import React, { useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import classes from "./CartDropDown.module.scss";
 import fakeBrand from '../../../../assets/img/fakeProduct.png';
 import ButtonDefault from "../../../UI/btns/Button/Button";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCartItem, updateCard } from "../../../../store/actions/orderActions";
+import { SHOW_CARD } from "../../../../store/actions/actionsType";
 
-function Product({
+function Product({ item }) {
+    const [count, setCount] = useState(item.quantity)
+    const dispatcher = useDispatch()
 
-}) {
-    const [count, setCount] = useState(1)
+    useEffect(() => {
+        if (count !== item.quantity) {
+            dispatcher(updateCard(item.id, count))
+        }
+    }, [count])
 
-    return (
-        <div className={classes.cart_product}>
-            <img src={fakeBrand} className={classes.cart_product_img}></img>
-            <div className={classes.cart_product_info}>
-                <div className={classes.cart_product_info_name}>Smart Go Сhocolate</div>
-                <div className={classes.cart_product_info_price}>15 €</div>
-                <div className={classes.cart_product_counter}>
-                    <div className={classes.cart_product_counter_btn} onClick={() => count > 1 && setCount(count - 1)}></div>
-                    {count}
-                    <div className={classes.cart_product_counter_btn_plus} onClick={() => setCount(count + 1)}></div></div>
+
+    const templateProduct = useMemo(() => {
+        return (
+            <div className={classes.cart_product}>
+                <img src={item.product.images[0].url} className={classes.cart_product_img}></img>
+                <div className={classes.cart_product_info}>
+                    <div className={classes.cart_product_info_name}>{item.product.name}</div>
+                    <div className={classes.cart_product_info_price}>{item.product.formatted_price}</div>
+                    <div className={classes.cart_product_counter}>
+                        <div className={classes.cart_product_counter_btn} onClick={() => count > 1 && setCount(count - 1)}></div>
+                        {item.quantity}
+                        <div className={classes.cart_product_counter_btn_plus} onClick={() => setCount(count + 1)}></div></div>
+                </div>
+                <div className={classes.cart_product_delete} onClick={() => dispatcher(deleteCartItem(item.id))}></div>
             </div>
-            <div className={classes.cart_product_delete}></div>
-        </div>
-    )
+        )
+    }, [item.quantity])
+
+
+    return templateProduct
 }
 
 function CartDropDown({
-
 }) {
+    const cart = useSelector(state => state.order.cart)
     const navigate = useNavigate()
+    const dispatcher = useDispatch()
+
+    const templateProducts = useMemo(() => {
+        if (!cart) return
+        return cart.items.map((item, key) => {
+            return <Product item={item} key={key} />
+        })
+    }, [cart])
+
     return (
         <div className={classes.cart}>
             <div className={classes.cart_products_wrp}>
                 <h2 className={classes.cart_title}>Shopping bag</h2>
-                <div className={classes.cart_count}>4 items</div>
-                <Product />
-                <Product />
-                <Product />
+                <div className={classes.cart_count}>{cart?.items?.length ?? "0"} items</div>
+                {cart ? templateProducts : <p>No products</p>}
             </div>
             <div className={classes.cart_bottom}>
                 <div className={classes.cart_bottom_total}>
-                    <span>Subtotal (4 items)</span>
-                    <span>60 €</span>
+                    <span>Subtotal ({cart?.items?.length ?? "0"} items)</span>
+                    <span>{cart?.formatted_sub_total ?? "0 €"} </span>
                 </div>
-                <ButtonDefault title={'View cart'} onClick={()=>navigate("/cart")}></ButtonDefault>
-
+                <ButtonDefault title={'View cart'} onClick={() => navigate("/cart")}></ButtonDefault>
             </div>
         </div>
     )

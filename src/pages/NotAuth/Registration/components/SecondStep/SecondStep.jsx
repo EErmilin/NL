@@ -31,7 +31,7 @@ export const SecondStep = ({ clearErrorAndChange, values, errors, countries, isP
   console.log('!!!!!!!!!')
 console.log(errors)
 
-  const countresOptions = countries?.map((country) => { return { label: country.name, value: country.phone_code } })
+  const countresOptions = countries?.map((country) => { return { label: country.name, value: country.id } })
 
     if (isPartnerRegistration) {
       return (
