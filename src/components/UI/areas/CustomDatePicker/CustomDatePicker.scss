@@ -1,48 +1,27 @@
-.react-datepicker-wrapper {
+.ant-picker {
   display: flex;
   width: 100%;
   position: relative;
-
-  ::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 140%;
-    /* 22.4px */
-  }
-
-  :-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 140%;
-    /* 22.4px */
-  }
-
-  ::-ms-input-placeholder {
-    /* Microsoft Edge */
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 140%;
-    /* 22.4px */
-  }
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
 
 
-  & input {
-    display: flex;
-    position: relative;
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
-    border: none;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-    cursor: pointer;
 
 
+  .ant-picker-input {
+    padding-bottom: 14px;
+    color: black !important;
+    input {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+ 
+      ::placeholder{
+       
+      }
+    }
   }
 
 
@@ -53,4 +32,12 @@
   width: 100%;
   z-index: 999;
 
+}
+
+.ant-picker-input>input::placeholder {
+  color: var(--gray-80, #707070) !important;
+}
+
+.ant-picker-suffix{
+  display: none !important;
 }

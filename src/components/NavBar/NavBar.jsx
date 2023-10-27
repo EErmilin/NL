@@ -54,7 +54,6 @@ function NavBar() {
         return null
     }, [page['*'], user])
 
-
     return (
         <>
             <div className={classes.wrap}>
@@ -63,11 +62,12 @@ function NavBar() {
                         {templateLinks}
                     </ul>
                 </div>
-
             </div>
-            {user?.partner_code && <ButtonDefault title={"Coppy referal link"} onClick={() => {
-                navigator.clipboard.writeText(`https://testdev.eu-nl.com/registrationpartner?partner=${user.partner_code}&first=${user.first_name}&last=${user.last_name}`)
-            }}></ButtonDefault>}
+            {user?.partner_code && <NavLink to='referal' className={classes.referal}>Referral program</NavLink> }
+            <div className={classes.support}>
+                <h3 className={classes.support_title}>Go to the support chat</h3>
+                <NavLink to="" className={classes.support_link}>Write to support</NavLink>
+            </div>
         </>
     )
 

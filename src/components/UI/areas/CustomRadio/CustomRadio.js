@@ -44,9 +44,6 @@ export default function CustomRadio({
         cls.push(classes.invalid);
     }
 
-    console.log('#########')
-    console.log(errorMessage)
-
     /** Видимость сообщения об ошибке */
     const errMsg = isInvalid(errorMessage) ? (
         <span>{errorMessage}</span>

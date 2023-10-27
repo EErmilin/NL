@@ -29,8 +29,22 @@ export function deleteCartItem(id) {
         }
     };
 }
-export function updateCard(id,count) {
 
+export function clearCart() {
+    return async (dispatch) => {
+
+        try {
+            const response = await axiosCustom.delete(`${backUrl}/api/v1/customer/cart/empty`)
+            dispatch({ type: SET_CART, payload: response.data.data })
+
+        } catch (e) {
+            if (e.response) {
+            }
+        }
+    };
+}
+
+export function updateCard(id,count) {
     return async (dispatch) => {
 
         try {

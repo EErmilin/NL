@@ -16,6 +16,7 @@ import Cart from "../pages/NotAuth/Cart/Card";
 import CartPage from "../pages/NotAuth/Cart/components/CartPage/CartPage";
 import Order from "../pages/NotAuth/Cart/components/Order/Order";
 import Receiving from "../pages/NotAuth/Cart/components/Receiving/Receiving";
+import ReferalProgram from "../pages/Auth/Profile/ReferalProgram/ReferalProgram";
 
 export const routes = [
     {
@@ -37,6 +38,13 @@ export const routes = [
                         privateUrl: true,
                         component: <Profile />,
                         path: 'profile',
+                        exact: false,
+                    },
+                    {
+                        name: 'referal',
+                        privateUrl: true,
+                        component: <ReferalProgram />,
+                        path: 'referal',
                         exact: false,
                     },
                 ]

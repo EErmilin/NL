@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CartProductItem from "../CartProductItem/CartProductItem";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart } from "../../../../../store/actions/orderActions";
+import { clearCart, getCart } from "../../../../../store/actions/orderActions";
 import { useMemo } from "react";
 
 
@@ -36,7 +36,7 @@ export const CartPage = () => {
       <div className={classes.cart_title}>Shopping cart</div>
       <div className={classes.cart_wrp}>
         <div className={classes.cart_products}>
-          <div className={classes.cart_products_title}><span>Products in the basket</span><span className={classes.cart_clear}>Clean cart</span> </div>
+          <div className={classes.cart_products_title}><span>Products in the basket</span><span className={classes.cart_clear} onClick={()=>dispatcher(clearCart())}>Clean cart</span> </div>
           {templateProducts}
         </div>
         <div className={classes.cart_total}>

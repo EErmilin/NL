@@ -13,7 +13,12 @@ export const FirstStep = ({ clearErrorAndChange, values, errors, isPartnerRegist
   const first = searchParams.get("first")
   const last = searchParams.get("last")
   useEffect(() => {
-    clearErrorAndChange("partner_code", partner)
+    if(isPartnerRegistration){
+      clearErrorAndChange("partner_code", partner)
+    }else{
+      clearErrorAndChange("referral_code", partner)
+    }
+   
   }, [partner])
 
   if (isPartnerRegistration) {
@@ -43,7 +48,8 @@ export const FirstStep = ({ clearErrorAndChange, values, errors, isPartnerRegist
   }
 
   return (
-    <div className={classes.step_content}><div className={classes.step_content_title}>Enter your partner ID.</div>
+    <div className={classes.step_content}>
+      <div className={classes.step_content_title}>Enter your partner ID.</div>
       <div>
         <Input
           value={values.referral_code}

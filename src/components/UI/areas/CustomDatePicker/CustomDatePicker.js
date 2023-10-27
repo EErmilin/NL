@@ -1,10 +1,12 @@
 import { useRef, useState } from "react"
 import classes from "./CustomDatePicker.module.scss"
 import "./CustomDatePicker.scss"
-import DatePicker, { registerLocale } from "react-datepicker";
+import { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ru, enGB } from 'date-fns/esm/locale';
 import React from 'react';
+import { DatePicker } from "antd";
+import moment from "moment";
 
 registerLocale('ru-RU', ru);
 
@@ -42,18 +44,22 @@ const CustomDatePicker = ({
         setIsPlaceHolder(false)
         onChange(e)
     }
+    
 
 
-    const calendar = <DatePicker
-        placeholderText={"Date of Birth*"}
-        // locale={"ru-RU"}
-        dateFormat={['dd.MM.yyyy', 'dd/MM/yyyy', 'ddMMyyyy', 'dd MM yyyy']}
-        id={id}
-        selected={!isPlaceHolder ? new Date(value) : null}
-        ref={pickerRef}
-        onChange={(e) => setDate(e)}
-        disabledKeyboardNavigation={false}
-    />
+    const calendar = <DatePicker  onChange={(e) => setDate(new Date(e))} placeholder={"Date of Birth*"}/>
+    ///<DatePicker
+///
+    ///    placeholderText={"Date of Birth*"}
+    ///    // locale={"ru-RU"}
+    ///    dateFormat={['dd.MM.yyyy', 'dd/MM/yyyy', 'ddMMyyyy', 'dd MM yyyy']}
+    ///    id={id}
+    ///    selected={!isPlaceHolder ? new Date(value) : null}
+    ///    ref={pickerRef}
+    ///    onChange={(e) => setDate(e)}
+    ///    disabledKeyboardNavigation={false}
+    ////>
+    
 
 
     return (
