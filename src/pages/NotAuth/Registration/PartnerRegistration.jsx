@@ -83,7 +83,7 @@ export const PartnerRegistration = () => {
 
   const next = async () => {
     if (current === 0) {
-      const errorsObj ={
+      const errorsObj = {
         confirmErrors: [],
         partner_code: "",
         phone: "",
@@ -94,7 +94,7 @@ export const PartnerRegistration = () => {
       } else {
         errorsObj.partner_code = response.message
       }
-      response = await dispatcher(getSmsCode(values.phone.replace(/[^+\d]/g,"")))
+      response = await dispatcher(getSmsCode(values.phone.replace(/[^+\d]/g, "")))
       if (response.data.success || response.data.seconds) {
         if (response.data.seconds) {
           setTimerCount(response.data.seconds)
@@ -120,21 +120,24 @@ export const PartnerRegistration = () => {
       country_id: values.country_id.value
     }
     const response = await dispatcher(register(data))
-    if (!response.data.success) {
-      const confirmErrors = response.data
-      setErrors({ ...errors, confirmErrors })
-    } else {
-      const data = 
-      {
+ 
+    if (response.data && response.data.success) {
+
+      const data = {
         phone: values.phone.replace(/[^+\d]/g, ''),
         password: "123456",
         device_name: "web"
-    }
+      }
       const response = await dispatcher(login(data))
       if (response.status === 200) {
-        dispatcher(setRegisterData({partner: values.partner_code}))
+        dispatcher(setRegisterData({ partner: values.partner_code }))
         navigate(`/registerSucces`)
       }
+    } else if(!response.success && response.data){
+      console.log('!!!!!!!')
+      console.log(response)
+      const confirmErrors = response.data
+      setErrors({ ...errors, confirmErrors })
     }
   }
 
@@ -144,10 +147,10 @@ export const PartnerRegistration = () => {
 
   const steps = [
     {
-      content: <FirstStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} isPartnerRegistration={true}/>,
+      content: <FirstStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} isPartnerRegistration={true} />,
     },
     {
-      content: <SecondStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} countries={countries} isPartnerRegistration={true}/>,
+      content: <SecondStep clearErrorAndChange={clearErrorAndChange} values={values} errors={errors} countries={countries} isPartnerRegistration={true} />,
     },
   ];
 
@@ -187,14 +190,14 @@ export const PartnerRegistration = () => {
 
 
   useEffect(() => {
-     if(current===1){
-    getCountresData()
+    if (current === 1) {
+      getCountresData()
     }
   }, [current])
 
-  const templateStep = useMemo(()=>{
-return   <Steps current={current} items={items} />
-  },[errors])
+  const templateStep = useMemo(() => {
+    return <Steps current={current} items={items} />
+  }, [errors])
 
 
   return (
@@ -202,7 +205,7 @@ return   <Steps current={current} items={items} />
       <div className={classes.content}>
         <h1 className={classes.title}>Partner registration</h1>
         <p className={classes.partner_text}>You enter into a partnership agreement with NL International</p>
-      {templateStep}
+        {templateStep}
         <div >{steps[current].content}</div>
         <div
           style={{
@@ -211,7 +214,7 @@ return   <Steps current={current} items={items} />
         >
           {current < steps.length - 1 && (
             <Button type="primary" onClick={() => next()} className={classes.btn}>
-             Send code
+              Send code
             </Button>
           )}
           {current === steps.length - 1 && (
