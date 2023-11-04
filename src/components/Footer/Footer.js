@@ -24,7 +24,7 @@ function Footer() {
         <div className={classes.footer}>
             <div className={classes.footer_content}>
                 <div>
-                    <div>{t("NEW BRAND NAME")}</div>
+                    <div className={classes.footer_content_title}>{t("NEW BRAND NAME")}</div>
                     <div className={classes.footer_content_links}>
                         <NavLink className={classes.footer_content_link} to="/OurStory">{t("Our story")}</NavLink>
                         <NavLink className={classes.footer_content_link} to="">{t("Product")}</NavLink>
@@ -33,7 +33,7 @@ function Footer() {
                     </div>
                 </div>
                 <div>
-                    <div>{t("CUSTOMER SERVICE")}</div>
+                    <div className={classes.footer_content_title}>{t("CUSTOMER SERVICE")}</div>
                     <div className={classes.footer_content_links}>
                         <NavLink className={classes.footer_content_link} to="">{t("Order status")}</NavLink>
                         <NavLink className={classes.footer_content_link} to="">{t("Delivery and payment")}</NavLink>
@@ -45,7 +45,7 @@ function Footer() {
                     </div>
                 </div>
                 <div>
-                    <div>{t("ACCOUNT")}</div>
+                    <div className={classes.footer_content_title}>{t("ACCOUNT")}</div>
                     <div className={classes.footer_content_links}>
                         <div className={classes.footer_content_link} onClick={toProfile}>{t("My account")}</div>
                     </div>

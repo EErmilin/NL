@@ -44,11 +44,11 @@ export function clearCart() {
     };
 }
 
-export function updateCard(id,count) {
+export function updateCard(id, count) {
     return async (dispatch) => {
 
         try {
-            const response = await axiosCustom.put(`${backUrl}/api/v1/customer/cart/update`, {qty:{[id]:count}})
+            const response = await axiosCustom.put(`${backUrl}/api/v1/customer/cart/update`, { qty: { [id]: count } })
             dispatch({ type: SET_CART, payload: response.data.data })
 
         } catch (e) {
@@ -64,51 +64,8 @@ export function addProduct(id) {
 
         const obj = {
             "is_buy_now": 0,
-            "product_id": 1,
+            "product_id": id,
             "quantity": 1,
-            "selected_configurable_option": 4,
-            "super_attribute": {
-                "23": 4,
-                "24": 9
-            },
-            "qty": {
-                "1": 2,
-                "2": 3
-            },
-            "links": [
-                2,
-                3
-            ],
-            "bundle_options": {
-                "1": [
-                    1
-                ],
-                "2": [
-                    3
-                ],
-                "3": [
-                    5
-                ],
-                "4": [
-                    7
-                ]
-            },
-            "bundle_option_qty": {
-                "1": 1,
-                "2": 3
-            },
-            "booking": {
-                "date": "2023-05-14",
-                "slot": "1684067400-1684078200",
-                "qty": {
-                    "1": 2,
-                    "2": 5
-                },
-                "renting_type": "daily",
-                "date_from": "2023-05-13",
-                "date_to": "2023-05-15",
-                "note": "This is a welcome note."
-            }
         }
 
         try {
@@ -120,4 +77,111 @@ export function addProduct(id) {
         }
     };
 }
+
+
+
+export function saveAdress() {
+    return async (dispatch) => {
+
+        const obj = {
+            "billing": {
+                "address1": [
+                    "70 Winchester Rd"
+                ],
+                "save_as_address": false,
+                "use_for_shipping": false,
+                "first_name": "John",
+                "last_name": "Doe",
+                "email": "john@example.com",
+                "company_name": "Bagisto",
+                "city": "Marrero",
+                "state": "LA",
+                "country": "US",
+                "postcode": 70072,
+                "phone": 9871234560
+            },
+            "shipping": {
+                "address_id": null,
+                "address1": [
+                    "819  Farnum Road"
+                ],
+                "save_as_address": false,
+                "first_name": "John",
+                "last_name": "Doe",
+                "email": "john@example.com",
+                "company_name": "Bagisto",
+                "city": "Mansfield",
+                "state": "OH",
+                "country": "US",
+                "postcode": 44907,
+                "phone": 987654321
+            }
+        }
+
+        try {
+            let response = await axiosCustom.post(`${backUrl}/api/v1/customer/checkout/save-address`, obj)
+            await dispatch(saveShipping())
+            await dispatch(savePayment())
+            response = await dispatch(saveOrder())
+            return response.data
+        } catch (e) {
+            if (e.response) {
+            }
+        }
+    };
+}
+
+export function saveShipping() {
+    return async (dispatch) => {
+
+        try {
+            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/checkout/save-shipping`, { shipping_method: 'flatrate_flatrate' })
+
+        } catch (e) {
+            if (e.response) {
+            }
+        }
+    };
+}
+
+export function savePayment() {
+    return async (dispatch) => {
+
+        const data = {
+            "payment": {
+                "method": "stripe"
+            }
+        }
+
+        try {
+            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/checkout/save-payment`, data)
+
+        } catch (e) {
+            if (e.response) {
+            }
+        }
+    };
+}
+
+export function saveOrder() {
+    return async (dispatch) => {
+
+        const data = {
+            "payment": {
+                "method": "stripe"
+            }
+        }
+
+        try {
+            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/checkout/save-order`)
+            return response
+
+        } catch (e) {
+            if (e.response) {
+            }
+        }
+    };
+}
+
+
 

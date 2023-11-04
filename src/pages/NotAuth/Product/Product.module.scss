@@ -45,6 +45,14 @@
     margin-bottom: 20px;
     font-size: 36px;
     font-weight: 500;
+
+    &_pv {
+      font-size: 28px;
+      color: var(--gray-80, #707070);
+      font-weight: 500;
+      text-transform: capitalize;
+      margin-left: 10px;
+    }
   }
 
   &_description {
@@ -52,7 +60,8 @@
   }
 
   &_notification {
-    border-top: 2px solid var(--gray-80, #707070);;
+    border-top: 2px solid var(--gray-80, #707070);
+    ;
     padding: 20px;
     margin-top: 40px;
     background: var(--BG, #F8F8F8);
@@ -79,9 +88,8 @@
   margin-bottom: 60px;
 }
 
-.img{
-  &_wrp{
+.img {
+  &_wrp {}
 
-  }
   width: 126px;
 }

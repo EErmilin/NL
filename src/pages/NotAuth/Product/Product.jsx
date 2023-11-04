@@ -48,7 +48,7 @@ export const Product = () => {
   const blocks = [
     {
       title: "Details",
-      block: <div dangerouslySetInnerHTML={{ __html: product.add_info }}></div>
+      block: <div dangerouslySetInnerHTML={{ __html: product.description }}></div>
     },
     {
       title: "How to use",
@@ -105,7 +105,7 @@ export const Product = () => {
         </div>
         <div className={classes.product_info}>
           <div className={classes.product_name}>{product.name}</div>
-          <div className={classes.product_price}>{Number(product.price).toFixed(0)} €</div>
+          <div className={classes.product_price}>{Number(product.price).toFixed(0)} €<span className={classes.product_price_pv}>/{Number(product.pv).toFixed(0)} PV</span></div>
           <div className={classes.product_made}>Made in {product.made_in}</div>
           <div dangerouslySetInnerHTML={{ __html: product.short_description }} className={classes.product_description}></div>
           <div><ButtonDefault className={classes.product_info_btn} onClick={toggleAddProduct} title={'Add to cart'} /></div>

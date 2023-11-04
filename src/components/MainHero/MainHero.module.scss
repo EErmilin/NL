@@ -1,12 +1,9 @@
 .wrap {
   position: relative;
-  height: 257px;
+  height: 260px;
   display: flex;
   align-items: center;
-  @media(min-width: 768px) {
-    height: 650px;
-  }
-  @media(min-width: 1400px) {
+  @media(min-width: 1024px) {
     height: 670px;
   }
 }

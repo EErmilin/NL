@@ -3,7 +3,8 @@
   margin: auto;
   background: var(--white, #FFF);
   border-radius: 20px;
-  width: 1333px;
+  max-width: 1333px;
+  width: 100%;
   min-height: 800px;
   margin-top: 60px;
 }
@@ -11,14 +12,14 @@
 .container {
   display: grid;
   grid-gap: 124px;
-  grid-template-columns: 267px 1fr;
+  grid-template-columns: 320px 1fr;
   min-height: 800px;
 
 }
 
 .navbar {
   position: relative;
-  
+
 }
 
 .content {
@@ -26,14 +27,11 @@
 
 }
 
-.title{
+.title {
   color: var(--Black, #000);
-font-feature-settings: 'liga' off;
-font-family: Raleway;
-font-size: 36px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-margin: 0;
-margin-bottom: 50px;
+  font-feature-settings: 'liga' off;
+  font-size: 36px;
+  font-weight: 500;
+  margin: 0;
+  margin-bottom: 50px;
 }

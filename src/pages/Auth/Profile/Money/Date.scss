@@ -1,0 +1,45 @@
+.ant-picker-active-bar {
+  margin: 0 !important;
+}
+
+.ant-picker-range-separator {
+    //display: none;
+}
+
+.ant-picker-input {
+  input {
+    :first-child {
+
+
+      &:before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        margin-right: 4px;
+        background: center/cover no-repeat url("../../../../assets/svg/arrow.svg");
+      }
+    }
+  }
+}
+
+.ant-picker-range-separator {
+  position: relative;
+  color: transparent;
+  width: 100px;
+  display: flex;
+  margin-top: -15px;
+  &:after {
+    content: '';
+    width: 23.5px;
+    height: 8px;
+    margin-right: 10px;
+    background: center/cover no-repeat url("../../../../assets/svg/arrow-to.svg");
+  }
+ // background-color: black;
+}
+.ant-picker-range-separator:after {
+  content: "to";
+}
+.anticon {
+  display: none;
+}

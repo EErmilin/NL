@@ -13,6 +13,7 @@ import CartDropDown from "./components/CartDropDown/CartDropDown";
 import { isUserAuth } from "../../functions/functions";
 import { SHOW_CARD } from "../../store/actions/actionsType";
 import { useClickAway } from "@uidotdev/usehooks";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 function Header() {
     const [localesModal, setLocalesModal, closeLocalesModal] = useToggleVisibility(false)
@@ -26,6 +27,7 @@ function Header() {
     const [isProductsOpen, setIsProductsOpen] = useState(false)
     const RoomsWrpRef = useRef()
     const cart = useSelector(state => state.order.cart)
+    const [menuOpened, setMenuOpened] = useState()
 
     const toProfile = () => {
         if (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined') {
@@ -142,9 +144,15 @@ function Header() {
                             </div>
                         </div>
                     </div>
+                    <div
+                className={classes.burger}
+                onClick={() => { setMenuOpened(!menuOpened) }}
+            >
+            </div>
+
                 </div>
             </header >
-
+            <MobileMenu menuOpened={menuOpened} setMenuOpened={setMenuOpened} setLocalesModal={setLocalesModal}/>
             <ExpandBlock expandBlock={expandBlock} RoomsWrpRef={RoomsWrpRef} />
 
             {templateLocalesModal}

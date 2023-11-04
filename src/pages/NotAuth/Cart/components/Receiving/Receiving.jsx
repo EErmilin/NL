@@ -3,18 +3,24 @@ import { useFormik } from "formik";
 import React from "react"
 import { useMemo } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Breadcrumbs from "../../../../../components/Breadcrumbs/Breadcrumbs";
 import CustomRadio from "../../../../../components/UI/areas/CustomRadio/CustomRadio";
 import CustomSelect from "../../../../../components/UI/areas/CustomSelect/CustomSelect";
 import CustomTextArea from "../../../../../components/UI/areas/CustomTextArea/CustomTextArea";
 import Input from "../../../../../components/UI/areas/Input/Input";
 import ButtonDefault from "../../../../../components/UI/btns/Button/Button";
+import { getCart, saveAdress } from "../../../../../store/actions/orderActions";
 import classes from "./Receiving.module.scss";
 
 
 export const Receiving = () => {
 
   const [type, setType] = useState(0)
+  const cart = useSelector(state => state.order.cart)
+  const dispatcher = useDispatch()
+  const navigate = useNavigate()
 
   const BREADCRUMBS = [
     {
@@ -367,6 +373,17 @@ export const Receiving = () => {
 
   }, [type])
 
+  const submit = async () => {
+    const response = await dispatcher(saveAdress())
+    if(response && response.data && response.data.redirect_url){
+      dispatcher(getCart())
+      navigate('/cart')
+      window.open(response.data.redirect_url, '_blank')
+      
+    }
+
+  }
+
 
 
   return (
@@ -407,8 +424,8 @@ export const Receiving = () => {
       <div className={classes.order_total}>
         <h2 className={classes.order_total_title}>Your order:</h2>
         <div className={classes.order_total_products_wrp}>
-          <span className={classes.order_total_products}>Products (4):</span>
-          <span className={classes.order_total_products}>60 €/20 PV</span>
+          <span className={classes.order_total_products}>Products ({(cart?.items_count * cart?.items_qty) || 0}):</span>
+          <span className={classes.order_total_products}>{cart?.formatted_grand_total || "0  €"}</span>
         </div>
         <div className={classes.order_total_products_wrp}>
           <span className={classes.order_total_products}>Delivery:</span>
@@ -416,9 +433,9 @@ export const Receiving = () => {
         </div>
         <div className={classes.order_total_price_wrp}>
           <span className={classes.order_total_price_title}>Total:</span>
-          <span className={classes.order_total_price}>60 €/20 PV</span>
+          <span className={classes.order_total_price}>{cart?.formatted_grand_total || "0  €"}</span>
         </div>
-        <ButtonDefault className={classes.order_total_btn} onClick={() => { }} title={"Check out"}></ButtonDefault>
+        <ButtonDefault className={classes.order_total_btn} onClick={submit} title={"Check out"}></ButtonDefault>
       </div>
     </div>
   )

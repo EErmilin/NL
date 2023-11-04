@@ -20,14 +20,14 @@ function NavBar() {
                     { link: "profile", title: "My information" },
                     { link: "", title: "My orders" },
                     { link: "", title: "Personal office" },
-                    { link: "", title: "Money" },
+                    { link: "money", title: "Money" },
                 ]
             } else {
                 arrLinks = [
                     { link: "", title: "Personal office" },
                     { link: "profile", title: "My information" },
                     { link: "", title: "My orders" },
-                    { link: "", title: "Money" },
+                    { link: "money", title: "Money" },
                     { link: "", title: "Messages" },
 
                 ]

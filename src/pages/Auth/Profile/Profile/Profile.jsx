@@ -69,7 +69,7 @@ export const Profile = () => {
         <div className={classes.profile_flex}>
           <div>
             <div className={classes.profile_gray}>Country</div>
-            <div className={classes.profile_value}>{user.country.name}</div>
+            <div className={classes.profile_value}>{user?.country?.name}</div>
           </div>
         </div>
         <div className={classes.profile_flex}>
@@ -89,7 +89,7 @@ export const Profile = () => {
 
         <div>
           <div className={classes.profile_gray}>Contact preferences</div>
-          <div className={classes.profile_value}>{user?.preferred_contact}</div>
+          <div className={classes.profile_value}>{user?.preferred_contact + ":" + user?.contact_value}</div>
         </div>
       </div>
       )
@@ -134,14 +134,14 @@ export const Profile = () => {
         <div className={classes.profile_flex}>
           <div>
             <div className={classes.profile_gray}>Gender</div>
-            <div className={classes.profile_value}>{user?.gender}</div>
+            <div className={classes.profile_value}>{user?.gender.toLowerCase()}</div>
           </div>
         </div>
 
 
         <div>
           <div className={classes.profile_gray}>Contact preferences</div>
-          <div className={classes.profile_value}>{user?.preferred_contact}</div>
+          <div className={classes.profile_value}>{user?.preferred_contact + ":" + user?.contact_value}</div>
         </div>
       </div>
     )
