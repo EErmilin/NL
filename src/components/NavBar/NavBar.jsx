@@ -66,7 +66,7 @@ function NavBar() {
             {user?.partner_code && <NavLink to='referal' className={classes.referal}>Referral program</NavLink> }
             <div className={classes.support}>
                 <h3 className={classes.support_title}>Go to the support chat</h3>
-                <NavLink to="" className={classes.support_link}>Write to support</NavLink>
+                <NavLink to="https://t.me/nlstar_support" target={"_blank"} className={classes.support_link}>Write to support</NavLink>
             </div>
         </>
     )
