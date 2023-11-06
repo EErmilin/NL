@@ -11,7 +11,7 @@
   padding: 32px;
   border: 1px solid var(--border-grey, #EFEFF0);
   background: var(--white, #FFF);
-  z-index: 1;
+  z-index: 1000000;
 }
 
 .closeBtn {

@@ -1,10 +1,11 @@
-import { FC, useMemo, useRef } from 'react';
+import { FC, useEffect, useMemo, useRef, useState } from 'react';
 import { Swiper } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import React from 'react'
 import "./swiper.scss";
+import NavigationBtn from "../../components/UI/btns/NavigationBtn/NavigationBtn"
 
 import SwiperCore, {
   Navigation,
@@ -23,10 +24,24 @@ SwiperCore.use([
   Pagination,
 ]);
 
-const Slider = ({ children, slidesPerView = "auto", direction = 'horizontal', spaceBetween=10, ...rest }) => {
+const Slider = ({ children, slidesPerView = "auto", direction = 'horizontal', spaceBetween = 10, ...rest }) => {
 
   /**Инстенс свипера*/
-  const swiperRef = useRef();
+  const [swiper,setSwiper] = useState()
+
+  /**Рефы на кнопки(вперед назад)*/
+  const prevRef = useRef();
+  const nextRef = useRef();
+
+    /**Передача в инстенс свипера кнопок навигации*/
+    useEffect(()=>{
+      if(swiper && swiper.params){
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+      }
+  },[swiper])
 
   /**Стили*/
   const cls = [classes.swiper]
@@ -37,15 +52,24 @@ const Slider = ({ children, slidesPerView = "auto", direction = 'horizontal', sp
         className={cls.join(' ')}
         slidesPerView={slidesPerView}
         spaceBetween={spaceBetween}
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper;
-        }}
+        onSwiper={setSwiper}
         direction={direction}
-        navigation
+        navigation={{
+          prevEl: prevRef?.current,
+          nextEl: nextRef?.current,
+        }}
         {...rest}
       >
         {children}
       </Swiper>
+{direction==="horizontal"  &&    <div className={classes.navigation}>
+        <div className="swiper-button" ref={prevRef}>
+          <NavigationBtn type="prev" />
+        </div>
+        <div className="swiper-button" ref={nextRef} >
+          <NavigationBtn type="next" />
+        </div>
+      </div>}
     </div>
   );
 };

@@ -28,6 +28,7 @@ function Header() {
     const RoomsWrpRef = useRef()
     const cart = useSelector(state => state.order.cart)
     const [menuOpened, setMenuOpened] = useState()
+    const [navigationMenuVisibleState, setNavigationMenuVisibleState] = React.useState(false);
 
     const toProfile = () => {
         if (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined') {
@@ -75,6 +76,7 @@ function Header() {
     }, [url, locale, isProductsOpen])
 
     useEffect(() => {
+        navigationMenuVisibleState && setNavigationMenuVisibleState(false)
         isProductsOpen && expandBlock()
         isShowCart && dispatcher({ type: SHOW_CARD })
     }, [url])
@@ -94,6 +96,9 @@ function Header() {
     }
 
     const toggleCart = () => {
+        if (menuOpened) {
+            setMenuOpened(false)
+        }
         if (!isUserAuth()) {
             dispatcher(setIsAuth(true))
         } else {
@@ -104,6 +109,13 @@ function Header() {
     const ref = useClickAway(() => {
         dispatcher(setIsShowCart(false))
     });
+
+    const closeMenu = () => {
+        if (navigationMenuVisibleState) {
+            return setNavigationMenuVisibleState(false)
+        }
+        setMenuOpened(!menuOpened);
+    }
 
     return (
         <>
@@ -137,22 +149,32 @@ function Header() {
                             <NavLink to="" className={classes.heart}>{t("Wishlist")}<div className={classes.count}>0</div></NavLink>
                             <div className={classes.cart_wrp}>
                                 <div className={classes.cart_wrp}>
-                                    <div className={[classes.cart, isShowCart ? classes.cart_open : ""].join(" ")} onClick={toggleCart}>{t("My cart")} <div className={classes.count}>{cart?.items_count * cart?.items_qty || 0}</div>
+                                    <div className={[classes.cart, isShowCart ? classes.cart_open : ""].join(" ")} onClick={toggleCart}>{t("My cart")} <div className={classes.count}>{!isUserAuth()? "0" :cart?.items_count * cart?.items_qty || 0}</div>
                                     </div>
                                 </div>
                                 {isShowCart && <div ref={ref}><CartDropDown /></div>}
                             </div>
                         </div>
                     </div>
-                    <div
-                className={classes.burger}
-                onClick={() => { setMenuOpened(!menuOpened) }}
-            >
-            </div>
-
+                    <div className={classes.mobile}>
+                        <NavLink className={classes.mobile_search} to=""></NavLink>
+                        <div className={classes.mobile_cart_wrp}>
+                            <div className={[classes.mobile_cart, isShowCart ? classes.cart_open : ""].join(" ")} onClick={toggleCart}></div>
+                        </div>
+                        <NavLink to="" className={classes.mobile_heart}></NavLink>
+                        <div className={classes.burger}
+                            onClick={closeMenu}
+                        >
+                        </div>
+                    </div>
                 </div>
             </header >
-            <MobileMenu menuOpened={menuOpened} setMenuOpened={setMenuOpened} setLocalesModal={setLocalesModal}/>
+            <MobileMenu
+                menuOpened={menuOpened}
+                setMenuOpened={setMenuOpened}
+                setLocalesModal={setLocalesModal}
+                navigationMenuVisibleState={navigationMenuVisibleState}
+                setNavigationMenuVisibleState={setNavigationMenuVisibleState} />
             <ExpandBlock expandBlock={expandBlock} RoomsWrpRef={RoomsWrpRef} />
 
             {templateLocalesModal}

@@ -5,6 +5,7 @@ body {
 }
 
 * {
+  -webkit-tap-highlight-color: transparent;
   font-variant-numeric: lining-nums proportional-nums;
   box-sizing: border-box;
   outline: none;

@@ -1,6 +1,6 @@
 import classes from "./ThirdStep.module.scss";
 import React from 'react';
-import "../../Registration.css"
+import "../../Registration.scss"
 import Input from "../../../../../components/UI/areas/Input/Input";
 import CustomSelect from "../../../../../components/UI/areas/CustomSelect/CustomSelect";
 import CustomRadio from "../../../../../components/UI/areas/CustomRadio/CustomRadio";

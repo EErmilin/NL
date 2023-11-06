@@ -1,8 +1,12 @@
+.swiper {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
 
-
-  .swiper{
-    display: flex;
-    position: relative;
-    width: 100%;
-  }
-  
+.navigation {
+  top: -52px;
+  display: flex;
+  right: 0;
+  position: absolute;
+}

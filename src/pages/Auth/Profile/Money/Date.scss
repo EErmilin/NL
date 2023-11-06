@@ -35,11 +35,8 @@
     margin-right: 10px;
     background: center/cover no-repeat url("../../../../assets/svg/arrow-to.svg");
   }
- // background-color: black;
 }
-.ant-picker-range-separator:after {
-  content: "to";
-}
-.anticon {
+
+.anticon-swap-right {
   display: none;
 }

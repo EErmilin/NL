@@ -1,6 +1,6 @@
 import classes from "./FirstStep.module.scss";
 import React from 'react';
-import "../../Registration.css"
+import "../../Registration.scss"
 import Input from "../../../../../components/UI/areas/Input/Input";
 import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";

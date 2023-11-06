@@ -1,7 +1,7 @@
 import classes from "./Registration.module.scss";
 import React, { useState } from 'react';
 import { Button, message, Steps } from 'antd';
-import "./Registration.css"
+import "./Registration.scss"
 import { FirstStep } from "./components/FirstStep/FirstStep";
 import SecondStep from "./components/SecondStep/SecondStep";
 import ThirdStep from "./components/ThirdStep/ThirdStep";

@@ -1,6 +1,6 @@
 import classes from "./RegisterSucces.module.scss";
 import React from 'react';
-import "../../Registration.css"
+import "../../Registration.scss"
 import ButtonDefault from "../../../../../components/UI/btns/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

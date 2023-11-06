@@ -9,8 +9,6 @@
 }
 .ant-steps-icon{
   color: black !important;
-}
-svg{
   fill: black !important;
 }
 
@@ -23,6 +21,11 @@ svg{
 .ant-steps .ant-steps-item-icon {
   margin-inline-end: 0;
 }
+
+svg{
+
+}
+
 
 .ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title::after {
   margin-top: 4px;
