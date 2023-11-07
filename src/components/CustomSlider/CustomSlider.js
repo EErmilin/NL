@@ -27,21 +27,21 @@ SwiperCore.use([
 const Slider = ({ children, slidesPerView = "auto", direction = 'horizontal', spaceBetween = 10, ...rest }) => {
 
   /**Инстенс свипера*/
-  const [swiper,setSwiper] = useState()
+  const [swiper, setSwiper] = useState()
 
   /**Рефы на кнопки(вперед назад)*/
   const prevRef = useRef();
   const nextRef = useRef();
 
-    /**Передача в инстенс свипера кнопок навигации*/
-    useEffect(()=>{
-      if(swiper && swiper.params){
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
-      }
-  },[swiper])
+  /**Передача в инстенс свипера кнопок навигации*/
+  useEffect(() => {
+    if (swiper && swiper.params) {
+      swiper.params.navigation.prevEl = prevRef.current;
+      swiper.params.navigation.nextEl = nextRef.current;
+      swiper.navigation.init();
+      swiper.navigation.update();
+    }
+  }, [swiper])
 
   /**Стили*/
   const cls = [classes.swiper]
@@ -62,7 +62,7 @@ const Slider = ({ children, slidesPerView = "auto", direction = 'horizontal', sp
       >
         {children}
       </Swiper>
-{direction==="horizontal"  &&    <div className={classes.navigation}>
+      {direction === "horizontal" && <div className={classes.navigation}>
         <div className="swiper-button" ref={prevRef}>
           <NavigationBtn type="prev" />
         </div>

@@ -16,6 +16,7 @@ import ImagesSlider from "./components/ImagesSlider/ImagesSlider";
 import { addProduct } from "../../../store/actions/orderActions";
 import { SHOW_CARD } from "../../../store/actions/actionsType";
 import { setIsShowCart } from "../../../store/actions/routerActions";
+import { useState } from "react";
 
 export const Product = () => {
 
@@ -24,11 +25,19 @@ export const Product = () => {
   const { id } = useParams()
   const isShowCart = useSelector(state => state.router.isShowCart);
 
+  const [mainImg, setMainImg] = useState(null)
+
   useEffect(() => {
     if (id) {
       dispatcher(getProduct(id))
     }
   }, [dispatcher, id])
+
+  useEffect(() => {
+    if (product) {
+      setMainImg(product.images[0])
+    }
+  }, [product])
 
 
 
@@ -77,14 +86,14 @@ export const Product = () => {
   ]
 
   const photos = product.images.map((photo, key) => {
-    return <a data-fancybox="gallery" href={photo.url} key={key}>
+    return <div onClick={()=>setMainImg(photo)} key={key}>
       <img alt="" className={classes.img} src={photo.url} />
-    </a>
+      </div>
   })
 
   const toggleAddProduct = () => {
     dispatcher(addProduct(product.id))
-    !isShowCart &&  dispatcher(setIsShowCart(true))
+    !isShowCart && dispatcher(setIsShowCart(true))
   }
 
 
@@ -97,10 +106,9 @@ export const Product = () => {
         <div className={classes.photos}>
 
           <Fancybox>
-            <ImagesSlider photos={photos}>
-            </ImagesSlider>
-            <a data-fancybox="gallery" href={product.images[0].url}>
-            <img src={product.images[0].url} className={classes.photos_main}></img>
+            {product.images.length > 1 && <ImagesSlider slidesPerView={4.2} photos={photos} />}
+            <a data-fancybox="gallery" href={mainImg?.url} className={classes.photos_main}>
+              <img src={mainImg?.url}></img>
             </a>
           </Fancybox>
 
@@ -111,7 +119,7 @@ export const Product = () => {
           <div className={classes.product_made}>Made in {product.made_in}</div>
           <div dangerouslySetInnerHTML={{ __html: product.short_description }} className={classes.product_description}></div>
           <div><ButtonDefault className={classes.product_info_btn} onClick={toggleAddProduct} title={'Add to cart'} /></div>
-        {product.add_info&&  <div className={classes.product_notification} dangerouslySetInnerHTML={{ __html: product.add_info }}></div>}
+          {product.add_info && <div className={classes.product_notification} dangerouslySetInnerHTML={{ __html: product.add_info }}></div>}
         </div>
       </div>
       <TransitionContainer

@@ -7,7 +7,7 @@ import "swiper/swiper.min.css";
 import "./swiper.scss";
 import CustomSlider from "../../../../../components/CustomSlider/CustomSlider";
 
-function ImagesSlider({ photos
+function ImagesSlider({ photos, slidesPerView
 }) {
 
     const [swiper, setSwiper] = useState()
@@ -21,7 +21,6 @@ function ImagesSlider({ photos
         </SwiperSlide>
 
     })
-    slides.shift()
 
     useEffect(() => {
         if (swiper && swiper.params) {
@@ -40,7 +39,7 @@ function ImagesSlider({ photos
             <CustomSlider
                 direction="vertical"
                 className={classes.swiper}
-                slidesPerView={4}
+                slidesPerView={slidesPerView}
                 spaceBetween={20}
                 onSwiper={setSwiper}
                 navigation={{
