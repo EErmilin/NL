@@ -61,10 +61,13 @@
 
   &_notification {
     border-top: 2px solid var(--gray-80, #707070);
-    ;
     padding: 20px;
     margin-top: 40px;
     background: var(--BG, #F8F8F8);
+
+   &>* {
+      max-width: 100%;
+    }
   }
 
 }
@@ -86,6 +89,10 @@
 
 .block_titles {
   margin-bottom: 60px;
+}
+
+.block_wrp{
+  max-width: 800px;
 }
 
 .img {

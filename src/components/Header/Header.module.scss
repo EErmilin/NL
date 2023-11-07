@@ -165,7 +165,7 @@
   &_right {
     padding-left: 44px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; // spase-betvin
     width: 469px;
 
     @media(max-width: 1023px) {

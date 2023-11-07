@@ -111,11 +111,12 @@ export const Product = () => {
           <div className={classes.product_made}>Made in {product.made_in}</div>
           <div dangerouslySetInnerHTML={{ __html: product.short_description }} className={classes.product_description}></div>
           <div><ButtonDefault className={classes.product_info_btn} onClick={toggleAddProduct} title={'Add to cart'} /></div>
-          <div className={classes.product_notification}>This product is manufactured in a facility that processes other products, which may contain eggs, gluten, celery, fish and nuts.</div>
+        {product.add_info&&  <div className={classes.product_notification} dangerouslySetInnerHTML={{ __html: product.add_info }}></div>}
         </div>
       </div>
       <TransitionContainer
         classNameTitlesWrap={classes.block_titles}
+        classNameBody={classes.block_wrp}
         withTitleBorder={true}
         blocks={blocks}>
       </TransitionContainer>

@@ -8,6 +8,7 @@ import MainSlider from "./components/MainSlider/MainSlider";
 import NewArrivalsSlider from "./components/NewArrivalsSlider/NewArrivalsSlider";
 import NewsItem from "./components/NewsItem/NewsItem";
 import NewsSlider from "./components/NewsSlider/NewsSlider";
+import Spesial from "./components/Spesial/Spesial";
 import classes from "./Main.module.scss";
 
 
@@ -18,7 +19,6 @@ function Main() {
     const templateNew = useMemo(() => {
         return <div >
             <span className={classes.items_title}>New arrivals</span>
-            
             <NewArrivalsSlider />
         </div>
     }, [])
@@ -26,16 +26,7 @@ function Main() {
     const templateSpesial = useMemo(() => {
         return <div>
             <span className={classes.items_title}>Special offers</span>
-            <div className={classes.items}>
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-            </div>
+            <Spesial />
         </div>
     }, [])
     const templateNews = useMemo(() => {
