@@ -10,14 +10,8 @@ import ProductItem from '../../../../../components/ProductItem/ProductItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../../../../store/actions/catalogActions';
 
-function RecommendedProducts({
-}) {
+function RecommendedProducts({products}) {
     const dispatcer = useDispatch()
-    const products = useSelector(state => state.catalog.products);
-
-    useEffect(() => {
-        dispatcer(getProducts(24))
-    }, [dispatcer])
 
     const slides = products?.map((product, key) => {
         return <SwiperSlide>  <ProductItem key={key} product={product} />   </SwiperSlide>

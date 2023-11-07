@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useMemo } from "react";
 import MainHero from "../../../components/MainHero/MainHero";
 import ProductItem from "../../../components/ProductItem/ProductItem";
@@ -12,9 +13,12 @@ import classes from "./Main.module.scss";
 
 function Main() {
 
+
+
     const templateNew = useMemo(() => {
         return <div >
             <span className={classes.items_title}>New arrivals</span>
+            
             <NewArrivalsSlider />
         </div>
     }, [])

@@ -24,14 +24,14 @@ function ProductItem({ product }) {
 
 if (product) {
     return <div className={classes.wrap}>
-        <div className={classes.product_img}>
-            <NavLink to={`/product/${product.id}`}>  <img src={product.images[0].original_image_url} className={classes.product_img}></img></NavLink>
+        <div className={classes.product_img_wrp}>
+            <NavLink to={`/product/${product.id}`}>  <img src={product.images && product.images[0].original_image_url} className={classes.product_img}></img></NavLink>
             <div className={classes.cart} onClick={toggleAddProduct}></div>
         </div>
         <NavLink to={`/product/${product.id}`}>
             <p className={classes.product_title}>{product.type}</p>
             <p className={classes.product_description}>{product.name}</p>
-            <p className={classes.product_price}>{Number(product.price).toFixed(0)} €<sup className={classes.product_price_pv}>/{Number(product.pv).toFixed(0)} PV</sup></p>
+            <p className={classes.product_price}>{Number(product.price).toFixed(0)} €<sup className={classes.product_price_pv}>{product.pv? "/"+ Number(product.pv).toFixed(0) + "PV":null} </sup></p>
             <div className={classes.status_wrp}>
                 {product.new ? <div className={classes.status}>New</div> : null}
                 {product.featured ? <div className={classes.gift}></div> : null}

@@ -16,43 +16,38 @@ export const ProductsMenu = () => {
   const dispatcher = useDispatch()
 
   const [categorie, setCategorie] = useState(null)
-  const [categorieId, setCategorieId] = useState(null)
   const locale = useSelector(state => state.router.locale);
   const backUrl = "https://testapi.eu-nl.com"
 
   const categories = useSelector(state => state.catalog.categories);
 
-  const { data, isInitialLoading, isError } = useQuery([`categorie${categorieId}`, { categorieId: categorieId }], () =>
-  axiosCustom(`${backUrl}/api/v1/descendant-categories?parent_id=${categorieId}`, {id:categorieId})
-);
-
-
+  const { data, isInitialLoading, isError } = useQuery([`categorie${categorie?.id}`, { categorie: categorie?.id }], () => {
+    if (categorie) {
+      return axiosCustom(`${backUrl}/api/v1/descendant-categories?parent_id=${categorie?.id}`, { id: categorie?.id })
+    }
+  }
+  );
 
   /** Масив ссылок */
   const templateLinks = useMemo(() => {
     return categories?.map((elem, id) => {
       if (elem.slug === "root") {
         return
-
       }
-
       if (elem.slug === "new-arrivals") {
         return <div className={classes.link} > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
-
       }
       if (elem.slug === "special-offers") {
         return <div className={classes.link}> <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
-
       }
       if (elem.slug === "bestsellers") {
         return <div className={classes.link}> <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
-
       }
       return (
         <div
           className={classes.categorie}
           key={id}
-          onMouseEnter={() => {setCategorieId(elem.id); setCategorie(true)}}
+          onMouseEnter={() => setCategorie(elem)}
           onClick={() => navigate(`/products/${elem.id}`)}
         >
           {elem.name}
@@ -60,7 +55,6 @@ export const ProductsMenu = () => {
       )
     })
   }, [categories, locale])
-
 
   /** Масив ссылок */
   const templateBrands = useMemo(() => {

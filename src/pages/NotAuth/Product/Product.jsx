@@ -18,6 +18,7 @@ import { SHOW_CARD } from "../../../store/actions/actionsType";
 import { setIsShowCart } from "../../../store/actions/routerActions";
 
 export const Product = () => {
+
   const dispatcher = useDispatch()
   const product = useSelector(state => state.catalog.product);
   const { id } = useParams()
@@ -28,6 +29,7 @@ export const Product = () => {
       dispatcher(getProduct(id))
     }
   }, [dispatcher, id])
+
 
 
   const BREADCRUMBS = [
@@ -117,7 +119,7 @@ export const Product = () => {
         withTitleBorder={true}
         blocks={blocks}>
       </TransitionContainer>
-      <RecommendedProducts />
+      <RecommendedProducts products={product.recommended_products} />
     </div>
   )
 }

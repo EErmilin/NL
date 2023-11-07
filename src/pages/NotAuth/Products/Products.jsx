@@ -6,11 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "../../../store/actions/catalogActions";
 import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 export const Products = () => {
   const {id} = useParams()
   const dispatcer = useDispatch()
   const products = useSelector(state => state.catalog.products);
+  const categories = useSelector(state => state.catalog.categories);
+
+  const categorie = categories&& categories.length && categories.find((categorie)=> categorie.id==Number(id))
+
 
   useEffect(() => {
     if(id){
@@ -21,10 +26,10 @@ export const Products = () => {
 
   const BREADCRUMBS = [
     {
-      title: <a href="">Products</a>,
+      title: "Products",
     },
     {
-      title: 'Healthy Nutrition & Drinks',
+      title: categorie?.name,
     },
   ]
 
@@ -39,10 +44,9 @@ export const Products = () => {
   return (
     <div className={classes.wrapper}>
       <Breadcrumbs items={BREADCRUMBS}></Breadcrumbs>
-      <h1 className={classes.title}>Healthy Nutrition & Drinks</h1>
+      <h1 className={classes.title}>{categorie?.name}</h1>
       <div className={classes.items}>
         {templateProducts}
-      
       </div>
     </div>
   )

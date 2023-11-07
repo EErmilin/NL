@@ -13,7 +13,7 @@ import { useQuery } from '@tanstack/react-query';
 import fakeBrand from '../../assets/img/fakeBrand.png';
 import axiosCustom from '../../axios/axiosCustom';
 
-
+const backUrl = "https://testapi.eu-nl.com"
 //TODO Отрефачить стили с код
 
 export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal, navigationMenuVisibleState, setNavigationMenuVisibleState }) {
@@ -33,8 +33,11 @@ export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal,
 
     const categories = useSelector(state => state.catalog.categories);
 
-    const { data, isInitialLoading, isError } = useQuery([`categorie${categorieId}`, { categorieId: categorieId }], () =>
-        axiosCustom(`${backUrl}/api/v1/descendant-categories?parent_id=${categorieId}`, { id: categorieId })
+    const { data, isInitialLoading, isError } = useQuery([`categorie${categorieId}`, { categorieId: categorieId }], () => {
+        if (menuOpened) {
+            axiosCustom(`${backUrl}/api/v1/descendant-categories?parent_id=${categorieId}`, { id: categorieId })
+        }
+    }
     );
 
 
@@ -125,6 +128,7 @@ export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal,
                     setNavigationMenuVisibleState(!navigationMenuVisibleState);
                 }} key={id}>
                     {elem.title}
+                    <div className={classes.arrow}></div>
                 </div>
 
             }
@@ -178,8 +182,6 @@ export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal,
     }, [windowSize.width])
 
 
-    console.log(navigationMenuVisibleState)
-
 
     return (
         <div className={classes.wrp}>
@@ -224,6 +226,7 @@ export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal,
                     </div>
                 </div>
             </div>
+
         </div>
     )
 }
