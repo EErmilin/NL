@@ -59,19 +59,19 @@ export const Product = () => {
   const blocks = [
     {
       title: "Details",
-      block: <div dangerouslySetInnerHTML={{ __html: product.description }}></div>
+      block: <div className={classes.html} dangerouslySetInnerHTML={{ __html: product.description }}></div>
     },
     {
       title: "How to use",
-      block: <div dangerouslySetInnerHTML={{ __html: product.how_to_use }}></div>
+      block: <div className={classes.html} dangerouslySetInnerHTML={{ __html: product.how_to_use }}></div>
     },
     {
       title: "Ingredients",
-      block: <div dangerouslySetInnerHTML={{ __html: product.ingredients }}></div>
+      block: <div className={classes.html} dangerouslySetInnerHTML={{ __html: product.ingredients }}></div>
     },
     {
       title: "FAQ",
-      block: <div dangerouslySetInnerHTML={{ __html: product.question_and_answer }}></div>
+      block: <div className={classes.html} dangerouslySetInnerHTML={{ __html: product.question_and_answer }}></div>
     },
     {
       title: "Extra materials",
@@ -87,7 +87,7 @@ export const Product = () => {
 
   const photos = product.images.map((photo, key) => {
     return <div onClick={()=>setMainImg(photo)} key={key}>
-      <img alt="" className={classes.img} src={photo.url} />
+      <img alt="" className={mainImg===photo? classes.img_selected : classes.img} src={photo.url} />
       </div>
   })
 

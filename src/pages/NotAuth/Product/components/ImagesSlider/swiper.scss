@@ -1,4 +1,7 @@
 
 .swiper-slide{
-  //height: 126px !important;
+  &>div{
+    display: flex;
+    height: 100%;
+  }
 }

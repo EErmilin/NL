@@ -27,8 +27,8 @@ export const Money = () => {
         </div>
         <div className={classes.balance}>
           <div className={classes.gray}>Balance</div>
-          <div className={classes.text}>{user.is_partner ? user.balance_pv: user.balance_unit_client} €</div>
-           {user.is_partner && <div className={classes.text}>{user.balance_reward}</div>}
+          <div className={classes.text}>{user.is_partner ? user.balance_pv: user.balance_unit_client + " €"} </div>
+           {user.is_partner && <div className={classes.text}>{user.balance_reward} €</div>}
         </div>
       </div>
       <div className={classes.text}>Internal account statement</div>
