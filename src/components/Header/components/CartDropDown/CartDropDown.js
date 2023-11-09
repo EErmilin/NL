@@ -10,6 +10,7 @@ import { SHOW_CARD } from "../../../../store/actions/actionsType";
 function Product({ item }) {
     const [count, setCount] = useState(item.quantity)
     const dispatcher = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (count !== item.quantity) {
@@ -21,9 +22,9 @@ function Product({ item }) {
     const templateProduct = useMemo(() => {
         return (
             <div className={classes.cart_product}>
-                <img src={item.product.images[0].url} className={classes.cart_product_img}></img>
+                <img src={item.product.images[0].url} className={classes.cart_product_img} onClick={()=>navigate(`/product/${item.id}`)}></img>
                 <div className={classes.cart_product_info}>
-                    <div className={classes.cart_product_info_name}>{item.product.name}</div>
+                    <div className={classes.cart_product_info_name} onClick={()=>navigate(`/product/${item.id}`)}>{item.product.name}</div>
                     <div className={classes.cart_product_info_price}>{item.product.formatted_price}</div>
                     <div className={classes.cart_product_counter}>
                         <div className={classes.cart_product_counter_btn} onClick={() => count > 1 && setCount(count - 1)}></div>

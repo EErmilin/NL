@@ -1,10 +1,10 @@
 import { FC, useEffect, useMemo, useRef, useState } from 'react';
 import { Swiper } from 'swiper/react';
+import React from 'react'
+import "./swiper.scss";
 import 'swiper/swiper-bundle.css';
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
-import React from 'react'
-import "./swiper.scss";
 import NavigationBtn from "../../components/UI/btns/NavigationBtn/NavigationBtn"
 
 import SwiperCore, {

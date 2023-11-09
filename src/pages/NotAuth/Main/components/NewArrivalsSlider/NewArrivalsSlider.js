@@ -1,10 +1,6 @@
 import React, { useMemo } from 'react'
 import classes from "./NewArrivalsSlider.module.scss";
 import { SwiperSlide } from "swiper/react";
-import 'swiper/swiper-bundle.css';
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
-import "./swiper.scss";
 import CustomSlider from "../../../../../components/CustomSlider/CustomSlider";
 import NewsItem from '../NewsItem/NewsItem';
 import useWindowSize from '../../../../../hooks/useWindowSize';

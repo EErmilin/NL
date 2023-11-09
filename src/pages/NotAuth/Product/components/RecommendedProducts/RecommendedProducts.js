@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react'
 import classes from "./RecommendedProducts.module.scss";
 import { SwiperSlide } from "swiper/react";
-import 'swiper/swiper-bundle.css';
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
-import "./swiper.scss";
+
 import CustomSlider from "../../../../../components/CustomSlider/CustomSlider";
 import ProductItem from '../../../../../components/ProductItem/ProductItem';
 import { useDispatch, useSelector } from 'react-redux';

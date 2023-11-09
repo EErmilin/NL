@@ -19,6 +19,10 @@ function ProductItem({ product }) {
         } else {
             dispatcher(addProduct(product.id))
             !isShowCart && dispatcher(setIsShowCart(true))
+            document.body.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              })
         }
     }
 

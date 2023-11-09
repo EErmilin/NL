@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import classes from "./ImagesSlider.module.scss";
 import { SwiperSlide } from "swiper/react";
-import 'swiper/swiper-bundle.css';
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
-import "./swiper.scss";
 import CustomSlider from "../../../../../components/CustomSlider/CustomSlider";
 
 function ImagesSlider({ photos, slidesPerView

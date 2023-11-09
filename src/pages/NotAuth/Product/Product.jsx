@@ -67,7 +67,7 @@ export const Product = () => {
     },
     {
       title: "Ingredients",
-      block: <div className={classes.html} dangerouslySetInnerHTML={{ __html: product.ingredients }}></div>
+      block: <><div className={classes.html} dangerouslySetInnerHTML={{ __html: product.ingredients }}></div><div className={classes.html} dangerouslySetInnerHTML={{ __html: product.nutritional_value }} /></>
     },
     {
       title: "FAQ",
@@ -106,7 +106,7 @@ export const Product = () => {
         <div className={classes.photos}>
 
           <Fancybox>
-            {product.images.length > 1 && <ImagesSlider slidesPerView={4.2} photos={photos} />}
+            {product.images.length > 1 && <ImagesSlider slidesPerView={4.3} photos={photos} />}
             <a data-fancybox="gallery" href={mainImg?.url} className={classes.photos_main}>
               <img src={mainImg?.url}></img>
             </a>

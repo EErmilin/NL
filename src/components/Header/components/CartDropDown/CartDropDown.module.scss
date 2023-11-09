@@ -6,6 +6,7 @@
   top: 66px;
   right: 0;
   z-index: 100;
+  cursor:default;
 
   &_count{
     color: var(--gray-80, #707070);
@@ -71,6 +72,10 @@
         line-height: 22px;
         margin-top: 2px;
       }
+
+      &_name{
+        cursor: pointer;
+      }
     
     }
 
@@ -130,6 +135,7 @@
       height: 80px;
       width: 80px;
       object-fit: cover;
+      cursor: pointer;
     }
   }
 }
