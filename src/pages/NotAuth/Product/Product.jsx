@@ -106,7 +106,7 @@ export const Product = () => {
         <div className={classes.photos}>
 
           <Fancybox>
-            {product.images.length > 1 && <ImagesSlider slidesPerView={4.3} photos={photos} />}
+            {product.images.length > 1 && <ImagesSlider slidesPerView={4} photos={photos} />}
             <a data-fancybox="gallery" href={mainImg?.url} className={classes.photos_main}>
               <img src={mainImg?.url}></img>
             </a>
@@ -128,7 +128,7 @@ export const Product = () => {
         withTitleBorder={true}
         blocks={blocks}>
       </TransitionContainer>
-      <RecommendedProducts products={product.recommended_products} />
+    {product.recommended_products && product.recommended_products.length  ?  <RecommendedProducts products={product.recommended_products} />: null}
     </div>
   )
 }
