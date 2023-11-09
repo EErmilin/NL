@@ -41,7 +41,7 @@ export const CartPage = () => {
         </div>
         <div className={classes.cart_total}>
           <h2 className={classes.cart_total_title}>Cart totals</h2>
-          <div className={classes.cart_total_products_wrp}><span className={classes.cart_total_products}>Products:</span> <span className={classes.cart_total_products}>{(cart?.items_count * cart?.items_qty) || 0} items</span></div>
+          <div className={classes.cart_total_products_wrp}><span className={classes.cart_total_products}>Products:</span> <span className={classes.cart_total_products}>{Number(cart?.items_qty).toFixed(0) || 0} items</span></div>
           <div className={classes.cart_total_price_wrp}>
             <span className={classes.cart_total_price_title}>Total:</span>
             <span className={classes.cart_total_price}>{cart?.formatted_grand_total || "0  €"}</span>

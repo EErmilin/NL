@@ -101,3 +101,20 @@
         background: center/cover no-repeat url("../../assets/svg/product-cart.svg");
     }
 }
+
+.counter{
+    position: absolute;
+    display: flex;
+    right: 10px;
+    bottom: -24px;
+    width: 120px;
+    height: 48px;
+    border-radius: 24px;
+    &>div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 28px;
+        width: 28px;
+    }
+}

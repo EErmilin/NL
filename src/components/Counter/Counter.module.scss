@@ -1,0 +1,51 @@
+.counter {
+    margin-top: 10px;
+    display: flex;
+    width: 68px;
+    height: 28px;
+    padding: 6px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: var(--Black, #000);
+    color: #FFF;
+
+    &_btn {
+      width: 16px;
+      height: 16px;
+      border-radius: 14px;
+      background: var(--Black, #000);
+      background-color: #FFF;
+      color: #000;
+      display: flex;
+      cursor: pointer;
+
+
+      &:before {
+        content: '';
+        width: 16px;
+        height: 16px;
+        transform: rotate(180deg);
+        background: center/cover no-repeat url("../../assets/svg/minus-count.svg");
+      }
+    }
+    &_btn_plus {
+      width: 16px;
+      height: 16px;
+      border-radius: 14px;
+      background: var(--Black, #000);
+      background-color: #FFF;
+      color: #000;
+      display: flex;
+      cursor: pointer;
+
+      &:before {
+        content: '';
+        width: 16px;
+        height: 16px;
+        transform: rotate(180deg);
+        background: center/cover no-repeat url("../../assets/svg/plus-count.svg");
+      }
+    }
+  }

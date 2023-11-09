@@ -35,13 +35,13 @@ export const ProductsMenu = () => {
         return
       }
       if (elem.slug === "new-arrivals") {
-        return <div className={classes.link} > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
+        return <div className={classes.link}onMouseEnter={() => setCategorie(false)}  > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
       }
       if (elem.slug === "special-offers") {
-        return <div className={classes.link}> <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
+        return <div className={classes.link }onMouseEnter={() => setCategorie(false)} > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
       }
       if (elem.slug === "bestsellers") {
-        return <div className={classes.link}> <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
+        return <div className={classes.link} onMouseEnter={() => setCategorie(false)} > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
       }
       return (
         <div

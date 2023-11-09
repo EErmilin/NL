@@ -6,35 +6,27 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCartItem, updateCard } from "../../../../store/actions/orderActions";
 import { SHOW_CARD } from "../../../../store/actions/actionsType";
+import Counter from "../../../Counter/Counter";
 
 function Product({ item }) {
-    const [count, setCount] = useState(item.quantity)
     const dispatcher = useDispatch()
     const navigate = useNavigate()
-
-    useEffect(() => {
-        if (count !== item.quantity) {
-            dispatcher(updateCard(item.id, count))
-        }
-    }, [count])
+    const cart = useSelector(state => state.order.cart)
 
 
     const templateProduct = useMemo(() => {
         return (
             <div className={classes.cart_product}>
-                <img src={item.product.images[0].url} className={classes.cart_product_img} onClick={()=>navigate(`/product/${item.id}`)}></img>
+                <img src={item.product.images[0].url} className={classes.cart_product_img} onClick={() => navigate(`/product/${item.id}`)}></img>
                 <div className={classes.cart_product_info}>
-                    <div className={classes.cart_product_info_name} onClick={()=>navigate(`/product/${item.id}`)}>{item.product.name}</div>
+                    <div className={classes.cart_product_info_name} onClick={() => navigate(`/product/${item.id}`)}>{item.product.name}</div>
                     <div className={classes.cart_product_info_price}>{item.product.formatted_price}</div>
-                    <div className={classes.cart_product_counter}>
-                        <div className={classes.cart_product_counter_btn} onClick={() => count > 1 && setCount(count - 1)}></div>
-                        {item.quantity}
-                        <div className={classes.cart_product_counter_btn_plus} onClick={() => setCount(count + 1)}></div></div>
+                <Counter item={item}/>
                 </div>
                 <div className={classes.cart_product_delete} onClick={() => dispatcher(deleteCartItem(item.id))}></div>
             </div>
         )
-    }, [item.quantity])
+    }, [item.quantity, cart])
 
 
     return templateProduct
@@ -51,7 +43,7 @@ function CartDropDown({
         return cart.items.map((item, key) => {
             return <Product item={item} key={key} />
         })
-    }, [cart])
+    }, [cart, cart?.items])
 
     return (
         <div className={classes.cart}>

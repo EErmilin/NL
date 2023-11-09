@@ -117,6 +117,7 @@ function Header() {
         setMenuOpened(!menuOpened);
     }
 
+
     return (
         <>
             <header className={url.pathname === "/" && !isProductsOpen ? classes.wrapMain : classes.wrap}>
@@ -151,7 +152,7 @@ function Header() {
                             }
                             <div className={classes.cart_wrp}>
                                 <div className={classes.cart_wrp}>
-                                    <div className={[classes.cart, isShowCart ? classes.cart_open : ""].join(" ")} onClick={toggleCart}>{t("My cart")} <div className={classes.count}>{!isUserAuth()? "0" :cart?.items_count * cart?.items_qty || 0}</div>
+                                    <div className={[classes.cart, isShowCart ? classes.cart_open : ""].join(" ")} onClick={toggleCart}>{t("My cart")} <div className={classes.count}>{!isUserAuth() || !cart ? "0" :Number(cart?.items_qty).toFixed(0)}</div>
                                     </div>
                                 </div>
                                 {isShowCart && <div ref={ref}><CartDropDown /></div>}

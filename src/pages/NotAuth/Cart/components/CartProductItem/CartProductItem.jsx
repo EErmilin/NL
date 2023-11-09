@@ -13,12 +13,6 @@ export const CartProductItem = ({item}) => {
   const [count, setCount] = useState(item.quantity)
   const dispatcher = useDispatch()
 
-  useEffect(() => {
-    if (count !== item.quantity) {
-        dispatcher(updateCard(item.id, count))
-    }
-}, [count])
-
   return (
           <div className={classes.cart_products_item}>
             <img src={item.product.images[0].url} className={classes.cart_products_item_img}></img>
@@ -29,9 +23,9 @@ export const CartProductItem = ({item}) => {
                   <div className={classes.cart_products_item_price}>{item.formatted_total}</div>
                 </div>
                 <div className={classes.cart_products_item_counter}>
-                  <span className={classes.cart_products_item_counter_btn} onClick={() => setCount(count - 1)}>-</span>
+                  <span className={classes.cart_products_item_counter_btn} onClick={() => {setCount(count - 1); dispatcher(updateCard(item.id, count))}}>-</span>
                   <span >{item.quantity}</span>
-                  <span className={classes.cart_products_item_counter_btn} onClick={() => setCount(count + 1)}>+</span>
+                  <span className={classes.cart_products_item_counter_btn} onClick={() => {setCount(count + 1); dispatcher(updateCard(item.id, count))}}>+</span>
                 </div>
               </div>
               <div className={classes.cart_products_item_btns}>
