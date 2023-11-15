@@ -61,3 +61,19 @@ export function getCurrentCategorie(id) {
     };
 }
 
+
+export function getStarter() { // Напишу тна квери если чвто потом удалю
+    return async (dispatch) => {
+
+        try {
+            const response = await axiosCustom(`${backUrl}/api/v1/product-bundles`)
+            const { data } = response.data
+            return data
+        } catch (e) {
+            if (e.response) {
+            }
+        }
+    };
+}
+
+

@@ -1,4 +1,4 @@
-import { Checkbox } from "antd";
+import { Checkbox, Spin } from "antd";
 import { useFormik } from "formik";
 import React from "react"
 import { useMemo } from "react";
@@ -21,6 +21,7 @@ export const Receiving = () => {
   const cart = useSelector(state => state.order.cart)
   const dispatcher = useDispatch()
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const BREADCRUMBS = [
     {
@@ -374,7 +375,9 @@ export const Receiving = () => {
   }, [type])
 
   const submit = async () => {
+    setLoading(true)
     const response = await dispatcher(saveAdress())
+    setLoading(false)
     if(response && response.data && response.data.redirect_url){
       dispatcher(getCart())
       navigate('/cart')
@@ -384,6 +387,7 @@ export const Receiving = () => {
 
   }
 
+  if(loading)return<div className={classes.spin}><Spin size="large" /></div>
 
 
   return (

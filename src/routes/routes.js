@@ -18,6 +18,7 @@ import Order from "../pages/NotAuth/Cart/components/Order/Order";
 import Receiving from "../pages/NotAuth/Cart/components/Receiving/Receiving";
 import ReferalProgram from "../pages/Auth/Profile/ReferalProgram/ReferalProgram";
 import Money from "../pages/Auth/Profile/Money/Money";
+import Starter from "../pages/Auth/Starter/Starter";
 
 export const routes = [
     {
@@ -152,6 +153,13 @@ export const routes = [
         privateUrl: false,
         component: <PrivacyPolicy />,
         path: '/privacypolicy',
+        exact: true,
+    },
+    {
+        name: 'starter',
+        privateUrl: false,
+        component: <Starter />,
+        path: '/products/31',
         exact: true,
     },
 

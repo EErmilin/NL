@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import ButtonDefault from "../UI/btns/Button/Button";
 import classes from "./NavBar.module.scss";
 
@@ -8,6 +8,7 @@ import classes from "./NavBar.module.scss";
 function NavBar() {
     const page = useParams();
     const user = useSelector(state => state.auth.user);
+    const navigate = useNavigate()
 
 
     /** Масив ссылок */
@@ -68,6 +69,7 @@ function NavBar() {
                 <h3 className={classes.support_title}>Go to the support chat</h3>
                 <NavLink to="https://t.me/nlstar_support" target={"_blank"} className={classes.support_link}>Write to support</NavLink>
             </div>
+            {user?.is_partner && <div style={{margin: "20px 0"}}><ButtonDefault onClick={()=>navigate("/products/31")} title={"Starter"}></ButtonDefault> </div>}
         </>
     )
 

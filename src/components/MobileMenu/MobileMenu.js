@@ -34,8 +34,7 @@ export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal,
     const categories = useSelector(state => state.catalog.categories);
 
     const { data, isInitialLoading, isError } = useQuery([`categorie${categorieId}`, { categorieId: categorieId}], () => {
-        console.log('!!!!!!!!!!')
-        console.log(menuOpened)
+
         if (menuOpened) {
           return  axiosCustom(`${backUrl}/api/v1/descendant-categories?parent_id=${categorieId}`, { id: categorieId })
         } else{
@@ -52,6 +51,9 @@ export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal,
             if (elem.slug === "root") {
                 return
 
+            }
+            if (elem.slug === "starterkit") {
+                return
             }
 
             if (elem.slug === "new-arrivals") {

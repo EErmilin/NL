@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart } from "../../../../../store/actions/orderActions";
 import { useMemo } from "react";
+import CartBundleItem from "../CartBundleItem/CartBundleItem";
 
 
 export const CartPage = () => {
@@ -19,13 +20,22 @@ export const CartPage = () => {
     dispatcher(getCart())
   }, [])
 
-
-
-
-
   const templateProducts = useMemo(() => {
     return cart?.items.map((item) => {
+      if(item.type === "bundle"){
+        return
+      }
       return <CartProductItem item={item} />
+    })
+
+  }, [cart])
+
+  const templateBundle = useMemo(() => {
+    return cart?.items.map((item) => {
+      if(item.type === "bundle"){
+        return <CartBundleItem item={item} />
+      }
+      return
     })
 
   }, [cart])
@@ -37,6 +47,7 @@ export const CartPage = () => {
       <div className={classes.cart_wrp}>
         <div className={classes.cart_products}>
           <div className={classes.cart_products_title}><span>Products in the basket</span><span className={classes.cart_clear} onClick={()=>dispatcher(clearCart())}>Clean cart</span> </div>
+          {templateBundle}
           {templateProducts}
         </div>
         <div className={classes.cart_total}>

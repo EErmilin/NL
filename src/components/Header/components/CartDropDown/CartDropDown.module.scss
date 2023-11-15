@@ -6,9 +6,9 @@
   top: 66px;
   right: 0;
   z-index: 100;
-  cursor:default;
+  cursor: default;
 
-  &_count{
+  &_count {
     color: var(--gray-80, #707070);
     font-size: 12px;
     font-weight: 400;
@@ -17,10 +17,11 @@
   }
 
 
-  &_bottom{
+  &_bottom {
     padding: 0 20px;
     margin-bottom: 20px;
-    &_total{
+
+    &_total {
       display: flex;
       justify-content: space-between;
       margin: 20px 0;
@@ -32,39 +33,25 @@
     font-size: 20px;
     font-weight: 400;
     line-height: 27px;
-    margin: 24px 0 17px 0 ;
+    margin: 24px 0 17px 0;
   }
 
-  &_products_wrp{
+  &_products_wrp {
     border-bottom: 1px solid #ECECEE;
     padding: 0 20px;
   }
 
-
-  &_product {
+  &_bundle {
     position: relative;
     display: flex;
-    height: 80px;
+    min-height: 90px;
+    background: var(--BG, #F8F8F8);
     margin-bottom: 40px;
-    &:last-child{
-      margin-bottom: 28px;
-    }
-    &_delete{
-      display: flex;
-      justify-content:space-between;
-      &:before {
-        content: '';
-        width: 24px;
-        height: 24px;
-        position: absolute;
-        right: 0;
-        cursor: pointer;
-        background: center/cover no-repeat url("../../../../assets/svg/close.svg");
-      }
-    }
+    padding: 20px 14px;
 
     &_info {
       margin-left: 20px;
+
       &_price {
         font-size: 16px;
 
@@ -73,10 +60,77 @@
         margin-top: 2px;
       }
 
-      &_name{
-        cursor: pointer;
+      &_name {
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 18px;
+          margin-bottom: 10px;
       }
-    
+
+    }
+
+    &_delete {
+      display: flex;
+      justify-content: space-between;
+
+      &:before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 14px;
+        cursor: pointer;
+        background: center/cover no-repeat url("../../../../assets/svg/trash.svg");
+      }
+    }
+  }
+
+
+  &_product {
+    position: relative;
+    display: flex;
+    min-height: 80px;
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 18px;
+    }
+
+    &_delete {
+      display: flex;
+      justify-content: space-between;
+
+      &:before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        background: center/cover no-repeat url("../../../../assets/svg/trash.svg");
+      }
+    }
+
+    &_info {
+      margin-left: 20px;
+
+      &_price {
+        font-size: 16px;
+
+        font-weight: 400;
+        line-height: 22px;
+        margin-top: 2px;
+      }
+
+      &_name {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        margin-right: 10px;
+      }
+
     }
 
     &_img {

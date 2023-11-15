@@ -78,6 +78,23 @@ export function addProduct(id) {
     };
 }
 
+export function addStarterPack(params) {
+    console.log("json", JSON.stringify(params))
+    return async (dispatch) => {
+        try {
+            const response = await axiosCustom.post(`${backUrl}/api/v1/customer/cart/add/${params.product_id}`, params)
+            dispatch(getCart())
+            return response
+        } catch (e) {
+            if (e.response) {
+                console.log('34589347539')
+                console.log(e.response.data.message)
+                throw new Error(e.response.data.message)
+            }
+        }
+    };
+}
+
 
 
 export function saveAdress() {

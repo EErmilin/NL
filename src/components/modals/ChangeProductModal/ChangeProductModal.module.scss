@@ -1,0 +1,65 @@
+.wrp {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--gray, #ECECEE);
+  padding-bottom: 50px;
+}
+
+.modal {
+  padding: 40px;
+}
+
+.btn {
+  color: white;
+  background-color: black;
+  width: 280px;
+  margin-top: 30px;
+
+}
+
+.selected {
+  border: 1px solid var(--gray-80, #707070);
+
+  &_wrp {
+    position: relative;
+
+    &:after {
+      cursor: pointer;
+      position: absolute;
+      top: 32%;
+      left: 50%;
+      transform: translateX(-50%);
+      content: '';
+      width: 72px;
+      height: 72px;
+      background: center/cover no-repeat url("../../../assets/svg/selected.svg");
+    }
+  }
+}
+
+.no_selected {
+  &_wrp {
+    position: relative;
+
+    &:hover {
+      &:after {
+        cursor: pointer;
+        position: absolute;
+        top: 32%;
+        left: 50%;
+        transform: translateX(-50%);
+        content: '';
+        width: 72px;
+        height: 72px;
+        background: center/cover no-repeat url("../../../assets/svg/select.svg");
+      }
+    }
+
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 39px;
+}

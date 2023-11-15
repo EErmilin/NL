@@ -134,8 +134,6 @@ export const PartnerRegistration = () => {
         navigate(`/registerSucces`)
       }
     } else if(!response.success && response.data){
-      console.log('!!!!!!!')
-      console.log(response)
       const confirmErrors = response.data
       setErrors({ ...errors, confirmErrors })
     }
