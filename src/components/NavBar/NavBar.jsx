@@ -8,7 +8,6 @@ import classes from "./NavBar.module.scss";
 function NavBar() {
     const page = useParams();
     const user = useSelector(state => state.auth.user);
-    const navigate = useNavigate()
 
 
     /** Масив ссылок */
@@ -20,12 +19,12 @@ function NavBar() {
 
                     { link: "profile", title: "My information" },
                     { link: "", title: "My orders" },
-                    { link: "", title: "Personal office" },
+                    { link: "personal-office", title: "Personal office" },
                     { link: "money", title: "Money" },
                 ]
             } else {
                 arrLinks = [
-                    { link: "", title: "Personal office" },
+                    { link: "personal-office", title: "Personal office" },
                     { link: "profile", title: "My information" },
                     { link: "", title: "My orders" },
                     { link: "money", title: "Money" },
@@ -69,7 +68,6 @@ function NavBar() {
                 <h3 className={classes.support_title}>Go to the support chat</h3>
                 <NavLink to="https://t.me/nlstar_support" target={"_blank"} className={classes.support_link}>Write to support</NavLink>
             </div>
-            {user?.is_partner && <div style={{margin: "20px 0"}}><ButtonDefault onClick={()=>navigate("/products/31")} title={"Starter"}></ButtonDefault> </div>}
         </>
     )
 

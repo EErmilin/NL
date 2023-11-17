@@ -6,9 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteCartItem, getCart, updateCard } from "../../../../../store/actions/orderActions";
 import { useEffect } from "react";
 import { useState } from "react";
+import { formatedSum } from "../../../../../functions/functions";
 
 
 export const CartProductItem = ({item}) => {
+  console.log('!!!!!!!!!!')
+  console.log(item)
 
   const [count, setCount] = useState(item.quantity)
   const dispatcher = useDispatch()
@@ -20,7 +23,7 @@ export const CartProductItem = ({item}) => {
               <div className={classes.cart_products_item_info_header}>
                 <div>
                   <div className={classes.cart_products_item_title}>{item.name}</div>
-                  <div className={classes.cart_products_item_price}>{item.formatted_total}</div>
+                  <div className={classes.cart_products_item_price}>{formatedSum(item.base_total)}<span className={classes.cart_products_item_price_pv}>{item?.product?.pv ? "/" + Number(item.product.pv)*item.quantity + " PV" : null}</span></div>
                 </div>
                 <div className={classes.cart_products_item_counter}>
                   <span className={classes.cart_products_item_counter_btn} onClick={() => {setCount(count - 1); dispatcher(updateCard(item.id, count))}}>-</span>

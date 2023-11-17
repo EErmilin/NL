@@ -19,6 +19,7 @@ import Receiving from "../pages/NotAuth/Cart/components/Receiving/Receiving";
 import ReferalProgram from "../pages/Auth/Profile/ReferalProgram/ReferalProgram";
 import Money from "../pages/Auth/Profile/Money/Money";
 import Starter from "../pages/Auth/Starter/Starter";
+import PersonalOffice from "../pages/Auth/Profile/PersonalOffice/PersonalOffice";
 
 export const routes = [
     {
@@ -54,6 +55,13 @@ export const routes = [
                         privateUrl: true,
                         component: <ReferalProgram />,
                         path: 'referal',
+                        exact: false,
+                    },
+                    {
+                        name: 'PersonalOffice',
+                        privateUrl: true,
+                        component: <PersonalOffice />,
+                        path: 'personal-office',
                         exact: false,
                     },
 

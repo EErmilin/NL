@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteCartItem, updateCard } from "../../../../store/actions/orderActions";
 import { SHOW_CARD } from "../../../../store/actions/actionsType";
 import Counter from "../../../Counter/Counter";
+import { formatedSum } from "../../../../functions/functions";
 
 function Product({ item }) {
     const dispatcher = useDispatch()
@@ -20,7 +21,7 @@ function Product({ item }) {
                 <img src={item.product.images[0].url} className={classes.cart_product_img} onClick={() => navigate(`/product/${item.id}`)}></img>
                 <div className={classes.cart_product_info}>
                     <div className={classes.cart_product_info_name} onClick={() => navigate(`/product/${item.id}`)}>{item.product.name}</div>
-                    <div className={classes.cart_product_info_price}>{item.formatted_total}</div>
+                    <div className={classes.cart_product_info_price}>{formatedSum(item.base_total)}<span className={classes.cart_product_info_price_pv}>{item?.product?.pv ? "/" + Number(item.product.pv)*item.quantity + " PV" : null}</span></div>
                     <Counter item={item} />
                 </div>
                 <div className={classes.cart_product_delete} onClick={() => dispatcher(deleteCartItem(item.id))}></div>
@@ -87,7 +88,7 @@ function CartDropDown({
             <div className={classes.cart_bottom}>
                 <div className={classes.cart_bottom_total}>
                     <span>Subtotal ({cart?.items?.length ?? "0"} items)</span>
-                    <span>{cart?.formatted_sub_total ?? "0 €"} </span>
+                    <span>{formatedSum(cart?.grand_total) ?? "0 €"} </span>
                 </div>
                 <ButtonDefault title={'View cart'} onClick={() => navigate("/cart")}></ButtonDefault>
             </div>

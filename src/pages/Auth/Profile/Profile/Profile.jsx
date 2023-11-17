@@ -2,7 +2,7 @@ import moment from "moment";
 import React from "react"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import NavBar from "../../../../components/NavBar/NavBar";
 import ButtonDefault from "../../../../components/UI/btns/Button/Button";
 import { getProfile } from "../../../../store/actions/authActions";
@@ -21,6 +21,8 @@ export const Profile = () => {
 
   if (!user) return
 
+  const preferred_contact = user.contacts && user.contacts.length && user.contacts.find((contact) => contact.contact_type === user.preferred_contact)
+  const partner_preferred_contact = user.parent_customer?.contacts && user.parent_customer.contacts.length && user.parent_customer.contacts.find((contact) => contact.contact_type === user.preferred_contact)
 
   const renderInfo = () => {
     if (user.partner_code) {
@@ -83,13 +85,10 @@ export const Profile = () => {
             <div className={classes.profile_gray}>Phone</div>
             <div className={classes.profile_value}>+{user.phone}</div>
           </div>
-
         </div>
-
-
         <div>
           <div className={classes.profile_gray}>Contact preferences</div>
-          <div className={classes.profile_value}>{user?.preferred_contact + ":" + user?.contact_value}</div>
+          <div className={classes.profile_value}>{`${preferred_contact.contact_type}: ${preferred_contact.contact_type ==="PHONE"  ? "+": ''}${preferred_contact.contact_value}`}</div>
         </div>
       </div>
       )
@@ -137,11 +136,15 @@ export const Profile = () => {
             <div className={classes.profile_value}>{user?.gender.toLowerCase()}</div>
           </div>
         </div>
-
-
+        <div className={classes.profile_flex}>
+          <div>
+            <div className={classes.profile_gray}>Phone</div>
+            <div className={classes.profile_value}>+{user.phone}</div>
+          </div>
+        </div>
         <div>
           <div className={classes.profile_gray}>Contact preferences</div>
-          <div className={classes.profile_value}>{user?.preferred_contact + ":" + user?.contact_value}</div>
+          <div className={classes.profile_value}>{`${preferred_contact.contact_type}: ${preferred_contact.contact_type ==="PHONE"  ? "+": ''}${preferred_contact.contact_value}`}</div>
         </div>
       </div>
     )
@@ -149,8 +152,15 @@ export const Profile = () => {
 
   return (
     <div className={classes.wrapper}>
+      {user?.is_partner &&
+        <div className={classes.starter}>
+          <h1 className={classes.starter_title}>Starter Packs</h1>
+          <NavLink to="/products/31" className={classes.starter_link}>Select a pack</NavLink>
+        </div>
+      }
       <div className={classes.profile_wrp}>
-      {renderInfo()}
+
+        {renderInfo()}
 
         {user?.parent_customer &&
           <div >
@@ -178,7 +188,7 @@ export const Profile = () => {
             <div className={classes.profile_flex}>
               <div>
                 <div className={classes.profile_gray}>Contact preferences</div>
-                <div className={classes.profile_value}>{user?.parent_customer?.preferred_contact}</div>
+                <div className={classes.profile_value}>{`${partner_preferred_contact.contact_type}: ${partner_preferred_contact.contact_type ==="PHONE"  ? "+": ''}${partner_preferred_contact.contact_value}`}</div>
               </div>
             </div>
           </div>}

@@ -15,7 +15,7 @@ export const Money = () => {
 
   const user = useSelector(state => state.auth.user);
 
-  if(!user)return
+  if (!user) return
   return (
     <div className={classes.wrapper}>
       <h2 className={classes.title}>Money</h2>
@@ -23,12 +23,12 @@ export const Money = () => {
         <div>
           <div className={classes.gray}>Active account</div>
           <div className={classes.text}>Unit account</div>
-          {user.is_partner && <div className={classes.text}>{user.role === "business-partner" ? "Reward ": "Delta"} account</div>}
+          {user.is_partner && <div className={classes.text}>{user.role === "business-partner" ? "Reward " : "Delta"} account</div>}
         </div>
         <div className={classes.balance}>
           <div className={classes.gray}>Balance</div>
-          <div className={classes.text}>{user.is_partner ? user.balance_unit_partner: user.balance_unit_client + " €"} </div>
-           {user.is_partner && <div className={classes.text}>{user.balance_reward} €</div>}
+          <div className={classes.text}>{user.is_partner ? user.balance_unit_partner : user.balance_unit_client} €</div>
+          {user.is_partner && <div className={classes.text}>{user.balance_reward}{!user.role === "business-partner" ? '' : " €"}</div>}
         </div>
       </div>
       <div className={classes.text}>Internal account statement</div>

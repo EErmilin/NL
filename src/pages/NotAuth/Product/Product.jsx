@@ -17,6 +17,7 @@ import { addProduct } from "../../../store/actions/orderActions";
 import { SHOW_CARD } from "../../../store/actions/actionsType";
 import { setIsShowCart } from "../../../store/actions/routerActions";
 import { useState } from "react";
+import { formatedSum } from "../../../functions/functions";
 
 export const Product = () => {
 
@@ -96,7 +97,6 @@ export const Product = () => {
     !isShowCart && dispatcher(setIsShowCart(true))
   }
 
-
   return (
     <div className={classes.wrapper}>
 
@@ -115,7 +115,7 @@ export const Product = () => {
         </div>
         <div className={classes.product_info}>
           <div className={classes.product_name}>{product.name}</div>
-          <div className={classes.product_price}>{Number(product.price).toFixed(0)} €<span className={classes.product_price_pv}>/{Number(product.pv).toFixed(0)} PV</span></div>
+          <div className={classes.product_price}>{formatedSum(product.price)}<span className={classes.product_price_pv}>{product.pv ? "/" + Number(product.pv) + " PV" : null}</span></div>
           <div className={classes.product_made}>Made in {product.made_in}</div>
           <div dangerouslySetInnerHTML={{ __html: product.short_description }} className={classes.product_description}></div>
           <div><ButtonDefault className={classes.product_info_btn} onClick={toggleAddProduct} title={'Add to cart'} /></div>

@@ -85,6 +85,14 @@
         font-weight: 500;
         line-height: 28px;
         margin-bottom: 62px;
+        &_pv {
+          color: var(--gray-80, #707070);
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 500;
+          margin-left: 8px;
+          line-height: 28px; /* 116.667% */
+        }
       }
 
       &_img {

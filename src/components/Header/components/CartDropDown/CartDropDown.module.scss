@@ -54,18 +54,17 @@
 
       &_price {
         font-size: 16px;
-
         font-weight: 400;
         line-height: 22px;
         margin-top: 2px;
       }
 
       &_name {
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 18px;
-          margin-bottom: 10px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        margin-bottom: 10px;
       }
 
     }
@@ -121,6 +120,14 @@
         font-weight: 400;
         line-height: 22px;
         margin-top: 2px;
+
+        &_pv {
+          color: var(--gray-80, #707070);
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 22px;
+          margin-left: 2px;
+        }
       }
 
       &_name {

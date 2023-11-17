@@ -7,3 +7,12 @@ export function isUserAuth() {
     }
     return isAuith
 }
+
+
+export function formatedSum(sum) {
+    
+    const formeted = sum ? Number.isInteger(Number(sum)) ? Number(sum) : Number(sum).toFixed(2) :0
+    return formeted.toString().replace(".", ',') + "  €"
+}
+
+

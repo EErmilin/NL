@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import fakeProduct from '../../assets/img/fakeProduct.png'
-import { isUserAuth } from "../../functions/functions";
+import { formatedSum, isUserAuth } from "../../functions/functions";
 import useToggleVisibility from "../../hooks/useToggleVisibility";
 import { addProduct } from "../../store/actions/orderActions";
 import { setIsAuth, setIsShowCart } from "../../store/actions/routerActions";
@@ -85,7 +85,7 @@ function ProductItem({ product, isChange = false, productsArray, isChangeModal, 
             <div onClick={onToggleProduct}>
                 <p className={classes.product_title}>{product.type}</p>
                 <p className={classes.product_description}>{product.name}</p>
-                {!isChange && !isChangeModal && <p className={classes.product_price}>{Number(product.price).toFixed(0)} €<sup className={classes.product_price_pv}>{product.pv ? "/" + Number(product.pv).toFixed(0) + "PV" : null} </sup></p>}
+                {!isChange && !isChangeModal && <p className={classes.product_price}>{formatedSum(product.price)}<sup className={classes.product_price_pv}>{product.pv ? "/" + Number(product.pv) + " PV" : null} </sup></p>}
                 {!isChange && !isChangeModal && <div className={classes.status_wrp}>
                     {product.new ? <div className={classes.status}>New</div> : null}
                     {product.featured ? <div className={classes.gift}></div> : null}
