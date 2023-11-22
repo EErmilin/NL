@@ -22,7 +22,7 @@ export const Profile = () => {
   if (!user) return
 
   const preferred_contact = user.contacts && user.contacts.length && user.contacts.find((contact) => contact.contact_type === user.preferred_contact)
-  const partner_preferred_contact = user.parent_customer?.contacts && user.parent_customer.contacts.length && user.parent_customer.contacts.find((contact) => contact.contact_type === user.preferred_contact)
+  const partner_preferred_contact = user.parent_customer?.contacts && user.parent_customer.contacts.length && user.parent_customer.contacts.find((contact) => contact.contact_type === user.parent_customer.preferred_contact)
 
   const renderInfo = () => {
     if (user.partner_code) {

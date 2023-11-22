@@ -1,6 +1,8 @@
 import { useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import useToggleVisibility from "../../hooks/useToggleVisibility";
+import BecomePartnerModal from "../modals/BecomePartnerModal/BecomePartnerModal";
 import ButtonDefault from "../UI/btns/Button/Button";
 import classes from "./NavBar.module.scss";
 
@@ -8,8 +10,15 @@ import classes from "./NavBar.module.scss";
 function NavBar() {
     const page = useParams();
     const user = useSelector(state => state.auth.user);
+    const navigate = useNavigate()
+    const [becomePartnerModal, setBecomePartnerModal, closeBecomePartnerModal] = useToggleVisibility(false)
 
-
+    const templateBecomePartnerModal = becomePartnerModal && (
+        <BecomePartnerModal
+            closeModal={closeBecomePartnerModal}
+            btnCancelClick={() => setBecomePartnerModal(false)} />
+    )
+    
     /** Масив ссылок */
     const templateLinks = useMemo(() => {
         if (user) {
@@ -63,11 +72,16 @@ function NavBar() {
                     </ul>
                 </div>
             </div>
-            {user?.partner_code && <NavLink to='referal' className={classes.referal}>Referral program</NavLink> }
+            {user?.partner_code && <div className={classes.referal} onClick={() => navigate('referal')}><div className={classes.referal_link}>Referral program</div></div>}
             <div className={classes.support}>
                 <h3 className={classes.support_title}>Go to the support chat</h3>
                 <NavLink to="https://t.me/nlstar_support" target={"_blank"} className={classes.support_link}>Write to support</NavLink>
             </div>
+            {user?.role == "client" && <div className={classes.become}>
+                <h3 className={classes.become_title}>Become a business partner</h3>
+                <div onClick={() => setBecomePartnerModal(true)} target={"_blank"} className={classes.become_link}>Update</div>
+            </div>}
+            {templateBecomePartnerModal}
         </>
     )
 

@@ -47,7 +47,7 @@ function ProductItem({ product, isChange = false, productsArray, isChangeModal, 
 
     const temblateBtn = useMemo(() => {
         if (isChangeModal) return null
-        if (isCount || cartProduct) {
+        if ((isCount || cartProduct) &&!isChange ) {
             return <Counter item={cartProduct} className={classes.counter} />
         }
         if (isChange) {

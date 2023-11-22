@@ -88,15 +88,15 @@
   font-size: 20px;
   font-weight: 400;
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   cursor: pointer;
-
-  &:after {
-    content: '';
-    width: 40px;
-    height: 40px;
-    background: center/cover no-repeat url("../../assets/svg/user-plus.svg");
+  width: 320px;
+  height: 135px;
+  background: right bottom no-repeat url("../../assets/img/referal.png");
+  &_link {
+    width: 137px;
   }
+
 }
 
 .support {
@@ -105,7 +105,7 @@
   flex-shrink: 0;
   padding-left: 20px;
   border: 1px solid var(--gray, #ECECEE);
-  background: right no-repeat url("../../assets/img/nav-support-img.png");
+  background: right bottom no-repeat url("../../assets/img/nav-support-img.png");
 
   &_link {
     font-weight: 500;
@@ -116,6 +116,31 @@
     font-size: 20px;
     font-weight: 400;
     max-width: 151px;
+    margin-bottom: 30px;
+  }
+}
+
+
+.become {
+  margin-top: 10px;
+  width: 320px;
+  height: 135px;
+  flex-shrink: 0;
+  padding-left: 20px;
+  border: 1px solid var(--gray, #ECECEE);
+  background: right bottom no-repeat url("../../assets/img/becomePartner.png");
+
+
+  &_link {
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration-line: underline;
+  }
+
+  &_title {
+    font-size: 20px;
+    font-weight: 400;
+    max-width: 160px;
     margin-bottom: 30px;
   }
 }
