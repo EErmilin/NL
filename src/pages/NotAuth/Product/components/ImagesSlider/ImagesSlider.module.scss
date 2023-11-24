@@ -6,7 +6,7 @@
   gap: 10px;
   background: var(--BG, #F8F8F8);
   cursor: pointer;
-
+margin-bottom: 20px;
   &:before {
     content: '';
     width: 16px;
@@ -17,6 +17,7 @@
 
 
 .swiper_button_bottom{
+  margin-top: 20px;
   display: flex;
   padding: 3px 55px;
   align-items: flex-start;
@@ -34,5 +35,5 @@
 }
 
 .swiper{
- height: 606px;
+ height: 540px;
 }

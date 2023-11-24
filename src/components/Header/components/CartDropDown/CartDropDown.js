@@ -21,7 +21,7 @@ function Product({ item }) {
                 <img src={item.product.images[0].url} className={classes.cart_product_img} onClick={() => navigate(`/product/${item.id}`)}></img>
                 <div className={classes.cart_product_info}>
                     <div className={classes.cart_product_info_name} onClick={() => navigate(`/product/${item.id}`)}>{item.product.name}</div>
-                    <div className={classes.cart_product_info_price}>{formatedSum(item.base_total)}<span className={classes.cart_product_info_price_pv}>{item?.product?.pv ? "/" + Number(item.product.pv)*item.quantity + " PV" : null}</span></div>
+                    <div className={classes.cart_product_info_price}>{formatedSum(item.base_total)}<span className={classes.cart_product_info_price_pv}>{item?.product?.pv ? "/" + Number(item.product.pv) * item.quantity + " PV" : null}</span></div>
                     <Counter item={item} />
                 </div>
                 <div className={classes.cart_product_delete} onClick={() => dispatcher(deleteCartItem(item.id))}></div>
@@ -61,8 +61,8 @@ function CartDropDown({
     const templateProducts = useMemo(() => {
         if (!cart) return
         return cart.items.map((item, key) => {
-            if(item.type === "bundle"){
-                return 
+            if (item.type === "bundle") {
+                return
             }
             return <Product item={item} key={key} />
         })
@@ -71,12 +71,17 @@ function CartDropDown({
     const templateBundle = useMemo(() => {
         if (!cart) return
         return cart.items.map((item, key) => {
-            if(item.type === "bundle"){
-                return <Bundle item={item} key={key}/>
+            if (item.type === "bundle") {
+                return <Bundle item={item} key={key} />
             }
             return
         })
     }, [cart, cart?.items])
+
+    const totalPV = cart && cart.items?.length && cart.items.reduce((partialSum, a) => partialSum + Number(a.product.pv)*a.quantity, 0);
+
+    console.log('totalPV')
+    console.log(totalPV)
 
     return (
         <div className={classes.cart}>
@@ -88,7 +93,7 @@ function CartDropDown({
             <div className={classes.cart_bottom}>
                 <div className={classes.cart_bottom_total}>
                     <span>Subtotal ({cart?.items?.length ?? "0"} items)</span>
-                    <span>{formatedSum(cart?.grand_total) ?? "0 €"} </span>
+                   <span><span className={classes.price}>{formatedSum(cart?.grand_total) ?? "0 €"}</span>{totalPV?<span className={classes.pv}> / {totalPV}PV</span>:''}</span>
                 </div>
                 <ButtonDefault title={'View cart'} onClick={() => navigate("/cart")}></ButtonDefault>
             </div>

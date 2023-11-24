@@ -23,6 +23,7 @@
 
     &_total {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       margin: 20px 0;
     }
@@ -147,4 +148,15 @@
       cursor: pointer;
     }
   }
+}
+
+.pv {
+  color: var(--gray-80, #707070);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.price {
+  font-weight: 500;
 }

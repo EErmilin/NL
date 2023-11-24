@@ -17,9 +17,11 @@ import CartPage from "../pages/NotAuth/Cart/components/CartPage/CartPage";
 import Order from "../pages/NotAuth/Cart/components/Order/Order";
 import Receiving from "../pages/NotAuth/Cart/components/Receiving/Receiving";
 import ReferalProgram from "../pages/Auth/Profile/ReferalProgram/ReferalProgram";
-import Money from "../pages/Auth/Profile/Money/Money";
 import Starter from "../pages/Auth/Starter/Starter";
 import PersonalOffice from "../pages/Auth/Profile/PersonalOffice/PersonalOffice";
+import Money from "../pages/Auth/Profile/Money/Money";
+import MoneyMain from "../pages/Auth/Profile/Money/MoneyMain/MoneyMain";
+import MoneyInfo from "../pages/Auth/Profile/Money/MoneyInfo/MoneyInfo";
 
 export const routes = [
     {
@@ -43,11 +45,32 @@ export const routes = [
                         path: 'profile',
                         exact: false,
                     },
+                    
                     {
+                        name: 'cart',
+                        component: <Money
+                            routes={
+                                [
+                                    {
+                                        name: '',
+                                        privateUrl: false,
+                                        component: <MoneyMain />,
+                                        path: '/',
+                                        exact: true,
+                                    },
+                                    {
+                                        name: '',
+                                        privateUrl: false,
+                                        component: <MoneyInfo />,
+                                        path: 'info',
+                                        exact: true,
+                                    },
+                                ]
+                            }
+                        />,
                         name: 'money',
                         privateUrl: true,
-                        component: <Money />,
-                        path: 'money',
+                        path: 'money/*',
                         exact: false,
                     },
                     {

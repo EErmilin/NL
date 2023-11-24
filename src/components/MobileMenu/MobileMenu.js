@@ -33,11 +33,11 @@ export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal,
 
     const categories = useSelector(state => state.catalog.categories);
 
-    const { data, isInitialLoading, isError } = useQuery([`categorie${categorieId}`, { categorieId: categorieId}], () => {
+    const { data, isInitialLoading, isError } = useQuery([`categorie${categorieId}`, { categorieId: categorieId }], () => {
 
         if (menuOpened) {
-          return  axiosCustom(`${backUrl}/api/v1/descendant-categories?parent_id=${categorieId}`, { id: categorieId })
-        } else{
+            return axiosCustom(`${backUrl}/api/v1/descendant-categories?parent_id=${categorieId}`, { id: categorieId })
+        } else {
             return null
         }
     }
@@ -57,15 +57,15 @@ export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal,
             }
 
             if (elem.slug === "new-arrivals") {
-                return <div className={classes.products_categorie_link} > <NavLink to={`/products/${elem.id}`} className={classes.products_categorie_link}>{elem.name}</NavLink></div>
+                return <div className={classes.products_categorie_link} key={id}> <NavLink to={`/products/${elem.id}`} className={classes.products_categorie_link}>{elem.name}</NavLink></div>
 
             }
             if (elem.slug === "special-offers") {
-                return <div className={classes.products_categorie_link}> <NavLink to={`/products/${elem.id}`} className={classes.products_categorie_link}>{elem.name}</NavLink></div>
+                return <div className={classes.products_categorie_link} key={id}> <NavLink to={`/products/${elem.id}`} className={classes.products_categorie_link}>{elem.name}</NavLink></div>
 
             }
             if (elem.slug === "bestsellers") {
-                return <div className={classes.products_categorie_link}> <NavLink to={`/products/${elem.id}`} className={classes.products_categorie_link}>{elem.name}</NavLink></div>
+                return <div className={classes.products_categorie_link} key={id}> <NavLink to={`/products/${elem.id}`} className={classes.products_categorie_link}>{elem.name}</NavLink></div>
 
             }
             return (
@@ -97,14 +97,8 @@ export default function MobileMenu({ menuOpened, setMenuOpened, setLocalesModal,
         return arrLinks.map((elem, id) => {
             return (
 
-                <div className={classes.brand}>
-                    <NavLink
-
-                        key={id}
-                        to={elem.link}
-                    >
-                        {elem.title}
-                    </NavLink>
+                <div className={classes.brand} key={id} >
+                    <NavLink to={elem.link}> {elem.title}</NavLink>
                 </div>
             )
         })

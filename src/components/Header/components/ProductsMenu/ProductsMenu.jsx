@@ -24,7 +24,7 @@ export const ProductsMenu = () => {
   const { data, isInitialLoading, isError } = useQuery([`categorie${categorie?.id}`, { categorie: categorie?.id }], () => {
     if (categorie) {
       return axiosCustom(`${backUrl}/api/v1/descendant-categories?parent_id=${categorie?.id}`, { id: categorie?.id })
-    }
+    } else return null
   }
   );
 
@@ -35,13 +35,13 @@ export const ProductsMenu = () => {
         return
       }
       if (elem.slug === "new-arrivals") {
-        return <div className={classes.link}onMouseEnter={() => setCategorie(false)}  > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
+        return <div className={classes.link} onMouseEnter={() => setCategorie(false)} key={id} > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
       }
       if (elem.slug === "special-offers") {
-        return <div className={classes.link }onMouseEnter={() => setCategorie(false)} > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
+        return <div className={classes.link} onMouseEnter={() => setCategorie(false)} key={id}> <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
       }
       if (elem.slug === "bestsellers") {
-        return <div className={classes.link} onMouseEnter={() => setCategorie(false)} > <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
+        return <div className={classes.link} onMouseEnter={() => setCategorie(false)} key={id}> <NavLink to={`/products/${elem.id}`} className={classes.link}>{elem.name}</NavLink></div>
       }
       return (
         <div
@@ -71,10 +71,10 @@ export const ProductsMenu = () => {
     return arrLinks.map((elem, id) => {
       return (
 
-        <div className={classes.brand}>
+        <div className={classes.brand}            key={id}>
           <NavLink
 
-            key={id}
+
             to={elem.link}
           >
             {elem.title}

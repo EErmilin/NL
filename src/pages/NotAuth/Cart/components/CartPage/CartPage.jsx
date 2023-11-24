@@ -22,7 +22,7 @@ export const CartPage = () => {
 
   const templateProducts = useMemo(() => {
     return cart?.items.map((item) => {
-      if(item.type === "bundle"){
+      if (item.type === "bundle") {
         return
       }
       return <CartProductItem item={item} />
@@ -32,7 +32,7 @@ export const CartPage = () => {
 
   const templateBundle = useMemo(() => {
     return cart?.items.map((item) => {
-      if(item.type === "bundle"){
+      if (item.type === "bundle") {
         return <CartBundleItem item={item} />
       }
       return
@@ -40,22 +40,25 @@ export const CartPage = () => {
 
   }, [cart])
 
+  const totalPV = cart && cart.items?.length && cart.items.reduce((partialSum, a) => partialSum + Number(a.product.pv)*a.quantity, 0);
+console.log('@!@@@@@@@@@')
+console.log(cart.items)
   return (
     <div className={classes.cart}>
       <div className={classes.cart_return}>Return to the catalog</div>
       <div className={classes.cart_title}>Shopping cart</div>
       <div className={classes.cart_wrp}>
         <div className={classes.cart_products}>
-          <div className={classes.cart_products_title}><span>Products in the basket</span><span className={classes.cart_clear} onClick={()=>dispatcher(clearCart())}>Clean cart</span> </div>
+          <div className={classes.cart_products_title}><span>Products in the basket</span><span className={classes.cart_clear} onClick={() => dispatcher(clearCart())}>Clean cart</span> </div>
           {templateBundle}
           {templateProducts}
         </div>
         <div className={classes.cart_total}>
           <h2 className={classes.cart_total_title}>Cart totals</h2>
-          <div className={classes.cart_total_products_wrp}><span className={classes.cart_total_products}>Products:</span> <span className={classes.cart_total_products}>{cart?.items_qty ? Number(cart?.items_qty).toFixed(0): 0} items</span></div>
+          <div className={classes.cart_total_products_wrp}><span className={classes.cart_total_products}>Products:</span> <span className={classes.cart_total_products}>{cart?.items_qty ? Number(cart?.items_qty).toFixed(0) : 0} items</span></div>
           <div className={classes.cart_total_price_wrp}>
             <span className={classes.cart_total_price_title}>Total:</span>
-            <span className={classes.cart_total_price}>{cart?.formatted_grand_total || "0  €"}</span>
+            <span className={classes.cart_total_price}>{cart?.formatted_grand_total || "0  €"}{totalPV ? <span className={classes.pv}> /{totalPV} PV</span> : ''}</span>
           </div>
           <ButtonDefault className={classes.cart_total_btn} onClick={() => navigate("/cart/order")} title={"Proceed to check out"}></ButtonDefault>
         </div>

@@ -16,10 +16,11 @@
     font-size: 20px;
     font-weight: 400;
 
-  display: flex;
+    display: flex;
+
     &:before {
       content: '';
-      margin: 3.5px 0 ;
+      margin: 3.5px 0;
       width: 7px;
       height: 14px;
       margin-right: 12px;
@@ -103,4 +104,11 @@
       }
     }
   }
+}
+
+.pv {
+  color: var(--gray-80, #707070);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
 }

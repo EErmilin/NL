@@ -19,7 +19,7 @@ function NewArrivalsSlider({
 
     const templateProducts = useMemo(() => {
         if (!data) return
-        return data.data?.data?.map((product) => <SwiperSlide><ProductItem product={product} /></SwiperSlide>)
+        return data.data?.data?.map((product, key) => <SwiperSlide key={key}><ProductItem product={product} /></SwiperSlide>)
     }, [data])
 
     const windowSize = useWindowSize()

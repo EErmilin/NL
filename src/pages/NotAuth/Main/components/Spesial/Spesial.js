@@ -16,7 +16,7 @@ function Spesial({
 
     const templateProducts = useMemo(() => {
         if (!data) return
-        return data.data?.data?.map((product) => <ProductItem product={product} />)
+        return data.data?.data?.map((product, key) => <ProductItem product={product} key={key}/>)
     }, [data])
 
     return (

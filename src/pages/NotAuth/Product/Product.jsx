@@ -15,9 +15,9 @@ import Fancybox from "../../../components/Fancybox/Fancybox";
 import ImagesSlider from "./components/ImagesSlider/ImagesSlider";
 import { addProduct } from "../../../store/actions/orderActions";
 import { SHOW_CARD } from "../../../store/actions/actionsType";
-import { setIsShowCart } from "../../../store/actions/routerActions";
+import { setIsAuth, setIsShowCart } from "../../../store/actions/routerActions";
 import { useState } from "react";
-import { formatedSum } from "../../../functions/functions";
+import { formatedSum, isUserAuth } from "../../../functions/functions";
 
 export const Product = () => {
 
@@ -87,14 +87,18 @@ export const Product = () => {
   ]
 
   const photos = product.images.map((photo, key) => {
-    return <div onClick={()=>setMainImg(photo)} key={key}>
-      <img alt="" className={mainImg===photo? classes.img_selected : classes.img} src={photo.url} />
-      </div>
+    return <div onClick={() => setMainImg(photo)} key={key}>
+      <img alt="" className={mainImg === photo ? classes.img_selected : classes.img} src={photo.url} />
+    </div>
   })
 
   const toggleAddProduct = () => {
-    dispatcher(addProduct(product.id))
-    !isShowCart && dispatcher(setIsShowCart(true))
+    if (!isUserAuth()) {
+      dispatcher(setIsAuth(true))
+    } else {
+      dispatcher(addProduct(product.id))
+      !isShowCart && dispatcher(setIsShowCart(true))
+    }
   }
 
   return (
@@ -128,7 +132,7 @@ export const Product = () => {
         withTitleBorder={true}
         blocks={blocks}>
       </TransitionContainer>
-    {product.recommended_products && product.recommended_products.length  ?  <RecommendedProducts products={product.recommended_products} />: null}
+      {product.recommended_products && product.recommended_products.length ? <RecommendedProducts products={product.recommended_products} /> : null}
     </div>
   )
 }

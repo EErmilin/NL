@@ -22,7 +22,7 @@ function Main() {
             <span className={classes.items_title}>New arrivals</span>
             <NewArrivalsSlider />
         </div>
-    }, [locale])
+    }, [])
 
     const templateSpesial = useMemo(() => {
         return <div>

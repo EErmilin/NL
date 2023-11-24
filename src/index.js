@@ -14,9 +14,10 @@ import { ConfigProvider } from 'antd';
 import ErrorFallback from './ErrorBoundery/ErrorFallback';
 import { COLORS_VARIABLES } from './constants/colors';
 import './commonStyle/_index.scss';
+import { createRoot } from 'react-dom/client';
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root'));
 root.render(
 
     <Provider store={store}>

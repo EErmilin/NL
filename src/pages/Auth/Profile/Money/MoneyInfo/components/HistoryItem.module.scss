@@ -1,0 +1,32 @@
+.wrapper {
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid #ECECEE;
+  display: grid;
+  grid-template-columns: 0.6fr 1.5fr 0.8fr 0.8fr;
+  text-align: right;
+}
+.left {
+  text-align: left;
+}
+.date {
+  margin-bottom: 3px;
+}
+
+.time {
+  color: var(--gray-80, #707070);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.expenditure{
+  color: var(--red, #FF2525);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.coming{
+  color: var(--green, #00CD39);
+  font-size: 16px;
+  font-weight: 500;
+}

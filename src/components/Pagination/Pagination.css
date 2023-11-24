@@ -1,0 +1,74 @@
+
+
+.ant-pagination-item{
+    border-color: var(--gray, #ECECEE) !important;
+    margin: 0 2px !important;
+    border-radius: 0px !important;
+    height: 40px !important;
+    width: 40px;
+}
+
+.ant-pagination-item-active{
+    border-color: var(--Black, #000) !important;
+
+   
+}
+
+.ant-pagination-item a {
+    color:#000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100%;
+}
+.ant-pagination-item-link{
+}
+.ant-pagination-item-link-icon svg{
+    fill:#000 !important;
+}
+
+.ant-pagination-prev{
+    height: 40px !important;
+    width: 40px;
+    margin:  0 2px !important;
+}
+
+.ant-pagination-next{
+    height: 40px !important;
+    width: 40px;
+    margin:  0 2px !important;
+}
+
+.ant-pagination-jump-prev{
+    margin:  0 2px !important;
+    height: 40px !important;
+    width: 40px;
+}
+
+.ant-pagination-jump-next{
+
+    margin:  0 2px !important;
+    height: 40px !important;
+    width: 40px !important;
+
+}
+.ant-pagination-item-container{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 40px !important;
+    width: 40px !important;
+}
+.ant-pagination-item-ellipsis{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.ant-pagination-prev span{
+  margin-top: 2.4px !important;
+}
+
+.ant-pagination-next span{
+    margin-top: 2.4px !important;
+  }

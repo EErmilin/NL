@@ -137,8 +137,6 @@ export function becomePartner(partnerCode) {
     return async (dispatch) => {
         try {
             const response = await axiosCustom.post(`${backUrl}/api/v1/customer/become-partner`, { referral_code: partnerCode })
-            console.log('!!!!!!!!!!responseaction')
-            console.log(response)
             return response.data
 
         } catch (e) {
@@ -148,6 +146,21 @@ export function becomePartner(partnerCode) {
         }
     };
 }
+
+export function getBalanceHistory() {
+    return async (dispatch) => {
+        try {
+            const response = await axiosCustom.get(`${backUrl}/api/v1/customer/balance-history?account_type=unit-partner`)
+            return response.data
+
+        } catch (e) {
+            if (e.response?.data) {
+                return e.response?.data
+            }
+        }
+    };
+}
+
 
 
 

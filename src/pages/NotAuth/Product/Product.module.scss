@@ -108,11 +108,13 @@
   &_selected {
     object-fit: cover;
     width: 126px;
+    height: 126px;
     border: 2px solid var(--gray, #ECECEE);
   }
 
   object-fit: cover;
   width: 126px;
+  height: 126px;
 }
 
 

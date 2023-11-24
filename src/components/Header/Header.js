@@ -136,23 +136,24 @@ function Header() {
 
                     </div>
                 </div>
+                <div className={classes.logo}>
+                    <NavLink to="/"><Logo /></NavLink>
+                </div>
                 <div className={classes.container}>
                     <div className={classes.container_left}>
                         <div onClick={expandBlock} className={[(isProductsOpen || url.pathname.includes("product") ? classes.active : classes.link)].join(' ')}>{t("Products")}</div>
                         {templateLinks}
                     </div>
-                    <div className={classes.logo}>
-                        <NavLink to="/"><Logo /></NavLink>
-                    </div>
+
                     <div className={classes.container_right}>
-                      {//  <NavLink className={classes.search} to="">{t("Search")}</NavLink>
-                      }
+                        {//  <NavLink className={classes.search} to="">{t("Search")}</NavLink>
+                        }
                         <div>
                             {//<NavLink to="" className={classes.heart}>{t("Wishlist")}<div className={classes.count}>0</div></NavLink>
                             }
                             <div className={classes.cart_wrp}>
                                 <div className={classes.cart_wrp}>
-                                    <div className={[classes.cart, isShowCart ? classes.cart_open : ""].join(" ")} onClick={toggleCart}>{t("My cart")} <div className={classes.count}>{!isUserAuth() || !cart ? "0" :Number(cart?.items_qty).toFixed(0)}</div>
+                                    <div className={[classes.cart, isShowCart ? classes.cart_open : ""].join(" ")} onClick={toggleCart}>{t("My cart")} <div className={classes.count}>{!isUserAuth() || !cart ? "0" : Number(cart?.items_qty).toFixed(0)}</div>
                                     </div>
                                 </div>
                                 {isShowCart && <div ref={ref}><CartDropDown /></div>}
@@ -160,13 +161,13 @@ function Header() {
                         </div>
                     </div>
                     <div className={classes.mobile}>
-                      {  //<NavLink className={classes.mobile_search} to=""></NavLink>
-                      }
+                        {  //<NavLink className={classes.mobile_search} to=""></NavLink>
+                        }
                         <div className={classes.mobile_cart_wrp}>
                             <div className={[classes.mobile_cart, isShowCart ? classes.cart_open : ""].join(" ")} onClick={toggleCart}></div>
                         </div>
-                      {//  <NavLink to="" className={classes.mobile_heart}></NavLink>
-                      }
+                        {//  <NavLink to="" className={classes.mobile_heart}></NavLink>
+                        }
                         <div className={classes.burger}
                             onClick={closeMenu}
                         >

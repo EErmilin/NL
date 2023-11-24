@@ -7,6 +7,8 @@
   @media(max-width: 1023px) {
     background: #FFF;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -17,20 +19,28 @@
     border-bottom: 1px solid var(--gray-80, #707070);
     background: #FFF;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   align-items: flex-start;
   height: 100%;
   padding-top: 20px;
-  @media(max-width: 1023px) {
-    padding: 17px 0 ;
-  }
+  margin-bottom: 13.43px;
   svg{
-    height: 26px;
-    width: 58px;
+    height: 45.6px;
+    width: 102px;
+    @media(max-width: 1023px) {
+      height: 26px;
+      width: 58px;
+      margin-left: 13px;
+    }
   }
 
 
@@ -149,6 +159,7 @@
     height: 60px;
     padding: 0 13px;
     align-items: center;
+    justify-content: flex-end;
 
   }
 

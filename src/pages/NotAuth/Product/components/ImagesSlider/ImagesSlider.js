@@ -35,7 +35,7 @@ function ImagesSlider({ photos, slidesPerView
             <CustomSlider
                 direction="vertical"
                 className={classes.swiper}
-                slidesPerView={slidesPerView}
+                slidesPerView={4}
                 spaceBetween={20}
                 onSwiper={setSwiper}
                 navigation={{
