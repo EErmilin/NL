@@ -8,6 +8,9 @@ export const CartBundleItem = ({ item }) => {
 
   const dispatcher = useDispatch()
 
+  console.log('!!!!!!!!!!!!!')
+  console.log(item)
+
   return (
     <div className={classes.cart_products}>
     <div className={classes.cart_products_item}>
@@ -20,7 +23,7 @@ export const CartBundleItem = ({ item }) => {
         </div>
         <div>
           <div className={classes.delete} onClick={() => dispatcher(deleteCartItem(item.id))}>Delete</div>
-          <div className={classes.cart_products_item_price}>{item.formatted_total}</div>
+          <div className={classes.cart_products_item_price}>{item.formatted_total}<span className={classes.pv}> /{item?.product?.pv}</span></div>
         </div>
       </div>
     </div>

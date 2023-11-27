@@ -80,9 +80,6 @@ function CartDropDown({
 
     const totalPV = cart && cart.items?.length && cart.items.reduce((partialSum, a) => partialSum + Number(a.product.pv)*a.quantity, 0);
 
-    console.log('totalPV')
-    console.log(totalPV)
-
     return (
         <div className={classes.cart}>
             <div className={classes.cart_products_wrp}>

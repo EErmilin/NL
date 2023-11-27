@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import useToggleVisibility from "../../hooks/useToggleVisibility";
 import BecomePartnerModal from "../modals/BecomePartnerModal/BecomePartnerModal";
+import SupportModal from "../modals/SupportModal/SupportModal";
 import ButtonDefault from "../UI/btns/Button/Button";
 import classes from "./NavBar.module.scss";
 
@@ -12,11 +13,17 @@ function NavBar() {
     const user = useSelector(state => state.auth.user);
     const navigate = useNavigate()
     const [becomePartnerModal, setBecomePartnerModal, closeBecomePartnerModal] = useToggleVisibility(false)
+    const [supportModal, setSupportModal, closeSupportModal] = useToggleVisibility(false)
 
     const templateBecomePartnerModal = becomePartnerModal && (
         <BecomePartnerModal
             closeModal={closeBecomePartnerModal}
             btnCancelClick={() => setBecomePartnerModal(false)} />
+    )
+    const templateSupportModal = supportModal && (
+        <SupportModal
+            closeModal={closeSupportModal}
+            btnCancelClick={() => setSupportModal(false)} />
     )
     
     /** Масив ссылок */
@@ -75,13 +82,14 @@ function NavBar() {
             {user?.partner_code && <div className={classes.referal} onClick={() => navigate('referal')}><div className={classes.referal_link}>Referral program</div></div>}
             <div className={classes.support}>
                 <h3 className={classes.support_title}>Go to the support chat</h3>
-                <NavLink to="https://t.me/nlstar_support" target={"_blank"} className={classes.support_link}>Write to support</NavLink>
+                <div onClick={()=>setSupportModal(true)} className={classes.support_link}>Write to support</div>
             </div>
             {user?.role == "client" && <div className={classes.become}>
                 <h3 className={classes.become_title}>Become a business partner</h3>
                 <div onClick={() => setBecomePartnerModal(true)} target={"_blank"} className={classes.become_link}>Update</div>
             </div>}
             {templateBecomePartnerModal}
+            {templateSupportModal}
         </>
     )
 

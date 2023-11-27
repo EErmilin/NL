@@ -22,6 +22,9 @@ import PersonalOffice from "../pages/Auth/Profile/PersonalOffice/PersonalOffice"
 import Money from "../pages/Auth/Profile/Money/Money";
 import MoneyMain from "../pages/Auth/Profile/Money/MoneyMain/MoneyMain";
 import MoneyInfo from "../pages/Auth/Profile/Money/MoneyInfo/MoneyInfo";
+import News from "../pages/NotAuth/News/News";
+import NewsList from "../pages/NotAuth/News/components/NewsList/NewsList";
+import CurrentNews from "../pages/NotAuth/News/components/CurrentNews/CurrentNews";
 
 export const routes = [
     {
@@ -45,7 +48,7 @@ export const routes = [
                         path: 'profile',
                         exact: false,
                     },
-                    
+
                     {
                         name: 'cart',
                         component: <Money
@@ -224,6 +227,32 @@ export const routes = [
             }
         />,
         path: '/cart/*',
+        privateUrl: false,
+        exact: false,
+    },
+    {
+        name: 'news',
+        component: <News
+            routes={
+                [
+                    {
+                        name: '',
+                        privateUrl: false,
+                        component: <NewsList />,
+                        path: '/',
+                        exact: true,
+                    },
+                    {
+                        name: '',
+                        privateUrl: false,
+                        component: <CurrentNews />,
+                        path: '/:id',
+                        exact: true,
+                    }
+                ]
+            }
+        />,
+        path: '/news/*',
         privateUrl: false,
         exact: false,
     },

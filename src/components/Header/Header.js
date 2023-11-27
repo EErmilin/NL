@@ -58,7 +58,7 @@ function Header() {
         arrLinks = [
             { link: "/OurStory", title: t("Our story") },
             { link: "/Business", title: t("Business") },
-            { link: "", title: t("News") },
+            { link: "/news", title: t("News") },
             { link: "/Contacts", title: t("Contacts") },
         ]
         return arrLinks.map((elem, id) => {

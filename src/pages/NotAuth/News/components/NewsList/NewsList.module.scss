@@ -1,0 +1,23 @@
+.wrapper {
+  max-width: 1333px;
+  margin: 0 auto;
+  margin-top: 30px;
+
+  @media(max-width: 1023px) {
+    padding: 0 30px;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  row-gap: 60px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 500;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}

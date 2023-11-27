@@ -1,6 +1,10 @@
 .new {
-  max-width: 434px;
-width: 100%;
+  width: 434px;
+
+  @media(max-width: 1333px) {
+    width: 100%;
+  }
+
   &_date {
     font-size: 14px;
     font-style: normal;
@@ -14,7 +18,8 @@ width: 100%;
     color: var(--light-colors-black-light, #000);
     font-size: 20px;
     font-weight: 400;
-    line-height: 26px; /* 130% */
+    line-height: 26px;
+    /* 130% */
     margin: 8px 0 4px 0;
   }
 
@@ -22,17 +27,28 @@ width: 100%;
     color: var(--light-colors-dark-gray-light, #707070);
     font-size: 16px;
     font-weight: 400;
-    line-height: 27px; /* 168.75% */
-    margin: 0 0 20px 0 ;
+    line-height: 27px;
+    /* 168.75% */
+    margin: 0 0 20px 0;
   }
 
   &_link {
     color: var(--Black, #000);
-    font-family: Raleway;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-decoration-line: underline;
+  }
+}
+
+.img {
+  object-fit: cover;
+  height: 100%;
+
+  &_wrp {
+    @media(min-width: 1333px) {
+      height: 300px;
+    }
   }
 }

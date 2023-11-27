@@ -1,4 +1,4 @@
-import { message } from "antd";
+import { notification } from "antd";
 import React, { useEffect, useMemo, useRef, useState } from "react"
 import { useDispatch } from "react-redux";
 import { addStarterPack } from "../../store/actions/orderActions";
@@ -14,6 +14,7 @@ function usePrevious(value) {
     });
     return ref.current;
 }
+
 
 
 function Cell({ cell, setSelectegPackItems, selectegPackItems, setCellsObj, cellsObj }) {
@@ -42,7 +43,7 @@ function Cell({ cell, setSelectegPackItems, selectegPackItems, setCellsObj, cell
 
 
 export default function StarterPack({ pack }) {
-    const [messageApi, contextHolder] = message.useMessage();
+    const [api, contextHolder] = notification.useNotification();
     const [cellsObj, setCellsObj] = useState(null)
     const [selectegPackItems, setSelectegPackItems] = useState([])
     const dispatcher = useDispatch()
@@ -57,7 +58,14 @@ export default function StarterPack({ pack }) {
 
     const templateInfo = selectegPackItems.map((item) => <div className={classes.info_content_item}>{item?.name}</div>)
 
+    const openNotificationWithIcon = (type, message) => {
+        api[type]({
+            message: 'Error',
+            description: message,
+        });
+    };
 
+    
     const onSubmit = async () => {
 
         let bundle_option_qty = {};
@@ -83,10 +91,7 @@ export default function StarterPack({ pack }) {
 
 
         } catch (error) {
-            messageApi.open({
-                type: 'error',
-                content: error.message,
-            });
+            openNotificationWithIcon('error', error.message)
         }
 
     }
@@ -103,7 +108,7 @@ export default function StarterPack({ pack }) {
                         <div className={classes.info_content}>{templateInfo}</div>
                     </div>
                     <div className={classes.info_wrp}>
-                        <div className={classes.info_price}>{pack.price} €</div>
+                        <div className={classes.info_price}>{pack.price} € {pack.pv ? <span className={classes.pv}> /{pack.pv} PV</span> : ''}</div>
                         <ButtonDefault title={'Add to cart'} className={classes.info_btn} onClick={() => onSubmit()}></ButtonDefault>
                     </div>
                 </div>

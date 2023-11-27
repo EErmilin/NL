@@ -6,6 +6,7 @@ import { useQueries, useQuery } from "@tanstack/react-query";
 import Breadcrumbs from "../../../components/Breadcrumbs/Breadcrumbs";
 import { Spin } from "antd";
 import StarterPack from "../../../components/StarterPack/StarterPack";
+import { useSelector } from "react-redux";
 
 const backUrl = "https://testapi.eu-nl.com"
 
@@ -20,8 +21,8 @@ export const Starter = () => {
       title: "Starter"
     },
   ]
-
-  const { data, isInitialLoading, isError } = useQuery([`starter`], () => {
+  const locale = useSelector(state => state.router.locale);
+  const { data, isInitialLoading, isError } = useQuery([`starter`,{locale}], () => {
     return axiosCustom(`${backUrl}/api/v1/product-bundles`)
   }
   );

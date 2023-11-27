@@ -106,7 +106,7 @@ export const MoneyInfo = () => {
           </div>
         </div>
       </div>
-      <CustomPagination total={data?.data?.data?.total} page={page} changePage={setPage} />
+    {data?.data?.data?.total > 15 &&  <CustomPagination total={data?.data?.data?.total} page={page} changePage={setPage} />}
     </>
   )
 }

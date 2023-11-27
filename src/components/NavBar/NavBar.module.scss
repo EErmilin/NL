@@ -108,6 +108,7 @@
   background: right bottom no-repeat url("../../assets/img/nav-support-img.png");
 
   &_link {
+    cursor: pointer;
     font-weight: 500;
     text-decoration-line: underline;
   }

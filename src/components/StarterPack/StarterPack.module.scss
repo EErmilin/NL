@@ -57,7 +57,7 @@
   grid-template-columns: 1fr 320px;
 
   &_products {
-    gap:20px;
+    gap: 20px;
     display: flex;
   }
 }
@@ -70,7 +70,7 @@
 }
 
 .starter {
-  border-bottom: 1px solid   var(--gray, #ECECEE);
+  border-bottom: 1px solid var(--gray, #ECECEE);
   padding-bottom: 30px;
 }
 
@@ -80,12 +80,14 @@
   padding: 30px;
   flex-direction: column;
   align-items: flex-start;
-justify-content: space-between;
+  justify-content: space-between;
+
   &_price {
     font-size: 30px;
     font-weight: 500;
   }
-  &_wrp{
+
+  &_wrp {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -109,10 +111,17 @@ justify-content: space-between;
     font-size: 20px;
     font-weight: 400;
   }
-  &_btn{
+
+  &_btn {
     width: 100%;
     margin-top: 30px;
     color: white;
     background-color: #000;
   }
+}
+
+.pv {
+  color: var(--gray-80, #707070);
+  font-size: 30px;
+  font-weight: 500;
 }

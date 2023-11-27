@@ -20,7 +20,7 @@ export const HistoryItem = ({ item }) => {
         <div>{item.amount>0 ?<span className={classes.coming}>+ {item.amount}</span> : "-"}</div>
       </div>
       <div>
-        <div>{item.amount<0 ?<span className={classes.expenditure}>- {item.amount}</span>: "-"}</div>
+        <div>{item.amount<0 ?<span className={classes.expenditure}>{item.amount}</span>: "-"}</div>
       </div>
     </div>
   )

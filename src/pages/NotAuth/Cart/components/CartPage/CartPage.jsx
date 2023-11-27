@@ -41,8 +41,6 @@ export const CartPage = () => {
   }, [cart])
 
   const totalPV = cart && cart.items?.length && cart.items.reduce((partialSum, a) => partialSum + Number(a.product.pv)*a.quantity, 0);
-console.log('@!@@@@@@@@@')
-console.log(cart.items)
   return (
     <div className={classes.cart}>
       <div className={classes.cart_return}>Return to the catalog</div>
