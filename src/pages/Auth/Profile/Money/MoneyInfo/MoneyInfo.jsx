@@ -82,12 +82,12 @@ export const MoneyInfo = () => {
         </div>
         <div className={classes.balance}>
           <div>
-            <div className={classes.balance_title}>Amount at the end of the period:</div>
-            <div className={classes.balance_price}>117,660.65 €</div>
+            <div className={classes.balance_title}>Statistic1</div>
+            <div className={classes.balance_price}>XXXXXXXX</div>
           </div>
           <div>
-            <div className={classes.balance_title}>Amount for the period:</div>
-            <div className={classes.balance_price_green}>236,390.00 €</div>
+            <div className={classes.balance_title}>Statistic2</div>
+            <div className={classes.balance_price_green}>XXXXXXXX</div>
           </div>
         </div>
         <div className={classes.info}>

@@ -29,11 +29,12 @@ export const CurrentNews = () => {
       title: item.title,
     },
   ]
+  const date = item.created_at && moment(item.created_at).utc()
   return (
     <div className={classes.wrapper}>
       <Breadcrumbs items={BREADCRUMBS}></Breadcrumbs>
       <h1 className={classes.title}>{item.title}</h1>
-      <div className={classes.btns}><span className={classes.date}>October 8, 2023</span><span className={classes.share}>Share</span></div>
+      <div className={classes.btns}>{date && <span className={classes.date}>{date?.format('LL')}</span>}<span className={classes.share}>Share</span></div>
       <img src={item.image} className={classes.image}></img>
       <div className={classes.content} dangerouslySetInnerHTML={{ __html: item.content }}>
       </div>

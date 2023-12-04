@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart } from "../../../../../store/actions/orderActions";
 import { useMemo } from "react";
 import CartBundleItem from "../CartBundleItem/CartBundleItem";
+import { formatedSum } from "../../../../../functions/functions";
 
 
 export const CartPage = () => {
@@ -40,6 +41,9 @@ export const CartPage = () => {
 
   }, [cart])
 
+  console.log('!!!!!!!!!!!')
+  console.log(cart)
+
   const totalPV = cart && cart.items?.length && cart.items.reduce((partialSum, a) => partialSum + Number(a.product.pv)*a.quantity, 0);
   return (
     <div className={classes.cart}>
@@ -56,7 +60,7 @@ export const CartPage = () => {
           <div className={classes.cart_total_products_wrp}><span className={classes.cart_total_products}>Products:</span> <span className={classes.cart_total_products}>{cart?.items_qty ? Number(cart?.items_qty).toFixed(0) : 0} items</span></div>
           <div className={classes.cart_total_price_wrp}>
             <span className={classes.cart_total_price_title}>Total:</span>
-            <span className={classes.cart_total_price}>{cart?.formatted_grand_total || "0  €"}{totalPV ? <span className={classes.pv}> /{totalPV} PV</span> : ''}</span>
+            <span className={classes.cart_total_price}>{formatedSum(cart?.grand_total)  || "0  €"}{totalPV ? <span className={classes.pv}> /{totalPV} PV</span> : ''}</span>
           </div>
           <ButtonDefault className={classes.cart_total_btn} onClick={() => navigate("/cart/order")} title={"Proceed to check out"}></ButtonDefault>
         </div>

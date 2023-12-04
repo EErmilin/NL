@@ -25,6 +25,9 @@ import MoneyInfo from "../pages/Auth/Profile/Money/MoneyInfo/MoneyInfo";
 import News from "../pages/NotAuth/News/News";
 import NewsList from "../pages/NotAuth/News/components/NewsList/NewsList";
 import CurrentNews from "../pages/NotAuth/News/components/CurrentNews/CurrentNews";
+import Orders from "../pages/Auth/Profile/Orders/Orders";
+import OrdersMain from "../pages/Auth/Profile/Orders/MoneyMain/OrdersMain";
+import CurrentOrder from "../pages/Auth/Profile/Orders/components/CurrentOrder/CurrentOrder";
 
 export const routes = [
     {
@@ -74,6 +77,33 @@ export const routes = [
                         name: 'money',
                         privateUrl: true,
                         path: 'money/*',
+                        exact: false,
+                    },
+                    {
+                        name: 'orders',
+                        component: <Orders
+                            routes={
+                                [
+                                    {
+                                        name: '',
+                                        privateUrl: false,
+                                        component: <OrdersMain />,
+                                        path: '/',
+                                        exact: true,
+                                    },
+                                    {
+                                        name: '',
+                                        privateUrl: false,
+                                        component: <CurrentOrder />,
+                                        path: '/:id',
+                                        exact: true,
+                                    },
+                                ]
+                            }
+                        />,
+                        name: 'orders',
+                        privateUrl: true,
+                        path: 'orders/*',
                         exact: false,
                     },
                     {

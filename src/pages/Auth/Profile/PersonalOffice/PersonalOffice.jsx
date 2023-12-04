@@ -18,7 +18,7 @@ export const PersonalOffice = () => {
           <div className={classes.info_r}>{user.qualification_rank}</div>
           <div className={classes.info_volume_wrp}>
             <div className={classes.info_volume_gray}>Group Volume (PV)</div>
-            <div className={classes.info_volume_value}>0</div>
+            <div className={classes.info_volume_value}>{user.balance_gv}</div>
           </div>
           <div className={classes.info_volume_wrp}>
             <div className={classes.info_volume_gray}>Personal Volume (PV)</div>

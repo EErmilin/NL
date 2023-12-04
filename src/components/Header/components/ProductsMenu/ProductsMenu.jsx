@@ -45,9 +45,9 @@ export const ProductsMenu = () => {
       }
       return (
         <div
-          className={classes.categorie}
+          className={[classes.categorie, elem.children? classes.categorie_children : ''].join(' ')}
           key={id}
-          onMouseEnter={() => setCategorie(elem)}
+          onMouseEnter={() => elem.children ? setCategorie(elem) : setCategorie(null)}
           onClick={() => navigate(`/products/${elem.id}`)}
         >
           {elem.name}

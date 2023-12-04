@@ -18,7 +18,7 @@ export const CartProductItem = ({item}) => {
 
   return (
           <div className={classes.cart_products_item}>
-            <img src={item.product.images[0].url} className={classes.cart_products_item_img}></img>
+            <img src={item.product?.images[0]?.url} className={classes.cart_products_item_img}></img>
             <div className={classes.cart_products_item_info}>
               <div className={classes.cart_products_item_info_header}>
                 <div>

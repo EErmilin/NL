@@ -36,19 +36,25 @@
   cursor: pointer;
   max-width: 320px;
   margin-right: 20px;
+
   &_current {
     padding: 0px 30px;
     cursor: pointer;
     margin: 8px 0;
   }
 
-  /* 125% */
-  &:after {
-    content: '';
-    width: 20px;
-    height: 20px;
-    background: center/cover no-repeat url("../../../../assets/svg/arrowRight.svg");
+  &_children {
+
+    /* 125% */
+    &:after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: center/cover no-repeat url("../../../../assets/svg/arrowRight.svg");
+    }
   }
+
+
 }
 
 .brand {
@@ -91,7 +97,8 @@
     background: white;
     display: grid;
     grid-template-columns: 2fr 2.5fr;
-    &_items{
+
+    &_items {
       padding-top: 68px;
     }
   }

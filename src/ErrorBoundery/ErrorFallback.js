@@ -11,6 +11,8 @@ function ErrorFallback({error, resetErrorBoundary}) {
             return resetErrorBoundary()
         }
     })
+    console.log('!!!!!!!!!!')
+    console.log(error)
     return (
         <div role="alert">
                 <div className={classes.error_fallback}>

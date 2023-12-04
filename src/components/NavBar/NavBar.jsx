@@ -25,16 +25,15 @@ function NavBar() {
             closeModal={closeSupportModal}
             btnCancelClick={() => setSupportModal(false)} />
     )
-    
+
     /** Масив ссылок */
     const templateLinks = useMemo(() => {
         if (user) {
             let arrLinks = []
             if (user.partner_code) {
                 arrLinks = [
-
                     { link: "profile", title: "My information" },
-                    { link: "", title: "My orders" },
+                    { link: "orders", title: "My orders" },
                     { link: "personal-office", title: "Personal office" },
                     { link: "money", title: "Money" },
                 ]
@@ -42,10 +41,9 @@ function NavBar() {
                 arrLinks = [
                     { link: "personal-office", title: "Personal office" },
                     { link: "profile", title: "My information" },
-                    { link: "", title: "My orders" },
+                    { link: "orders", title: "My orders" },
                     { link: "money", title: "Money" },
                     { link: "", title: "Messages" },
-
                 ]
             }
 
@@ -72,6 +70,12 @@ function NavBar() {
 
     return (
         <>
+              {user?.is_partner &&
+        <div className={classes.starter}>
+          <h1 className={classes.starter_title}>Starter Packs</h1>
+          <NavLink to="/products/31" className={classes.starter_link}>Select a pack</NavLink>
+        </div>
+      }
             <div className={classes.wrap}>
                 <div className={classes.links}>
                     <ul className={classes.list}>
@@ -82,7 +86,7 @@ function NavBar() {
             {user?.partner_code && <div className={classes.referal} onClick={() => navigate('referal')}><div className={classes.referal_link}>Referral program</div></div>}
             <div className={classes.support}>
                 <h3 className={classes.support_title}>Go to the support chat</h3>
-                <div onClick={()=>setSupportModal(true)} className={classes.support_link}>Write to support</div>
+                <div onClick={() => setSupportModal(true)} className={classes.support_link}>Write to support</div>
             </div>
             {user?.role == "client" && <div className={classes.become}>
                 <h3 className={classes.become_title}>Become a business partner</h3>

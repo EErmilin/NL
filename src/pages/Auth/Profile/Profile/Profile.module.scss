@@ -1,18 +1,24 @@
 .wrapper {
-  max-width: 1290px;
+  max-width: 1333px;
   margin: 0 auto;
 
-  @media(min-width: 992px) {
-    padding: 0 30px;
-  }
 }
 
 
 .profile {
 
+  &_valid {
+    display: flex;
+    padding: 20px;
+    align-items: flex-start;
+    background: var(--BG, #F8F8F8);
+    margin-bottom: 30px;
+  }
+
   &_wrp {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    gap: 146px;
+    grid-template-columns: 420px 1fr;
   }
 
   display: grid;
@@ -22,17 +28,20 @@
 
   &_title {
     color: #000;
-    font-variant-numeric: lining-nums proportional-nums;
-    font-family: Raleway;
     font-size: 30px;
-    font-style: normal;
     font-weight: 400;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
+    &_mentor {
+      color: #000;
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
   }
 
   &_flex {
     display: flex;
-    gap: 29px;
+    gap: 102px;
     margin-bottom: 30px;
 
     &_left {
@@ -43,19 +52,13 @@
 
   &_gray {
     color: var(--gray-80, #707070);
-    font-variant-numeric: lining-nums proportional-nums;
-    font-family: Raleway;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     line-height: 24px;
-    /* 150% */
   }
 
   &_value {
     color: var(--Black, #000);
-    font-variant-numeric: lining-nums proportional-nums;
-    font-family: Raleway;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
@@ -64,8 +67,6 @@
     &::first-letter {
       text-transform: uppercase;
     }
-
-    /* 120% */
   }
 }
 
@@ -96,18 +97,19 @@
   display: flex;
   padding-left: 23px;
   flex-direction: column;
- justify-content: center;
- background-image: url("../../../../assets/img/starter.png");
- background-size: contain;
- background-position: right;
- background-repeat: no-repeat;
+  justify-content: center;
+  background-image: url("../../../../assets/img/starter.png");
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
 
   &_link {
     font-size: 16px;
     font-weight: 500;
     text-decoration-line: underline;
   }
-  &_title{
+
+  &_title {
     margin: 0;
     margin-bottom: 4px;
   }

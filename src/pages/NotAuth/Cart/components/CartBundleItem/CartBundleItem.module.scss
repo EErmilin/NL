@@ -71,3 +71,20 @@
   font-weight: 400;
   line-height: 28px;
 }
+
+.img {
+  width: 60px;
+  height: 60px;
+object-fit: cover;
+  &_wrp {
+    gap: 10px;
+    display: flex;
+  }
+}
+
+.counter {
+  color: var(--gray-80, #707070);
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 10px;
+}

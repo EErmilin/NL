@@ -28,20 +28,16 @@ export const Profile = () => {
     if (user.partner_code) {
       return (<div >
         <h2 className={classes.profile_title}>My information</h2>
+        <div className={classes.profile_valid}>
+          <div className={classes.profile_flex_left}>
+            <div className={classes.profile_gray}>The contract is valid until</div>
+            <div className={classes.profile_value}>{moment(user.created_at).add(1, 'year').format("DD/MM/YYYY")}</div>
+          </div>
+        </div>
         <div className={classes.profile_flex}>
           <div>
             <div className={classes.profile_gray}>Your ID</div>
             <div className={classes.profile_value}>{user.referral_code}</div>
-          </div>
-        </div>
-        <div className={classes.profile_flex}>
-          <div className={classes.profile_flex_left}>
-            <div className={classes.profile_gray}>Date of registration</div>
-            <div className={classes.profile_value}>{moment(user.created_at).format("DD/MM/YYYY")}</div>
-          </div>
-          <div>
-            <div className={classes.profile_gray}>The contract is valid until</div>
-            <div className={classes.profile_value}>{moment(user.created_at).add(1, 'year').format("DD/MM/YYYY")}</div>
           </div>
         </div>
 
@@ -88,7 +84,7 @@ export const Profile = () => {
         </div>
         <div>
           <div className={classes.profile_gray}>Contact preferences</div>
-          <div className={classes.profile_value}>{`${preferred_contact.contact_type}: ${preferred_contact.contact_type ==="PHONE"  ? "+": ''}${preferred_contact.contact_value}`}</div>
+          <div className={classes.profile_value}>{`${preferred_contact.contact_type}: ${preferred_contact.contact_type === "PHONE" ? "+" : ''}${preferred_contact.contact_value}`}</div>
         </div>
       </div>
       )
@@ -144,7 +140,7 @@ export const Profile = () => {
         </div>
         <div>
           <div className={classes.profile_gray}>Contact preferences</div>
-          <div className={classes.profile_value}>{`${preferred_contact.contact_type}: ${preferred_contact.contact_type ==="PHONE"  ? "+": ''}${preferred_contact.contact_value}`}</div>
+          <div className={classes.profile_value}>{`${preferred_contact.contact_type}: ${preferred_contact.contact_type === "PHONE" ? "+" : ''}${preferred_contact.contact_value}`}</div>
         </div>
       </div>
     )
@@ -152,19 +148,14 @@ export const Profile = () => {
 
   return (
     <div className={classes.wrapper}>
-      {user?.is_partner &&
-        <div className={classes.starter}>
-          <h1 className={classes.starter_title}>Starter Packs</h1>
-          <NavLink to="/products/31" className={classes.starter_link}>Select a pack</NavLink>
-        </div>
-      }
+
       <div className={classes.profile_wrp}>
 
         {renderInfo()}
 
         {user?.parent_customer &&
           <div >
-            <h2 className={classes.profile_title}>Mentor</h2>
+            <h2 className={classes.profile_title_mentor}>Mentor</h2>
             <div className={classes.profile_flex}>
               <div>
                 <div className={classes.profile_gray}>ID</div>
@@ -188,7 +179,7 @@ export const Profile = () => {
             <div className={classes.profile_flex}>
               <div>
                 <div className={classes.profile_gray}>Contact preferences</div>
-                <div className={classes.profile_value}>{`${partner_preferred_contact.contact_type}: ${partner_preferred_contact.contact_type ==="PHONE"  ? "+": ''}${partner_preferred_contact.contact_value}`}</div>
+                <div className={classes.profile_value}>{`${partner_preferred_contact.contact_type}: ${partner_preferred_contact.contact_type === "PHONE" ? "+" : ''}${partner_preferred_contact.contact_value}`}</div>
               </div>
             </div>
           </div>}
