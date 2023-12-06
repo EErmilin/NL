@@ -24,7 +24,7 @@ export const MoneyInfo = () => {
   const from = searchParams.get('from')
   const to = searchParams.get('to')
   const pageUrl = searchParams.get('page')
-
+  const check = searchParams.get('check')
   const [dates, setDates] = useState([dayjs(from), dayjs(to)])
   const [page, setPage] = useState(pageUrl)
   const [search, setSearch] = useState('')
@@ -36,6 +36,7 @@ export const MoneyInfo = () => {
       page: page,
       from: dates[0].format("YYYY-MM-DD"),
       to: dates[1].format("YYYY-MM-DD"),
+      check: check,
     }
     setSearchParams(filtersObg, { replace: true });
   }
@@ -44,7 +45,7 @@ export const MoneyInfo = () => {
     if (dates) {
       searchHandler()
     }
-  }, [dates, page])
+  }, [dates, page, check])
 
   useEffect(() => {
     document.body.scrollIntoView({
@@ -54,7 +55,7 @@ export const MoneyInfo = () => {
   }, [page])
 
   const { data, isInitialLoading, isError } = useQuery(["balance-history", { to, from, page, search }], () =>
-    axiosCustom.get(`https://testapi.eu-nl.com/api/v1/customer/balance-history?account_type=unit-partner&start_date=${searchParams.get("from")}&end_date=${searchParams.get("to")}&page=${page}${search ? "&search=" + search : ''}`)
+    axiosCustom.get(`https://testapi.eu-nl.com/api/v1/customer/balance-history?account_type=${check}&start_date=${searchParams.get("from")}&end_date=${searchParams.get("to")}&page=${page}${search ? "&search=" + search : ''}`)
   );
 
   const templateHistory = useMemo(() => {
@@ -80,7 +81,7 @@ export const MoneyInfo = () => {
           </div>
           <ButtonDefault title={"Export to Excel"} className={classes.btns_export}></ButtonDefault>
         </div>
-        <div className={classes.balance}>
+{      /*  <div className={classes.balance}>
           <div>
             <div className={classes.balance_title}>Statistic1</div>
             <div className={classes.balance_price}>XXXXXXXX</div>
@@ -89,7 +90,7 @@ export const MoneyInfo = () => {
             <div className={classes.balance_title}>Statistic2</div>
             <div className={classes.balance_price_green}>XXXXXXXX</div>
           </div>
-        </div>
+  </div>*/}
         <div className={classes.info}>
           <Search placeholder="Search" style={{ width: '100%', marginBottom: 30 }} onSearch={onSearch} />
 

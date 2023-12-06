@@ -24,7 +24,7 @@ export const OrderItem = ({ item }) => {
   const totalPV = item.items.reduce((partialSum, a) => partialSum + Number(a.product.pv)*a.qty_ordered, 0);
   return (
     <div className={classes.wrapper}>
-      <div className={classes.title}>Order № 0004-00004-04545 dated {moment(item.created_at).utc().format("DD/MM/YYYY")}</div>
+      <div className={classes.title}>Order № {item.id} dated {moment(item.created_at).utc().format("DD/MM/YYYY")}</div>
       <div className={classes.top}>
         <div className={classes.top_info}>
           <div>

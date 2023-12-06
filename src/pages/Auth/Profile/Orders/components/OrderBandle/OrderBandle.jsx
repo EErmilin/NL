@@ -5,7 +5,12 @@ import { formatedSum } from "../../../../../../functions/functions";
 
 export const OrderBandle = ({ item }) => {
 
-  const renderItems = item.children.map((item, key)=><img src={item.product.base_image.small_image_url} key={key} className={classes.img}></img>)
+  const renderItems = item.children.map((item, key)=><img src={item.base_image.small_image_url} key={key} className={classes.img}></img>)
+
+  const count = item?.additional?.bundle_option_qty.reduce(
+    (accumulator, currentValue) => accumulator + Number(currentValue),
+    0,
+  );
 
   return (
     <div className={classes.item}>
@@ -18,7 +23,7 @@ export const OrderBandle = ({ item }) => {
             <div className={classes.item_price}>{formatedSum(item.price)}<span className={classes.item_price_pv}>{item?.product?.pv ? "/" + Number(item.product.pv) * item.qty_ordered + " PV" : null}</span></div>
           </div>
         </div>
-        <div className={classes.img_wrp}><div className={classes.counter}>{item.children.length} items</div>{renderItems}</div>
+        <div className={classes.img_wrp}><div className={classes.counter}>{count} items</div>{renderItems}</div>
     </div>
   )
 }

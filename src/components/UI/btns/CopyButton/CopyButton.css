@@ -1,0 +1,13 @@
+.example-container .example-diff-arrow {
+  color: #fff;
+  background-color: rgb(55, 55, 55);
+}
+
+.example-container .example-diff-arrow .example-arrow {
+  background-color: rgb(222, 34, 72);
+}
+
+.react-tooltip-arrow{
+  height: 16px;
+  width: 19px;
+}

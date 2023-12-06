@@ -39,7 +39,7 @@ function NavBar() {
                 ]
             } else {
                 arrLinks = [
-                    { link: "personal-office", title: "Personal office" },
+                    { link: "personal-office-client", title: "Personal office" },
                     { link: "profile", title: "My information" },
                     { link: "orders", title: "My orders" },
                     { link: "money", title: "Money" },

@@ -28,6 +28,7 @@ import CurrentNews from "../pages/NotAuth/News/components/CurrentNews/CurrentNew
 import Orders from "../pages/Auth/Profile/Orders/Orders";
 import OrdersMain from "../pages/Auth/Profile/Orders/MoneyMain/OrdersMain";
 import CurrentOrder from "../pages/Auth/Profile/Orders/components/CurrentOrder/CurrentOrder";
+import PersonalOfficeClient from "../pages/Auth/Profile/PersonalOfficeClient/PersonalOfficeClient";
 
 export const routes = [
     {
@@ -118,6 +119,13 @@ export const routes = [
                         privateUrl: true,
                         component: <PersonalOffice />,
                         path: 'personal-office',
+                        exact: false,
+                    },
+                    {
+                        name: 'PersonalOfficeClient',
+                        privateUrl: true,
+                        component: <PersonalOfficeClient />,
+                        path: 'personal-office-client',
                         exact: false,
                     },
 

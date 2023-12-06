@@ -24,7 +24,7 @@ SwiperCore.use([
   Pagination,
 ]);
 
-const Slider = ({ children, slidesPerView = "auto", direction = 'horizontal', spaceBetween = 10, ...rest }) => {
+const Slider = ({ children, slidesPerView = "auto", direction = 'horizontal', spaceBetween = 10,pagination=false, isShowNavigation=true, ...rest  }) => {
 
   /**Инстенс свипера*/
   const [swiper, setSwiper] = useState()
@@ -48,7 +48,7 @@ const Slider = ({ children, slidesPerView = "auto", direction = 'horizontal', sp
   return (
     <div className={classes.swiper}>
       <Swiper
-        pagination={true}
+        pagination={pagination}
         className={cls.join(' ')}
         slidesPerView={slidesPerView}
         spaceBetween={spaceBetween}
@@ -62,7 +62,7 @@ const Slider = ({ children, slidesPerView = "auto", direction = 'horizontal', sp
       >
         {children}
       </Swiper>
-      {direction === "horizontal" && <div className={classes.navigation}>
+      {isShowNavigation && direction === "horizontal" && <div className={classes.navigation}>
         <div className="swiper-button" ref={prevRef}>
           <NavigationBtn type="prev" />
         </div>

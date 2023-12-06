@@ -12,13 +12,20 @@
   height: 6px;
   width: 6px;
 }
-.swiper-pagination{
+
+
+.swiper-button-prev{
+  display: none !important;
+}
+.swiper-button-next{
   display: none !important;
 }
 
-.swiper-button-prev{
-  display: none;
+.swiper-pagination-bullet{
+  width: 6px !important;
+  height: 6px !important;
 }
-.swiper-button-next{
-  display: none;
+
+.swiper-pagination-bullet-active{
+  background: var(--Black, #000) !important;
 }

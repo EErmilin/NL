@@ -8,6 +8,7 @@ import { deleteCartItem, updateCard } from "../../../../store/actions/orderActio
 import { SHOW_CARD } from "../../../../store/actions/actionsType";
 import Counter from "../../../Counter/Counter";
 import { formatedSum } from "../../../../functions/functions";
+import { setIsShowCart } from "../../../../store/actions/routerActions";
 
 function Product({ item }) {
     const dispatcher = useDispatch()
@@ -79,7 +80,7 @@ function CartDropDown({
     }, [cart, cart?.items])
 
     const totalPV = cart && cart.items?.length && cart.items.reduce((partialSum, a) => partialSum + Number(a.product.pv)*a.quantity, 0);
-
+    const closeBtn = <button className={classes.closeBtn} onClick={() => dispatcher(setIsShowCart(false))}></button>
     return (
         <div className={classes.cart}>
             <div className={classes.cart_products_wrp}>
@@ -94,6 +95,7 @@ function CartDropDown({
                 </div>
                 <ButtonDefault title={'View cart'} onClick={() => navigate("/cart")}></ButtonDefault>
             </div>
+            {closeBtn}
         </div>
     )
 }

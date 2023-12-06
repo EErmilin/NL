@@ -8,7 +8,7 @@
 .title {
   font-size: 30px;
 
-font-weight: 400;
+  font-weight: 400;
 }
 
 .gray {
@@ -16,7 +16,8 @@ font-weight: 400;
   font-variant-numeric: lining-nums proportional-nums;
   font-size: 16px;
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  line-height: 24px;
 }
 
 .info {
@@ -54,14 +55,32 @@ font-weight: 400;
   font-weight: 500;
 }
 
-.date{
-  &_wrp{
-    margin-top: 27px;
+.date {
+  &_wrp {
     max-width: 300px;
   }
 }
 
-.balance{
+.balance {
   max-width: 200px;
   width: 100%;
+}
+
+.filters {
+  display: flex;
+  margin-top: 27px;
+  gap: 40px;
+
+  &_select {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 300px;
+
+    &_label {
+
+      margin-bottom: 10px;
+    }
+  }
 }

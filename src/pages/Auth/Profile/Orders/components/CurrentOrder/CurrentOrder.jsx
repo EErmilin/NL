@@ -46,12 +46,10 @@ export const CurrentOrder = () => {
 
   if (!item) return <div className={classes.loader}><Spin size="large" /></div>
 
-
-
   return (
     <div className={classes.wrapper}>
       <NavLink to={'/personal-area/orders'} className={classes.return}>Return my orders</NavLink>
-      <h2 className={classes.title}>Order № 0004-00004-04545 dated {moment(item.created_at).utc().format("DD/MM/YYYY")}</h2>
+      <h2 className={classes.title}>Order № {item.id} dated {moment(item.created_at).utc().format("DD/MM/YYYY")}</h2>
       <div>
         {templateBundle}
         {templateProducts}
@@ -59,7 +57,7 @@ export const CurrentOrder = () => {
           <div className={classes.price_wrp}>
             <div><span>Products ({item.items?.length}):</span><span>{formatedSum(item.base_grand_total)}</span></div>
             <div><span>Delivery:</span><span>116 €</span></div>
-            <div className={classes.price_total}><span  className={classes.price_total}>Total:</span><span className={classes.price_total_price}>{formatedSum(item.grand_total)}</span></div>
+            <div className={classes.price_total}><span className={classes.price_total}>Total:</span><span className={classes.price_total_price}>{formatedSum(item.grand_total)}</span></div>
           </div>
         </div>
       </div>

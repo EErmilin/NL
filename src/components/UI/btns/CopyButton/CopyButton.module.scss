@@ -1,0 +1,8 @@
+.hint{
+  &:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: center/cover no-repeat url("../../../../assets/svg/copyArrow.svg");
+  }
+}

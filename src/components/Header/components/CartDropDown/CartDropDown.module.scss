@@ -160,3 +160,20 @@
 .price {
   font-weight: 500;
 }
+
+.closeBtn {
+  background: transparent;
+  position: absolute;
+  border: none;
+  top: 10px;
+  right: 0px;
+  cursor: pointer;
+  display: flex;
+
+  &:before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: center/cover no-repeat url("../../../../assets/svg/close.svg");
+  }
+}
