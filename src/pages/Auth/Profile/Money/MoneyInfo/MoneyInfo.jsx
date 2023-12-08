@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ButtonDefault from "../../../../../components/UI/btns/Button/Button";
 import classes from "./MoneyInfo.module.scss";
-import { DatePicker, Space } from 'antd';
+import { NavLink } from "react-router-dom"
 import { useNavigate, useSearchParams } from "react-router-dom";
 import CustomDateRangePicker from "../../../../../components/UI/areas/CustomDateRangePicker/CustomDateRangePicker";
 import { useQuery } from "@tanstack/react-query";
@@ -72,7 +72,7 @@ export const MoneyInfo = () => {
   return (
     <>
       <div className={classes.wrapper}>
-        <div className={classes.return}>Return money</div>
+        <NavLink to={'/personal-area/money'} className={classes.return}>Return money</NavLink>
         <h2 className={classes.title}>077-479861, unit account, EUR</h2>
         <div className={classes.btns}>
           <div className={classes.date} >

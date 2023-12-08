@@ -11,11 +11,19 @@ import NewsItem from "./components/NewsItem/NewsItem";
 import NewsSlider from "./components/NewsSlider/NewsSlider";
 import Spesial from "./components/Spesial/Spesial";
 import classes from "./Main.module.scss";
+import { Carousel } from 'antd';
+import MainImg from '../../../assets/img/main.png';
+import axiosCustom from "../../../axios/axiosCustom";
 
 
 function Main() {
 
     const locale = useSelector(state => state.router.locale);
+
+    const { data, isInitialLoading, isError } = useQuery([`slides`], () => {
+        return axiosCustom(`https://testapi.eu-nl.com/api/v1/sliders?sort=id`)
+    }
+    );
 
     const templateNew = useMemo(() => {
         return <div >
@@ -43,19 +51,26 @@ function Main() {
 
         </div>
     }, [])
+
+
+    const slides = data?.data?.data
     return (
         <div>
             <div className={classes.hero}>
-                <MainHero>
-                    <div className={classes.hero_wrp}>
+                {slides && <Carousel autoplay dots={false} speed={1500} autoplaySpeed={5000}>
+                    {slides.map((slide) => <img src={slide.image_url}  className={classes.slide}/>)}
+                </Carousel>}
+                {/*   <MainHero>
+
+                   <div className={classes.hero_wrp}>
                         <div className={classes.hero_top}>New flavour</div>
                         <h1 className={classes.hero_title}>Smart Go</h1>
                         <div className={classes.hero_text}>Chocolate and Peanut</div>
                         <ButtonDefault title={"More"} className={classes.hero_btn} />
-                    </div>
+                        </div>
                     {// <MainSlider />
                     }
-                </MainHero>
+                </MainHero>*/}
             </div>
             <div className={classes.wrap}>
                 {templateNew}
